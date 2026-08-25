@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="night">
+<head>
+<meta charset="UTF-8">
+<!-- Meta Pixel + Google Tag Manager -->
+<script src="../erj-track.js" async></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="manifest" href="../manifest.json">
+<link rel="icon" type="image/png" sizes="64x64" href="../favicon32.png" media="(prefers-color-scheme: light)">
+<link rel="icon" type="image/png" sizes="64x64" href="../favicon32-dark.png" media="(prefers-color-scheme: dark)">
+<link rel="icon" type="image/png" sizes="64x64" href="../favicon32.png">
+<link rel="apple-touch-icon" href="../appletouchicon.png">
+<meta name="theme-color" content="#FAFAF8" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#000000" id="metaThemeColor">
+
+<title>Free 10-Point Remote CV Self-Scan — Score Your CV in Seconds | Everything Remote Job</title>
+<meta name="description" content="Upload your CV and get an instant 10-point remote-readiness score. See exactly where you default — timezone, ATS formatting, metrics, async evidence, keywords. Free, private, nothing leaves your device.">
+<meta property="og:title" content="Free 10-Point Remote CV Self-Scan — Score Your CV in Seconds">
+<meta property="og:description" content="Upload your CV. Get your score out of 10 and see exactly which of the 10 remote-readiness points you default on. Runs entirely on your device.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://everythingremotejob.com/preview-cvscan.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://everythingremotejob.com/cvscan/">
+<link rel="canonical" href="https://everythingremotejob.com/cvscan/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://everythingremotejob.com/preview-cvscan.jpg">
+<meta name="twitter:title" content="Free 10-Point Remote CV Self-Scan">
+<meta name="twitter:description" content="Score your CV against the 10 points that decide whether a remote recruiter reads it.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../product.css?v=126">
+<link rel="stylesheet" href="scan.css">
+  <meta property="og:locale" content="en_NG">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://everythingremotejob.com/"},{"@type":"ListItem","position":2,"name":"Free CV Self-Scan","item":"https://everythingremotejob.com/cvscan/"}]}</script>
+  <style id="erjNavReserve">body{padding-top:63px}@media(min-width:980px){body{padding-top:65px}}
+/* Button labels stay on one line. The type size is NOT reduced to make them
+   fit — white on #FF5722 is 3.16:1, which passes WCAG only as LARGE text
+   (18.66px bold), and the buttons sit at 18.88px. Shrinking the font would
+   quietly make every CTA non-compliant. Fit is bought with shorter labels
+   and tighter padding instead. */
+.btn-yes,.btn-pay,.btn-block,.fi-go,.r-go,.dfy-btn,.cvp-btn,.ts-cta-btn{white-space:nowrap;}
+@media(max-width:520px){.btn-yes,.btn-pay{padding-left:1.25rem;padding-right:1.25rem;gap:0.45rem;}}
+
+/* A skip link is white on orange, seen only on keyboard focus. Sized to
+   clear the large-text bar so it is compliant while it is on screen. */
+.skip-link,.skip{font-size:1.18rem!important;font-weight:700!important;}
+</style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NMFHS59B"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<a href="#scan" class="skip-link">Skip to the scanner</a>
+
+
+
+<main>
+
+<!-- ── HERO ───────────────────────────────────────────────── -->
+<section class="hero wrap">
+  <div class="section-label"><span class="mark"></span>Free tool · Nothing leaves your device</div>
+  <h1>Your CV is being read by a machine before a human ever sees it. <em>Find out how it scores.</em></h1>
+  <p class="lede">Upload your CV and get an instant score out of 10 against the ten points that decide whether a remote recruiter ever opens it — and see exactly where you default.</p>
+
+  <div class="hero-cta">
+    <a href="#scan" class="btn-yes">Scan my CV <span class="arrow">→</span></a>
+    <button class="btn-more" id="manualToggle" type="button" aria-expanded="false" aria-controls="manual">Tick the ten by hand</button>
+  </div>
+
+  <div class="stat-row">
+    <div><div class="stat-num">10</div><div class="stat-lbl">Points scanned</div></div>
+    <div><div class="stat-num">&lt;5s</div><div class="stat-lbl">To your score</div></div>
+    <div><div class="stat-num">0</div><div class="stat-lbl">Files uploaded anywhere</div></div>
+  </div>
+</section>
+
+<!-- ── SCANNER ────────────────────────────────────────────── -->
+<section id="scan" class="section-line wrap reveal">
+  <div class="section-label"><span class="mark"></span>The scan</div>
+  <h2>Drop your CV in. <span>Get your score.</span></h2>
+  <p class="section-sub">PDF, DOCX, or TXT. The scan runs inside your browser — your CV is never sent to a server, never stored, and never seen by anyone but you.</p>
+
+  <div class="scan-grid">
+    <div>
+      <div class="dropzone" id="dropZone" tabindex="0" role="button" aria-label="Upload your CV — PDF, DOCX or TXT">
+        <svg class="dz-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/>
+        </svg>
+        <div class="dz-title">Drop your CV here</div>
+        <div class="dz-sub">or click to choose a file · PDF, DOCX, TXT · max 10MB</div>
+        <input type="file" id="fileInput" accept=".pdf,.docx,.txt,.md" hidden>
+      </div>
+      <div class="scan-status" id="scanStatus" hidden role="status" aria-live="polite"></div>
+    </div>
+
+    <div class="jd-box">
+      <label for="jdInput">Target job description <span>optional</span></label>
+      <textarea id="jdInput" rows="8" placeholder="Paste the remote job advert you are applying to. Point 8 — keyword alignment — can only be scored against a specific advert. Leave this empty and that point is held at half."></textarea>
+      <p class="jd-note">Nothing here is stored either. Change the advert and your score updates live.</p>
+    </div>
+  </div>
+
+  <div id="results" hidden></div>
+</section>
+
+<!-- ── MANUAL CHECKLIST ───────────────────────────────────── -->
+<section id="manual" class="section-line wrap" hidden>
+  <div class="section-label"><span class="mark"></span>Manual self-scan</div>
+  <h2>The ten points, <span>by hand</span></h2>
+  <p class="section-sub">Review your CV against these 10 essential criteria. If you answer "No" to any of these points, update that section before your next application.</p>
+  <div class="manual-list" id="manualList"></div>
+  <div class="manual-result" id="manualResult" hidden></div>
+</section>
+
+<!-- ── THE TEN, EXPLAINED ─────────────────────────────────── -->
+<section id="points" class="section-line wrap reveal">
+  <div class="section-label"><span class="mark"></span>What gets scanned</div>
+  <h2>The ten points, <span>and why each one costs you</span></h2>
+  <p class="section-sub">Every point below is scored against your uploaded file. The wording is the criterion; the note underneath is what it means in practice.</p>
+
+  <div class="ten">
+    <article class="ten-item"><div class="ten-n">01</div><div><h3>Clear Timezone &amp; Location</h3><p>Does your contact section state your city, country, and UTC timezone (e.g., Abuja, Nigeria | UTC+1)? Remote employers need to assess working hour overlaps immediately.</p></div></article>
+    <article class="ten-item"><div class="ten-n">02</div><div><h3>The "Remote-Ready" Summary</h3><p>Does your professional summary explicitly highlight your ability to work autonomously, manage cross-border projects, or thrive in distributed teams?</p></div></article>
+    <article class="ten-item"><div class="ten-n">03</div><div><h3>Remote Tool Stack</h3><p>Is there a dedicated "Tools" or "Technology" section that lists standard remote collaboration software you are proficient in (e.g., Slack, Jira, Asana, Zoom, Google Workspace)?</p></div></article>
+    <article class="ten-item"><div class="ten-n">04</div><div><h3>ATS-Optimized Formatting</h3><p>Is your CV free of complex tables, graphics, text boxes, and unusual fonts? Applicant Tracking Systems struggle to read heavily formatted documents. Stick to a clean, single-column minimalist layout.</p></div></article>
+    <article class="ten-item"><div class="ten-n">05</div><div><h3>Quantifiable Metrics</h3><p>Are your achievements measured in numbers? Instead of "managed a team," use "managed a 5-person distributed team to increase revenue by 15% in Q3."</p></div></article>
+    <article class="ten-item"><div class="ten-n">06</div><div><h3>Evidence of Asynchronous Communication</h3><p>Do your bullet points demonstrate your ability to document processes, write clear briefs, and drive projects forward without needing constant live supervision?</p></div></article>
+    <article class="ten-item"><div class="ten-n">07</div><div><h3>Strong Action Verbs</h3><p>Do your experience bullet points start with high-impact, proactive verbs (e.g., <em>Architected</em>, <em>Streamlined</em>, <em>Delivered</em>, <em>Spearheaded</em>) rather than passive phrases (e.g., <em>Responsible for</em>)?</p></div></article>
+    <article class="ten-item"><div class="ten-n">08</div><div><h3>Keyword Alignment</h3><p>Have you mirrored the specific keywords and phrasing used in the target remote job description within your experience and skills sections?</p></div></article>
+    <article class="ten-item"><div class="ten-n">09</div><div><h3>Clickable, Professional Links</h3><p>Are your LinkedIn profile, GitHub repository, and personal portfolio URLs hyperlinked correctly, and do they lead to active, up-to-date pages?</p></div></article>
+    <article class="ten-item"><div class="ten-n">10</div><div><h3>Universal File Format</h3><p>Are you exporting and submitting your CV as a clean PDF (unless specifically asked for a Word document) to ensure your minimalist formatting remains locked across any device or operating system?</p></div></article>
+  </div>
+</section>
+
+<!-- ── SCORING BANDS ──────────────────────────────────────── -->
+<section id="score" class="section-line wrap reveal">
+  <div class="section-label"><span class="mark"></span>Scoring</div>
+  <h2>What your number <span>means</span></h2>
+  <div class="bands">
+    <div class="band-card b-optimised"><div class="band-range">8–10 Yes</div><p>Your CV is highly optimized for the global remote job market.</p></div>
+    <div class="band-card b-foundation"><div class="band-range">5–7 Yes</div><p>You have a solid foundation, but minor tweaks will significantly improve your callback rate.</p></div>
+    <div class="band-card b-rewrite"><div class="band-range">0–4 Yes</div><p>A structural rewrite is highly recommended to bypass automated filters and catch a recruiter's eye.</p></div>
+  </div>
+</section>
+
+<!-- ── AFTER THE SCORE ────────────────────────────────────── -->
+<section id="next" class="section-line wrap reveal">
+  <div class="section-label"><span class="mark"></span>After the score</div>
+  <h2>Knowing where you default is <span>the easy half</span></h2>
+  <p class="section-sub">Your score measures ONE of the four points a job search runs on &mdash; Representation, whether your signal can be read. A 10/10 CV still gets silence if you are aiming at companies that cannot hire you, or if the interview ends without an offer. Here is what actually closes each gap.</p>
+
+  <div class="cards">
+
+    <div class="card">
+      <div class="card-k">You build it &middot; Stages 1&ndash;4 &middot; &#8358;250,000</div>
+      <h3>Remote Job Foundation Training</h3>
+      <p>A rewritten CV fixes this application. The system behind it fixes every application you will ever send &mdash; and it is four stages wide, because the document was never the whole problem:</p>
+      <ul class="nx-list">
+        <li><b>1 &middot; Remote Mindset Blueprint</b> &mdash; how global hiring actually works, which companies can pay you across a border, and what they are really buying.</li>
+        <li><b>2 &middot; The Digital Toolkit</b> &mdash; the tools distributed teams run on, plus AI Fluency: drafting, critiquing and rewriting your own work faster than a competitor can.</li>
+        <li><b>3 &middot; Async Communication Mastery</b> &mdash; the skill you are judged on daily in a remote role, and the reason candidates who write clearly beat candidates who interview well.</li>
+        <li><b>4 &middot; Start Your Remote Career</b> &mdash; the Global Ready Package: every asset built by you, to the standard this scan measures, plus the weekly targeting and application system.</li>
+      </ul>
+      <p class="nx-why">Twenty days. You keep the skill for the rest of your career, and you never pay anyone to rewrite a CV again.</p>
+      <a class="btn-more" href="../foundationtraining/" style="margin-top:1.2rem">See the four stages &rarr;</a>
+    </div>
+
+    <div class="card">
+      <div class="card-k">Done with you &middot; Stage 5 &middot; &#8358;300,000</div>
+      <h3>Job Application DFY</h3>
+      <p>For people whose evenings are already full. We do not hand you a better document and wish you luck &mdash; we run the search beside you:</p>
+      <ul class="nx-list">
+        <li><b>Your four assets rebuilt for you</b> &mdash; CV, LinkedIn, portfolio and cover letters, scoring 9&ndash;10 on the very points you just defaulted on, inside 7 days.</li>
+        <li><b>30+ sourced roles every week</b> &mdash; verified, scam-filtered, and checked that the company can actually pay someone in your country before it reaches you.</li>
+        <li><b>Applications sent alongside you</b> &mdash; tailored to each advert, in the first week of posting, when a shortlist still exists.</li>
+        <li><b>Interview and salary preparation</b> &mdash; including the two answers that quietly end most final rounds.</li>
+      </ul>
+      <p class="nx-why">And the part that matters most: we do not let go until a real offer letter lands.</p>
+      <a class="btn-more" href="../jobapplication/" style="margin-top:1.2rem">See the placement engine &rarr;</a>
+    </div>
+
+    <div class="card">
+      <div class="card-k">Free &middot; 90 seconds</div>
+      <h3>Check the other three points</h3>
+      <p>If you scored 8 or higher, your CV is <em>not</em> the reason you are not getting interviews &mdash; and rewriting it a fifth time will change nothing. The leak is further down the pipe.</p>
+      <ul class="nx-list">
+        <li><b>Supply</b> &mdash; are you even seeing roles that could hire you?</li>
+        <li><b>Aim</b> &mdash; are your applications reaching the right targets?</li>
+        <li><b>Conversion</b> &mdash; do conversations end in offers, or silence?</li>
+      </ul>
+      <p class="nx-why">Four questions name the one that is yours, and give you three things to do about it tonight, free.</p>
+      <a class="btn-more" href="../diagnose/" style="margin-top:1.2rem">Find my leak &rarr;</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── PRIVACY ────────────────────────────────────────────── -->
+<section id="privacy" class="section-line wrap reveal">
+  <div class="privacy">
+    <div class="section-label"><span class="mark"></span>Privacy</div>
+    <h3>Your CV never leaves this device.</h3>
+    <p>There is no server behind this page. The file you drop is read by JavaScript running in your own browser, scored there, and discarded the moment you close the tab. Nothing is uploaded, nothing is stored, nothing is logged. You can disconnect from the internet after this page loads and the scan will still work.</p>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot wrap">
+<nav class="foot-links"><a href="../index.html">Home</a><a href="../free.html">Free For You</a><a href="../starting-line.html">Your Starting Line</a><a href="../blog.html">Blog</a><a href="../register.html">Register</a><a href="../login.html">Participant Login</a></nav>
+  <div class="erj-rights-line" role="note" style="max-width:900px;margin:1rem auto 0;padding-top:.85rem;border-top:1px solid rgba(127,127,127,.18);font-size:.68rem;line-height:1.55;letter-spacing:.02em;opacity:.72;text-align:center;">© 2026 Business Play Limited · Everything Remote Job. Built for <span style="color:var(--accent,#FF5722)">global career scale.</span> All rights reserved. ERJ frameworks, curriculum and paid resources are not licensed for redistribution. <a href="../terms.html" style="color:var(--accent,#FF5722);text-decoration:none">Terms</a> · <a href="../privacy.html" style="color:var(--accent,#FF5722);text-decoration:none">Privacy</a></div>
+</footer>
+
+<a href="https://wa.me/2348032925957" class="wa-float" title="Chat on WhatsApp" target="_blank" rel="noopener">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script>window.ERJ_NAV={active:'cvscan',base:'../',onPage:[
+  {label:'Run the scan',href:'#scan'},
+  {label:'The ten points',href:'#points'},
+  {label:'What your number means',href:'#score'},
+  {label:'Fix where you default',href:'#next'},
+  {label:'Privacy — nothing uploads',href:'#privacy'}
+]};</script>
+<script src="../erj-theme.js"></script>
+<script src="../erj-nav.js"></script>
+<script src="../erj-config.js"></script>
+<script src="../erj-capture.js"></script>
+<script src="vendor/pdf.min.js"></script>
+<script src="vendor/jszip.min.js"></script>
+<script>
+  if (window.pdfjsLib) {
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'vendor/pdf.worker.min.js';
+  }
+</script>
+<script src="app.js"></script>
+<script src="../erj-schema.js"></script>
+</body>
+</html>

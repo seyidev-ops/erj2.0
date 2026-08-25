@@ -1,0 +1,1184 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="night">
+<head>
+<meta charset="UTF-8">
+
+
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/png" sizes="64x64" href="favicon32.png" media="(prefers-color-scheme: light)">
+<link rel="icon" type="image/png" sizes="64x64" href="favicon32-dark.png" media="(prefers-color-scheme: dark)">
+<link rel="icon" type="image/png" sizes="64x64" href="favicon32.png">
+
+
+<link rel="apple-touch-icon" href="appletouchicon.png">
+<meta name="theme-color" content="#000000" id="metaThemeColor">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Instructor Portal | Everything Remote Job</title>
+
+
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  /* RocketAir · NIGHT (default) — pure black */
+  --bg:#000000; --bg2:#0d0d0d; --bg3:#111111; --bg4:#0a0a0a;
+  --paper:#000000; --card:#0d0d0d; --sidebar:#000000; --input-bg:#111111;
+  --ink:#FFFFFF; --text:#FFFFFF; --txt:#FFFFFF; --t:#FFFFFF;
+  --ink-soft:#A1A1A1; --muted:#A1A1A1; --ink-faint:#858585; --muted2:#858585;
+  --accent:#FF5722; --accent-h:#ff6f43; --accent2:#FF5722; --electric:#FF5722;
+  --border:rgba(255,255,255,0.10); --border2:rgba(255,255,255,0.055);
+  --nav-bg:rgba(0,0,0,0.85); --nav:rgba(0,0,0,0.85);
+  --green:#3FB950; --amber:#FF5722; --red:#F85149; --teal:#39C5BB; --purple:#A371F7;
+  --glow:transparent; --fb:#FFFFFF; --fd:#FFFFFF;
+  --shadow:0 1px 0 rgba(0,0,0,0.5); --shadow-lg:0 8px 60px rgba(0,0,0,0.8);
+  --sh:0 1px 0 rgba(0,0,0,0.5); --sh2:0 8px 60px rgba(0,0,0,0.8); --sab:#000000;
+  --font-display:'Space Grotesk',system-ui,sans-serif; --font-body:'Inter',system-ui,sans-serif;
+  --font-d:'Space Grotesk',system-ui,sans-serif; --font-b:'Inter',system-ui,sans-serif;
+  --radius:16px; --r:16px; --transition:all 0.3s ease; --tr:all 0.3s ease;
+}
+html[data-theme="day"]{
+  /* RocketAir · DAY — clean light counterpart */
+  --bg:#FAFAF8; --bg2:#FFFFFF; --bg3:#F2F1ED; --bg4:#F2F1ED;
+  --paper:#FAFAF8; --card:#FFFFFF; --sidebar:#FFFFFF; --input-bg:#FFFFFF;
+  --ink:#0A0A0A; --text:#0A0A0A; --txt:#0A0A0A; --t:#0A0A0A;
+  --ink-soft:#52514C; --muted:#52514C; --ink-faint:#6E6C65; --muted2:#6E6C65;
+  --accent:#AD350A;--accent-btn:#FF5722;--accent-text:#AD350A; --accent-h:#C53A0B; --accent2:#FF5722; --electric:#E8470F;
+  --border:rgba(10,10,10,0.12); --border2:rgba(10,10,10,0.06);
+  --nav-bg:rgba(250,250,248,0.9); --nav:rgba(250,250,248,0.9);
+  --glow:transparent; --fb:#0A0A0A; --fd:#0A0A0A;
+  --shadow:0 1px 0 rgba(10,10,10,0.06); --shadow-lg:0 12px 50px rgba(10,10,10,0.10);
+  --sh:0 1px 0 rgba(10,10,10,0.06); --sh2:0 12px 50px rgba(10,10,10,0.10); --sab:#FFFFFF;
+}
+html[data-theme="night"]{
+  --bg:#000000; --bg2:#0d0d0d; --bg3:#111111; --bg4:#0a0a0a;
+  --paper:#000000; --card:#0d0d0d; --sidebar:#000000; --input-bg:#111111;
+  --ink:#FFFFFF; --text:#FFFFFF; --txt:#FFFFFF; --t:#FFFFFF;
+  --ink-soft:#A1A1A1; --muted:#A1A1A1; --ink-faint:#858585; --muted2:#858585;
+  --accent:#FF5722; --accent-h:#ff6f43; --accent2:#FF5722; --electric:#FF5722;
+  --border:rgba(255,255,255,0.10); --border2:rgba(255,255,255,0.055);
+  --nav-bg:rgba(0,0,0,0.85); --nav:rgba(0,0,0,0.85);
+  --green:#3FB950; --amber:#FF5722; --red:#F85149; --teal:#39C5BB; --purple:#A371F7;
+  --glow:transparent; --fb:#FFFFFF; --fd:#FFFFFF;
+  --shadow:0 1px 0 rgba(0,0,0,0.5); --shadow-lg:0 8px 60px rgba(0,0,0,0.8);
+  --sh:0 1px 0 rgba(0,0,0,0.5); --sh2:0 8px 60px rgba(0,0,0,0.8); --sab:#000000;
+}
+
+
+
+
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:var(--font-b);overflow-x:hidden;}
+
+/* NAV */
+.topnav{position:sticky;top:0;z-index:200;background:var(--nav-bg);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);height:64px;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;}
+.nav-brand{font-family:var(--font-d);font-weight:800;font-size:1rem;color:var(--text);letter-spacing:-.4px;}
+.nav-brand .hi{color:var(--electric);font-style:italic;font-weight:800;margin-left:-0.08em;}
+.nav-badge{background:rgba(20,184,166,.15);color:var(--teal);font-size:.65rem;font-weight:700;padding:3px 9px;border-radius:100px;letter-spacing:1px;border:1px solid rgba(20,184,166,.2);}
+.nav-right{display:flex;align-items:center;gap:.8rem;}
+.nav-btn{width:36px;height:36px;border-radius:8px;border:1px solid var(--border);background:var(--bg3);cursor:pointer;color:var(--muted);display:flex;align-items:center;justify-content:center;font-size:1rem;transition:var(--tr);}
+.nav-btn:hover{color:var(--electric);}
+.user-pill{display:flex;align-items:center;gap:8px;background:var(--bg3);border:1px solid var(--border);border-radius:100px;padding:4px 12px 4px 4px;}
+.user-avatar{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--teal),#963F12);display:flex;align-items:center;justify-content:center;font-family:var(--font-d);font-weight:800;font-size:.7rem;color:#fff;}
+.user-name{font-size:.82rem;font-weight:600;}
+
+/* LAYOUT */
+.app-layout{display:flex;min-height:calc(100vh - 64px);}
+
+/* SIDEBAR */
+.sidebar{width:230px;flex-shrink:0;background:var(--sidebar);border-right:1px solid var(--border2);padding:1.5rem 0;display:flex;flex-direction:column;overflow-y:auto;}
+.sidebar-label{font-size:.62rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted2);padding:.5rem 1.2rem;margin-top:.5rem;}
+.sidebar-item{display:flex;align-items:center;gap:12px;padding:.7rem 1.2rem;cursor:pointer;text-decoration:none;color:var(--muted);font-size:.88rem;font-weight:500;transition:var(--tr);border-left:3px solid transparent;white-space:nowrap;}
+.sidebar-item:hover{background:var(--bg3);color:var(--text);border-left-color:rgba(20,184,166,.3);}
+.sidebar-item.active{background:rgba(20,184,166,.1);color:var(--teal);border-left-color:var(--teal);}
+.sidebar-icon{font-size:1.1rem;width:20px;text-align:center;flex-shrink:0;}
+
+/* MAIN */
+.main{flex:1;padding:2rem;overflow-y:auto;min-width:0;}
+.page-title{font-family:var(--font-d);font-size:1.5rem;font-weight:800;color:var(--text);margin-bottom:.3rem;}
+.page-sub{font-size:.88rem;color:var(--muted);margin-bottom:2rem;}
+
+/* WELCOME BANNER */
+.welcome-banner{background:linear-gradient(135deg,var(--teal) 0%,#963F12 100%);border-radius:20px;padding:2rem 2.5rem;margin-bottom:2rem;position:relative;overflow:hidden;}
+.welcome-banner::before{content:'';position:absolute;right:-60px;top:-60px;width:250px;height:250px;border-radius:50%;background:rgba(255,255,255,0.06);}
+.wb-rel{position:relative;z-index:1;}
+.wb-title{font-family:var(--font-d);font-size:1.5rem;font-weight:800;color:#fff;margin-bottom:.3rem;}
+.wb-sub{color:rgba(255,255,255,.75);font-size:.9rem;}
+
+/* SECTION */
+.section-title{font-family:var(--font-d);font-size:1rem;font-weight:700;color:var(--text);margin-bottom:1rem;display:flex;align-items:center;gap:8px;}
+.panel{background:var(--card);border:1px solid var(--border2);border-radius:var(--r);padding:1.5rem;backdrop-filter:blur(12px);margin-bottom:1.5rem;}
+.panel-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.2rem;}
+.panel-title{font-family:var(--font-d);font-size:.98rem;font-weight:700;color:var(--text);display:flex;align-items:center;gap:8px;}
+
+/* MANUAL CARDS */
+.manuals-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.2rem;margin-bottom:2rem;}
+.manual-card{background:var(--card);border:1px solid var(--border2);border-radius:18px;overflow:hidden;transition:var(--tr);backdrop-filter:blur(12px);cursor:pointer;}
+.manual-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:var(--border);}
+.mc-top{padding:1.5rem 1.5rem 0;position:relative;}
+.mc-stage-badge{font-size:.62rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:3px 10px;border-radius:100px;margin-bottom:.8rem;display:inline-block;}
+.mc-icon{font-size:2.5rem;margin-bottom:.7rem;display:block;}
+.mc-title{font-family:var(--font-d);font-size:1.05rem;font-weight:700;color:var(--text);margin-bottom:.3rem;}
+.mc-sub{font-size:.8rem;color:var(--muted);margin-bottom:1rem;}
+.mc-meta{display:flex;gap:.7rem;flex-wrap:wrap;padding-bottom:1rem;border-bottom:1px solid var(--border2);}
+.mc-tag{font-size:.68rem;color:var(--muted2);display:flex;align-items:center;gap:4px;}
+.mc-actions{padding:1rem 1.5rem;display:flex;gap:.6rem;}
+.mc-btn{flex:1;padding:.55rem;border:none;border-radius:8px;font-family:var(--font-d);font-size:.78rem;font-weight:700;cursor:pointer;transition:var(--tr);display:flex;align-items:center;justify-content:center;gap:5px;text-decoration:none;}
+.mc-btn.primary{background:var(--teal);color:#fff;}
+.mc-btn.primary:hover{filter:brightness(1.1);}
+.mc-btn.outline{background:var(--bg3);color:var(--muted);border:1px solid var(--border2);}
+.mc-btn.outline:hover{color:var(--text);border-color:var(--border);}
+
+/* MODAL for manual viewer */
+.modal-overlay{position:fixed;inset:0;z-index:500;background:rgba(0,0,0,.8);backdrop-filter:blur(4px);display:none;align-items:flex-start;justify-content:center;padding:1rem;overflow-y:auto;}
+.modal-overlay.open{display:flex;}
+.modal{background:var(--bg2);border:1px solid var(--border);border-radius:20px;padding:2.5rem;max-width:720px;width:100%;box-shadow:var(--shadow-lg);margin:2rem auto;animation:scaleIn .25s ease;position:relative;}
+@keyframes scaleIn{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}
+.modal-close{position:absolute;top:1.2rem;right:1.2rem;width:32px;height:32px;border-radius:8px;border:1px solid var(--border);background:var(--bg3);cursor:pointer;color:var(--muted);display:flex;align-items:center;justify-content:center;font-size:1rem;transition:var(--tr);}
+.modal-close:hover{color:var(--red,#EF4444);border-color:var(--red,#EF4444);}
+.modal-stage{font-size:.65rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--teal);margin-bottom:.5rem;}
+.modal-title{font-family:var(--font-d);font-size:1.5rem;font-weight:800;color:var(--text);margin-bottom:.5rem;}
+.modal-desc{font-size:.9rem;color:var(--muted);margin-bottom:2rem;line-height:1.7;}
+
+/* Manual content sections */
+.manual-section{margin-bottom:2rem;}
+.ms-heading{font-family:var(--font-d);font-size:1rem;font-weight:700;color:var(--text);margin-bottom:.8rem;padding:.6rem 1rem;background:var(--bg3);border-left:3px solid var(--teal);border-radius:0 8px 8px 0;}
+.ms-content{font-size:.88rem;color:var(--muted);line-height:1.8;}
+.ms-list{list-style:none;display:flex;flex-direction:column;gap:.4rem;margin-top:.5rem;}
+.ms-list li{display:flex;align-items:flex-start;gap:8px;font-size:.86rem;color:var(--muted);}
+.ms-list li::before{content:'→';color:var(--teal);font-weight:700;flex-shrink:0;margin-top:1px;}
+.ms-table{width:100%;border-collapse:collapse;margin-top:.8rem;font-size:.82rem;}
+.ms-table th{padding:.6rem .8rem;background:var(--bg3);color:var(--muted);text-align:left;font-size:.7rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;}
+.ms-table td{padding:.7rem .8rem;border-bottom:1px solid var(--border2);color:var(--text);}
+.ms-table tr:last-child td{border:none;}
+.ms-table tr:hover td{background:var(--bg3);}
+.rubric-item{background:var(--bg3);border:1px solid var(--border2);border-radius:10px;padding:.9rem 1.1rem;margin-bottom:.6rem;}
+.rubric-score{font-family:var(--font-d);font-size:1.1rem;font-weight:800;color:var(--amber);}
+.rubric-label{font-size:.78rem;color:var(--muted);margin-top:2px;}
+.tip-box{background:rgba(20,184,166,.06);border:1px solid rgba(20,184,166,.2);border-radius:10px;padding:.9rem 1.1rem;margin-top:.8rem;}
+.tip-box .tip-head{font-size:.72rem;font-weight:700;letter-spacing:1px;color:var(--teal);margin-bottom:.3rem;}
+.tip-box p{font-size:.84rem;color:var(--muted);}
+
+/* RESOURCE LINKS */
+.resource-links{display:flex;flex-direction:column;gap:.5rem;}
+.res-link{display:flex;align-items:center;gap:.8rem;padding:.8rem 1rem;border-radius:10px;border:1px solid var(--border2);background:var(--bg3);cursor:pointer;transition:var(--tr);text-decoration:none;}
+.res-link:hover{border-color:var(--teal);background:var(--bg4);}
+.res-link-icon{font-size:1.2rem;flex-shrink:0;}
+.res-link-info{flex:1;}
+.res-link-title{font-size:.86rem;font-weight:600;color:var(--text);}
+.res-link-meta{font-size:.72rem;color:var(--muted);}
+.res-link-dl{font-size:.72rem;color:var(--teal);font-weight:600;white-space:nowrap;}
+
+/* SCHEDULE TABLE */
+.sched-table{width:100%;border-collapse:collapse;font-size:.84rem;}
+.sched-table th{padding:.7rem 1rem;background:var(--bg3);color:var(--muted2);text-align:left;font-size:.7rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;border-bottom:1px solid var(--border2);}
+.sched-table td{padding:.8rem 1rem;border-bottom:1px solid var(--border2);color:var(--text);}
+.sched-table tr:last-child td{border:none;}
+.sched-table tr:hover td{background:var(--bg3);}
+.day-pill{font-size:.7rem;font-weight:700;padding:2px 8px;border-radius:100px;background:rgba(20,184,166,.1);color:var(--teal);}
+
+/* STATS ROW */
+.stats-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:1rem;margin-bottom:2rem;}
+.stat-c{background:var(--card);border:1px solid var(--border2);border-radius:var(--r);padding:1.2rem;backdrop-filter:blur(12px);transition:var(--tr);}
+.stat-c:hover{transform:translateY(-2px);box-shadow:var(--shadow);}
+.stat-c .sc-icon{font-size:1.4rem;margin-bottom:.4rem;}
+.stat-c .sc-val{font-family:var(--font-d);font-size:1.5rem;font-weight:800;color:var(--text);line-height:1;}
+.stat-c .sc-key{font-size:.76rem;color:var(--muted);margin-top:2px;}
+
+/* TOAST */
+.toast-ct{position:fixed;bottom:2rem;right:2rem;z-index:999;display:flex;flex-direction:column;gap:.5rem;}
+.toast{background:var(--bg2);border:1px solid var(--border);border-left:3px solid var(--teal);border-radius:4px;padding:.9rem 1.3rem;font-size:.88rem;color:var(--text);box-shadow:var(--shadow);max-width:300px;animation:slideIn .3s ease;}
+@keyframes slideIn{from{opacity:0;transform:translateX(40px)}to{opacity:1;transform:translateX(0)}}
+
+/* WA */
+.wa-float{position:fixed;bottom:1.8rem;right:1.8rem;z-index:100;width:48px;height:48px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(26,24,20,.4);text-decoration:none;transition:var(--tr);}
+.wa-float:hover{transform:scale(1.1);}
+
+/* VIEWS */
+.view{animation:fadeUp .4s ease both;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+
+/* Responsive */
+@media(max-width:768px){
+  .sidebar{
+    position:fixed;left:-240px;top:var(--erj-nav-h,58px);height:calc(100vh - var(--erj-nav-h,58px));
+    z-index:150;transition:left .3s ease;box-shadow:4px 0 20px rgba(0,0,0,.5);
+  }
+  .sidebar.mobile-open{left:0;}
+  .sidebar-overlay{display:block;}
+  .main{padding:1rem 1rem 2rem;}
+  .manuals-grid{grid-template-columns:1fr;}
+  .portal-panel-toggle{display:flex;}
+}
+.hamburger{
+  display:none;width:36px;height:36px;border-radius:8px;
+  border:1px solid var(--border);background:var(--bg3);
+  cursor:pointer;color:var(--muted);align-items:center;justify-content:center;
+  font-size:1.1rem;transition:var(--tr);flex-shrink:0;
+}
+.hamburger:hover{color:var(--electric);}
+/* Floating instructor sidebar toggle (replaces removed second header) */
+.portal-panel-toggle{
+  display:none;position:fixed;left:12px;z-index:160;
+  top:calc(var(--erj-nav-h,58px) + 10px);
+  width:42px;height:42px;border-radius:11px;
+  border:1px solid var(--border);background:var(--bg3);
+  color:var(--text);font-size:1.2rem;cursor:pointer;
+  align-items:center;justify-content:center;
+  box-shadow:0 4px 16px rgba(0,0,0,.35);transition:var(--tr);
+}
+.portal-panel-toggle:hover{color:var(--electric);background:var(--bg4,var(--bg3));}
+.sidebar-overlay{display:none;position:fixed;inset:0;z-index:140;background:rgba(0,0,0,.5);backdrop-filter:blur(2px);}
+.sidebar-overlay.show{display:block;}
+
+/* Mobile bottom navigation */
+.mobile-bottom-nav{
+  position:fixed;bottom:0;left:0;right:0;z-index:200;
+  background:var(--sidebar);border-top:1px solid var(--border2);
+  padding:.5rem 0 calc(.5rem + env(safe-area-inset-bottom,0px));
+  display:none;align-items:center;justify-content:space-around;
+  backdrop-filter:blur(20px);
+}
+.mbn-item{display:flex;flex-direction:column;align-items:center;gap:3px;padding:.3rem .6rem;
+  cursor:pointer;color:var(--muted);font-size:.55rem;font-weight:600;letter-spacing:.3px;
+  text-transform:uppercase;transition:var(--tr);border:none;background:none;border-radius:8px;
+  min-width:52px;text-decoration:none;}
+.mbn-item:hover,.mbn-item.active{color:var(--teal);}
+.mbn-item .mbn-icon{font-size:1.25rem;line-height:1;}
+
+/* ── Cohort 9 minimalist overrides ── */
+#particles,.radial-glow,.grid-overlay{display:none!important}
+*{text-shadow:none!important}
+h1 strong,h1 em{ -webkit-text-fill-color:currentColor!important;background:none!important;color:var(--accent)!important;}
+.btn-register::before,.btn-primary::before,.timer-wrap::before,.auth-card::before{display:none!important}
+.btn-register,.btn-primary{box-shadow:none!important;border-radius:2px!important;font-family:'DM Sans',system-ui,sans-serif!important;font-weight:500!important;letter-spacing:0.3px!important;}
+.btn-register:hover,.btn-primary:hover{box-shadow:none!important;}
+.auth-card,.timer-wrap,.card,.stage-card,.lesson-card{backdrop-filter:none!important;}
+.wa-float{background:var(--text)!important;box-shadow:none!important;border-radius:50%!important;}
+.wa-float svg{fill:var(--bg)!important;}
+.wa-float:hover{box-shadow:none!important;}
+
+/* ── Cohort 9 cleanup ── */
+h1 span,h2 span,.hero h1 span,[class*="grad"]{ -webkit-text-fill-color:var(--accent)!important;background:none!important;background-image:none!important;color:var(--accent)!important;-webkit-background-clip:initial!important;background-clip:initial!important;}
+.nav,nav{background:var(--bg)!important;}
+html[data-theme="day"] .nav,html[data-theme="day"] nav{background:var(--bg)!important;}
+.featured-badge,.badge,.tag,.pill{box-shadow:none!important;}
+.cover,.post-cover,.art-cover,.card-cover,.featured-img{filter:saturate(0.6);}
+</style>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;800&family=Inter:wght@300;400;500&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"></noscript>
+<meta property="og:image" content="https://everythingremotejob.com/preview-portal.jpg" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Everything Remote Job" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://everythingremotejob.com/preview-portal.jpg" />
+<style id="erjHideLegacy">#themeDropdown,.theme-drop,.theme-drop-menu,#themeMenu,#erjTheme{display:none !important;}</style>
+<style id="erjPortalNavOffset">.erj-nav{z-index:600 !important;}</style>
+  <meta name="robots" content="noindex,nofollow,noarchive,nosnippet,noimageindex">
+<meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+</head>
+<body>
+<div id="erjNavMount"></div>
+<script>window.ERJ_NAV={active:'instr',portal:true};</script>
+
+
+<!-- Legacy instructor top header removed (unified erj-nav is the only header).
+     A single floating toggle keeps the instructor sidebar reachable on mobile. -->
+<button class="portal-panel-toggle" id="hamburgerBtn" onclick="toggleMobileSidebar()" title="Instructor menu" aria-label="Open instructor menu">☰</button>
+
+<div class="app-layout">
+
+  <!-- MOBILE OVERLAY -->
+  <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeMobileSidebar()"></div>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-label">Instructor</div>
+    <a class="sidebar-item active" href="#" onclick="showView('manuals');return false"><span class="sidebar-icon">📚</span> Session Manuals</a>
+    <a class="sidebar-item" href="#" onclick="showView('slides');return false"><span class="sidebar-icon">🎞️</span> Slide Decks</a>
+    <a class="sidebar-item" href="#" onclick="showView('liveclass');return false"><span class="sidebar-icon">🔴</span> Live Class</a>
+    <a class="sidebar-item" href="#" onclick="showView('schedule');return false"><span class="sidebar-icon">🗓️</span> Session Schedule</a>
+    <a class="sidebar-item" href="#" onclick="showView('students');return false"><span class="sidebar-icon">👥</span> Participant Progress</a>
+    <a class="sidebar-item" href="#" onclick="showView('resources');return false"><span class="sidebar-icon">📁</span> All Resources</a>
+    <div class="sidebar-label">Links</div>
+    <a class="sidebar-item" href="#" onclick="openInstrSchedule();return false"><span class="sidebar-icon">📅</span> Schedule Class</a>
+    <a class="sidebar-item" href="blog-admin.html"><span class="sidebar-icon">📝</span> Contribute to Blog</a>
+    <a class="sidebar-item" href="index.html"><span class="sidebar-icon">🏠</span> Back to Site</a>
+    <a class="sidebar-item" href="#" onclick="logout();return false" style="margin-top:auto;color:#EF4444"><span class="sidebar-icon">🚪</span> Sign Out</a>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- WELCOME -->
+    <div class="welcome-banner">
+      <div class="wb-rel">
+        <div class="wb-title" id="iWelcome">Welcome, Instructor 👋</div>
+        <div class="wb-sub">Access your stage manuals, teaching guides, assignment rubrics, and session materials below.</div>
+      </div>
+    </div>
+
+    <!-- STATS -->
+    <div class="stats-row">
+      <div class="stat-c"><div class="sc-icon">📚</div><div class="sc-val">5</div><div class="sc-key">Stage Manuals</div></div>
+      <div class="stat-c"><div class="sc-icon">👥</div><div class="sc-val" id="totalStudents">0</div><div class="sc-key">Active Participants</div></div>
+      <div class="stat-c"><div class="sc-icon">✅</div><div class="sc-val" id="completedCount">0</div><div class="sc-key">Lessons Completed</div></div>
+      <div class="stat-c"><div class="sc-icon">🏆</div><div class="sc-val" id="graduateCount">0</div><div class="sc-key">Graduates</div></div>
+    </div>
+
+    <!-- ── VIEW: MANUALS ── -->
+    <div id="viewManuals" class="view">
+      <div class="section-title">📚 10-Session Instructor Manuals</div>
+      <p style="font-size:.85rem;color:var(--muted);margin-bottom:1.5rem;line-height:1.7">Each session card below has a teaching guide, objectives, exercises, and deliverables. For the official instructor manuals per stage, visit <strong>📁 All Resources → Instructor Manuals</strong>.</p>
+      <div class="manuals-grid" id="manualsGrid"></div>
+    </div>
+
+    <!-- ── VIEW: SCHEDULE ── -->
+    <div id="viewSchedule" class="view" style="display:none">
+      <div class="section-title">🗓️ Cohort 9 Session Schedule</div>
+      <div class="panel">
+        <table class="sched-table">
+          <thead><tr><th>Session</th><th>Stage</th><th>Date & Time</th><th>Format</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td><b>Session 1</b></td><td>Stage 1 — Mindset</td><td>June 1, 2026 · 8:00 PM WAT</td><td>Live Zoom</td><td><span class="day-pill">Upcoming</span></td></tr>
+            <tr><td><b>Session 2</b></td><td>Stage 1 — Deep Work</td><td>June 3, 2026 · 8:00 PM WAT</td><td>Live Zoom</td><td><span class="day-pill">Upcoming</span></td></tr>
+            <tr><td><b>Session 3</b></td><td>Stage 2 — Toolkit</td><td>June 5, 2026 · 8:00 PM WAT</td><td>Live Zoom</td><td><span class="day-pill">Upcoming</span></td></tr>
+            <tr><td><b>Session 4</b></td><td>Stage 2 — Async Comms</td><td>June 8, 2026 · 8:00 PM WAT</td><td>Live Zoom</td><td><span class="day-pill">Upcoming</span></td></tr>
+            <tr><td><b>Session 5</b></td><td>Stage 3 — CV Overhaul</td><td>June 10, 2026 · 8:00 PM WAT</td><td>Workshop</td><td><span class="day-pill">Upcoming</span></td></tr>
+            <tr><td><b>Session 6</b></td><td>Stage 3 — LinkedIn</td><td>June 12, 2026 · 8:00 PM WAT</td><td>Workshop</td><td><span class="day-pill">Upcoming</span></td></tr>
+            <tr><td><b>Session 7</b></td><td>Stage 4 — Job Search</td><td>June 15, 2026 · 8:00 PM WAT</td><td>Live Zoom</td><td><span class="day-pill">Upcoming</span></td></tr>
+            <tr><td><b>Session 8</b></td><td>Stage 4 — Interviews</td><td>June 17, 2026 · 8:00 PM WAT</td><td>Live Zoom</td><td><span class="day-pill">Upcoming</span></td></tr>
+            <tr><td><b>Session 9</b></td><td>Stage 5 — Negotiation</td><td>June 19, 2026 · 8:00 PM WAT</td><td>Live Q&A</td><td><span class="day-pill">Upcoming</span></td></tr>
+            <tr><td><b>Session 10</b></td><td>Stage 5 — 90-Day Plan</td><td>June 22, 2026 · 8:00 PM WAT</td><td>Graduation</td><td><span class="day-pill">Upcoming</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ── VIEW: STUDENTS ── -->
+    <div id="viewStudents" class="view" style="display:none">
+      <div class="section-title">👥 Participant Progress Overview</div>
+      <div class="panel">
+        <div id="studentsTable"></div>
+      </div>
+    </div>
+
+    <!-- ── VIEW: SLIDES ── -->
+    <div id="viewSlides" class="view" style="display:none">
+      <div class="section-title">🎞️ Session Slide Decks</div>
+
+      <!-- Drive folder quick-access banner -->
+      <div style="background:linear-gradient(135deg,var(--teal) 0%,#963F12 100%);border-radius:6px;padding:1.5rem 2rem;margin-bottom:2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
+        <div>
+          <div style="font-family:var(--font-d);font-weight:800;font-size:1.1rem;color:#fff;margin-bottom:.3rem">📂 Stage Training Slide Decks Folder</div>
+          <div style="color:rgba(255,255,255,.78);font-size:.84rem">All 10 session slide decks live in the shared Google Drive folder. Click to open.</div>
+        </div>
+        <a href="https://docs.google.com/presentation/d/1ZpqlDPebvO9yyYRaGQ4RPzAv_tqyQ5YT/edit?usp=sharing" target="_blank"
+           style="background:#fff;color:var(--teal);padding:.65rem 1.5rem;border-radius:8px;font-weight:700;font-size:.9rem;text-decoration:none;white-space:nowrap;transition:all .2s;display:inline-flex;align-items:center;gap:6px;">
+          📂 Open Folder in Drive →
+        </a>
+      </div>
+
+      <!-- Session slide cards -->
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem;">
+        <!-- Stage 1 -->
+        <div style="background:var(--card);border:1px solid rgba(20,184,166,.25);border-radius:var(--r);overflow:hidden;backdrop-filter:blur(12px);">
+          <div style="background:linear-gradient(135deg,#C9613020,#1A181408);padding:1rem 1.2rem;display:flex;align-items:center;gap:.7rem;">
+            <span style="font-size:1.6rem">🧠</span>
+            <div><div style="font-family:var(--font-d);font-weight:700;color:#fff;font-size:.88rem">Stage 1 · Session 1</div><div style="color:rgba(255,255,255,.75);font-size:.75rem">Remote Mindset Blueprint</div></div>
+          </div>
+          <div style="padding:1rem 1.2rem;">
+            <p style="font-size:.8rem;color:var(--muted);margin-bottom:.8rem">Covers: remote psychology, deep work method, personal operating system setup.</p>
+            <a href="https://docs.google.com/presentation/d/1ZpqlDPebvO9yyYRaGQ4RPzAv_tqyQ5YT/edit?usp=sharing" target="_blank" style="display:flex;align-items:center;gap:6px;background:rgba(20,184,166,.1);border:1px solid rgba(20,184,166,.25);color:var(--teal);padding:.55rem 1rem;border-radius:8px;text-decoration:none;font-size:.8rem;font-weight:700;transition:all .2s;">🎞️ Open Stage 1 Deck</a>
+          </div>
+        </div>
+        <div style="background:var(--card);border:1px solid rgba(20,184,166,.25);border-radius:var(--r);overflow:hidden;backdrop-filter:blur(12px);">
+          <div style="background:linear-gradient(135deg,#C9613020,#1A181408);padding:1rem 1.2rem;display:flex;align-items:center;gap:.7rem;">
+            <span style="font-size:1.6rem">📋</span>
+            <div><div style="font-family:var(--font-d);font-weight:700;color:#fff;font-size:.88rem">Stage 1 · Session 2</div><div style="color:rgba(255,255,255,.75);font-size:.75rem">KPI Setting & EOD Reporting</div></div>
+          </div>
+          <div style="padding:1rem 1.2rem;">
+            <p style="font-size:.8rem;color:var(--muted);margin-bottom:.8rem">Covers: KPI framework, EOD report structure, workspace audit, distraction elimination.</p>
+            <a href="https://docs.google.com/presentation/d/1ZpqlDPebvO9yyYRaGQ4RPzAv_tqyQ5YT/edit?usp=sharing" target="_blank" style="display:flex;align-items:center;gap:6px;background:rgba(20,184,166,.1);border:1px solid rgba(20,184,166,.25);color:var(--teal);padding:.55rem 1rem;border-radius:8px;text-decoration:none;font-size:.8rem;font-weight:700;transition:all .2s;">🎞️ Open Stage 1 Deck</a>
+          </div>
+        </div>
+        <!-- Stage 2 -->
+        <div style="background:var(--card);border:1px solid rgba(99,102,241,.25);border-radius:var(--r);overflow:hidden;backdrop-filter:blur(12px);">
+          <div style="background:linear-gradient(135deg,#C9613020,#1A181408);padding:1rem 1.2rem;display:flex;align-items:center;gap:.7rem;">
+            <span style="font-size:1.6rem">🛠️</span>
+            <div><div style="font-family:var(--font-d);font-weight:700;color:#fff;font-size:.88rem">Stage 2 · Session 3</div><div style="color:rgba(255,255,255,.75);font-size:.75rem">Remote Tools Masterclass</div></div>
+          </div>
+          <div style="padding:1rem 1.2rem;">
+            <p style="font-size:.8rem;color:var(--muted);margin-bottom:.8rem">Covers: Notion, Slack, Zoom professional setup, async communication protocols.</p>
+            <a href="https://docs.google.com/presentation/d/1a_DK-axvPo1x7V7hPdpdQ9EFqmb7tSrv/edit?usp=sharing" target="_blank" style="display:flex;align-items:center;gap:6px;background:rgba(255,87,34,.1);border:1px solid rgba(255,87,34,.25);color:#E8470F;padding:.55rem 1rem;border-radius:8px;text-decoration:none;font-size:.8rem;font-weight:700;">🎞️ Open Stage 2 Deck</a>
+          </div>
+        </div>
+        <div style="background:var(--card);border:1px solid rgba(99,102,241,.25);border-radius:var(--r);overflow:hidden;backdrop-filter:blur(12px);">
+          <div style="background:linear-gradient(135deg,#C9613020,#1A181408);padding:1rem 1.2rem;display:flex;align-items:center;gap:.7rem;">
+            <span style="font-size:1.6rem">✨</span>
+            <div><div style="font-family:var(--font-d);font-weight:700;color:#fff;font-size:.88rem">Stage 2 · Session 4</div><div style="color:rgba(255,255,255,.75);font-size:.75rem">Digital Brand & Security</div></div>
+          </div>
+          <div style="padding:1rem 1.2rem;">
+            <p style="font-size:.8rem;color:var(--muted);margin-bottom:.8rem">Covers: digital security, time zone management, building a professional digital brand.</p>
+            <a href="https://docs.google.com/presentation/d/1a_DK-axvPo1x7V7hPdpdQ9EFqmb7tSrv/edit?usp=sharing" target="_blank" style="display:flex;align-items:center;gap:6px;background:rgba(255,87,34,.1);border:1px solid rgba(255,87,34,.25);color:#E8470F;padding:.55rem 1rem;border-radius:8px;text-decoration:none;font-size:.8rem;font-weight:700;">🎞️ Open Stage 2 Deck</a>
+          </div>
+        </div>
+        <!-- Stage 3 -->
+        <div style="background:var(--card);border:1px solid rgba(245,158,11,.25);border-radius:var(--r);overflow:hidden;backdrop-filter:blur(12px);">
+          <div style="background:linear-gradient(135deg,#C9613020,#1A181408);padding:1rem 1.2rem;display:flex;align-items:center;gap:.7rem;">
+            <span style="font-size:1.6rem">📄</span>
+            <div><div style="font-family:var(--font-d);font-weight:700;color:#fff;font-size:.88rem">Stage 3 · Session 5</div><div style="color:rgba(255,255,255,.75);font-size:.75rem">ATS CV Architecture Workshop</div></div>
+          </div>
+          <div style="padding:1rem 1.2rem;">
+            <p style="font-size:.8rem;color:var(--muted);margin-bottom:.8rem">Covers: ATS scoring, achievement-driven bullet formula, CV structure for global roles.</p>
+            <a href="https://docs.google.com/presentation/d/1r7dJvXQbFC4QQGWXL8JYy_QAMiXXpIuk/edit?usp=sharing" target="_blank" style="display:flex;align-items:center;gap:6px;background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.25);color:var(--amber);padding:.55rem 1rem;border-radius:8px;text-decoration:none;font-size:.8rem;font-weight:700;">🎞️ Open Stage 3 Deck</a>
+          </div>
+        </div>
+        <div style="background:var(--card);border:1px solid rgba(245,158,11,.25);border-radius:var(--r);overflow:hidden;backdrop-filter:blur(12px);">
+          <div style="background:linear-gradient(135deg,#C9613020,#1A181408);padding:1rem 1.2rem;display:flex;align-items:center;gap:.7rem;">
+            <span style="font-size:1.6rem">💼</span>
+            <div><div style="font-family:var(--font-d);font-weight:700;color:#fff;font-size:.88rem">Stage 3 · Session 6</div><div style="color:rgba(255,255,255,.75);font-size:.75rem">LinkedIn & Portfolio Workshop</div></div>
+          </div>
+          <div style="padding:1rem 1.2rem;">
+            <p style="font-size:.8rem;color:var(--muted);margin-bottom:.8rem">Covers: LinkedIn headline/summary optimization, portfolio & case study creation, cover letters.</p>
+            <a href="https://docs.google.com/presentation/d/1r7dJvXQbFC4QQGWXL8JYy_QAMiXXpIuk/edit?usp=sharing" target="_blank" style="display:flex;align-items:center;gap:6px;background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.25);color:var(--amber);padding:.55rem 1rem;border-radius:8px;text-decoration:none;font-size:.8rem;font-weight:700;">🎞️ Open Stage 3 Deck</a>
+          </div>
+        </div>
+        <!-- Stage 4 -->
+        <div style="background:var(--card);border:1px solid rgba(255,87,34,.25);border-radius:var(--r);overflow:hidden;backdrop-filter:blur(12px);">
+          <div style="background:linear-gradient(135deg,#C9613020,#1A181408);padding:1rem 1.2rem;display:flex;align-items:center;gap:.7rem;">
+            <span style="font-size:1.6rem">🌐</span>
+            <div><div style="font-family:var(--font-d);font-weight:700;color:#fff;font-size:.88rem">Stage 4 · Session 7</div><div style="color:rgba(255,255,255,.75);font-size:.75rem">Job Platforms Deep Dive</div></div>
+          </div>
+          <div style="padding:1rem 1.2rem;">
+            <p style="font-size:.8rem;color:var(--muted);margin-bottom:.8rem">Covers: 15 remote job platforms, Boolean search strings, cold outreach to hiring managers.</p>
+            <a href="https://docs.google.com/presentation/d/1esTZfKNm8HiKaLUTa_xzlMunNO12BJkc/edit?usp=sharing" target="_blank" style="display:flex;align-items:center;gap:6px;background:rgba(255,87,34,.1);border:1px solid rgba(255,87,34,.25);color:var(--electric);padding:.55rem 1rem;border-radius:8px;text-decoration:none;font-size:.8rem;font-weight:700;">🎞️ Open Stage 4 Deck</a>
+          </div>
+        </div>
+        <div style="background:var(--card);border:1px solid rgba(255,87,34,.25);border-radius:var(--r);overflow:hidden;backdrop-filter:blur(12px);">
+          <div style="background:linear-gradient(135deg,#C9613020,#1A181408);padding:1rem 1.2rem;display:flex;align-items:center;gap:.7rem;">
+            <span style="font-size:1.6rem">🎤</span>
+            <div><div style="font-family:var(--font-d);font-weight:700;color:#fff;font-size:.88rem">Stage 4 · Session 8</div><div style="color:rgba(255,255,255,.75);font-size:.75rem">Application & Interview Prep</div></div>
+          </div>
+          <div style="padding:1rem 1.2rem;">
+            <p style="font-size:.8rem;color:var(--muted);margin-bottom:.8rem">Covers: ATS application tracker, interview preparation, mock remote interview formats.</p>
+            <a href="https://docs.google.com/presentation/d/1esTZfKNm8HiKaLUTa_xzlMunNO12BJkc/edit?usp=sharing" target="_blank" style="display:flex;align-items:center;gap:6px;background:rgba(255,87,34,.1);border:1px solid rgba(255,87,34,.25);color:var(--electric);padding:.55rem 1rem;border-radius:8px;text-decoration:none;font-size:.8rem;font-weight:700;">🎞️ Open Stage 4 Deck</a>
+          </div>
+        </div>
+        <!-- Stage 5 -->
+        <div style="background:var(--card);border:1px solid rgba(16,185,129,.25);border-radius:var(--r);overflow:hidden;backdrop-filter:blur(12px);">
+          <div style="background:linear-gradient(135deg,#C9613020,#1A181408);padding:1rem 1.2rem;display:flex;align-items:center;gap:.7rem;">
+            <span style="font-size:1.6rem">🤝</span>
+            <div><div style="font-family:var(--font-d);font-weight:700;color:#fff;font-size:.88rem">Stage 5 · Session 9</div><div style="color:rgba(255,255,255,.75);font-size:.75rem">Salary Negotiation Masterclass</div></div>
+          </div>
+          <div style="padding:1rem 1.2rem;">
+            <p style="font-size:.8rem;color:var(--muted);margin-bottom:.8rem">Covers: salary benchmarking, negotiation scripts, counter-offer tactics, live roleplay.</p>
+            <a href="https://docs.google.com/presentation/d/1yXgfoU1k0QyXtGiw6-YOeGhxOWQrIb4K/edit?usp=sharing" target="_blank" style="display:flex;align-items:center;gap:6px;background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.25);color:var(--green);padding:.55rem 1rem;border-radius:8px;text-decoration:none;font-size:.8rem;font-weight:700;">🎞️ Open Stage 5 Deck</a>
+          </div>
+        </div>
+        <div style="background:var(--card);border:1px solid rgba(16,185,129,.25);border-radius:var(--r);overflow:hidden;backdrop-filter:blur(12px);">
+          <div style="background:linear-gradient(135deg,#C9613020,#1A181408);padding:1rem 1.2rem;display:flex;align-items:center;gap:.7rem;">
+            <span style="font-size:1.6rem">🏆</span>
+            <div><div style="font-family:var(--font-d);font-weight:700;color:#fff;font-size:.88rem">Stage 5 · Session 10</div><div style="color:rgba(255,255,255,.75);font-size:.75rem">Onboarding & 90-Day Plan</div></div>
+          </div>
+          <div style="padding:1rem 1.2rem;">
+            <p style="font-size:.8rem;color:var(--muted);margin-bottom:.8rem">Covers: remote onboarding, building team trust, 90-day remote success blueprint, graduation.</p>
+            <a href="https://docs.google.com/presentation/d/1yXgfoU1k0QyXtGiw6-YOeGhxOWQrIb4K/edit?usp=sharing" target="_blank" style="display:flex;align-items:center;gap:6px;background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.25);color:var(--green);padding:.55rem 1rem;border-radius:8px;text-decoration:none;font-size:.8rem;font-weight:700;">🎞️ Open Stage 5 Deck</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── VIEW: LIVE CLASS ── -->
+    <div id="viewLiveclass" class="view" style="display:none">
+      <div class="section-title">🔴 Live Class Sessions</div>
+      <p style="font-size:.88rem;color:var(--muted);margin-bottom:1.8rem;line-height:1.7">Host or join live training sessions directly via the Everything Remote Job YouTube channel or a Google Meet link. Share the links below with participants before each session.</p>
+
+      <!-- YouTube Live -->
+      <div class="panel" style="margin-bottom:1.5rem">
+        <div class="panel-header">
+          <div class="panel-title">▶️ YouTube Live — Everything Remote Job</div>
+        </div>
+        <div style="background:var(--bg3);border:1px solid var(--border2);border-radius:4px;padding:1.2rem 1.4rem;margin-bottom:1rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.8rem">
+          <div>
+            <div style="font-weight:700;font-size:.9rem;color:var(--text);margin-bottom:.25rem">📺 YouTube Channel</div>
+            <div style="font-size:.78rem;color:var(--muted)">Start a live stream on the channel — participants watch and ask questions in the live chat.</div>
+          </div>
+          <a href="https://youtube.com/@everythingremotejob" target="_blank" rel="noopener"
+             style="background:#FF0000;color:#fff;padding:.6rem 1.3rem;border-radius:8px;font-weight:700;font-size:.84rem;text-decoration:none;white-space:nowrap;display:inline-flex;align-items:center;gap:6px">
+            ▶ Open YouTube Channel
+          </a>
+        </div>
+        <div style="background:var(--bg3);border:1px solid var(--border2);border-radius:4px;padding:1.2rem 1.4rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.8rem">
+          <div>
+            <div style="font-weight:700;font-size:.9rem;color:var(--text);margin-bottom:.25rem">📋 YouTube Studio — Go Live</div>
+            <div style="font-size:.78rem;color:var(--muted)">Start and manage your live session from YouTube Studio.</div>
+          </div>
+          <a href="https://studio.youtube.com" target="_blank" rel="noopener"
+             style="background:rgba(255,0,0,.12);color:#FF0000;border:1px solid rgba(255,0,0,.25);padding:.6rem 1.3rem;border-radius:8px;font-weight:700;font-size:.84rem;text-decoration:none;white-space:nowrap">
+            🎬 Open YouTube Studio
+          </a>
+        </div>
+      </div>
+
+      <!-- Google Meet -->
+      <div class="panel" style="margin-bottom:1.5rem">
+        <div class="panel-header">
+          <div class="panel-title">📹 Google Meet — Private Sessions</div>
+        </div>
+        <div style="background:var(--bg3);border:1px solid var(--border2);border-radius:4px;padding:1.2rem 1.4rem;margin-bottom:.8rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.8rem">
+          <div>
+            <div style="font-weight:700;font-size:.9rem;color:var(--text);margin-bottom:.25rem">🟢 Start an Instant Meeting</div>
+            <div style="font-size:.78rem;color:var(--muted)">Create a Google Meet link and share it with participants for live Q&A or breakout sessions.</div>
+          </div>
+          <a href="https://meet.google.com/new" target="_blank" rel="noopener"
+             style="background:#34A853;color:#fff;padding:.6rem 1.3rem;border-radius:8px;font-weight:700;font-size:.84rem;text-decoration:none;white-space:nowrap;display:inline-flex;align-items:center;gap:6px">
+            📹 Start Google Meet
+          </a>
+        </div>
+        <div style="background:var(--bg3);border:1px solid var(--border2);border-radius:4px;padding:1.2rem 1.4rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.8rem">
+          <div>
+            <div style="font-weight:700;font-size:.9rem;color:var(--text);margin-bottom:.25rem">📅 Schedule a Meeting</div>
+            <div style="font-size:.78rem;color:var(--muted)">Create a scheduled session via Google Calendar with automatic Meet link.</div>
+          </div>
+          <a href="https://calendar.google.com/calendar/r/eventedit?add=meet" target="_blank" rel="noopener"
+             style="background:rgba(52,168,83,.12);color:#34A853;border:1px solid rgba(52,168,83,.25);padding:.6rem 1.3rem;border-radius:8px;font-weight:700;font-size:.84rem;text-decoration:none;white-space:nowrap">
+            🗓️ Schedule via Calendar
+          </a>
+        </div>
+      </div>
+
+
+      <!-- Class Schedule + WhatsApp share -->
+      <div class="panel">
+        <div class="panel-header"><div class="panel-title">📅 Schedule Class & Notify Participants</div></div>
+        <p style="font-size:.83rem;color:var(--muted);margin-bottom:1rem">Fill in the class details and hit <strong>Save</strong> — participants will see it instantly on their dashboard bell 🔔. Then copy the WhatsApp message.</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:.7rem;margin-bottom:.8rem">
+          <div style="grid-column:1/-1">
+            <label style="display:block;font-size:.7rem;font-weight:600;color:var(--muted);margin-bottom:.35rem">Class Title *</label>
+            <input id="liveTitle" type="text" placeholder="e.g. Stage 3: CV Workshop Live" style="width:100%;padding:.65rem .9rem;background:var(--bg3);border:1.5px solid var(--border2);border-radius:8px;color:var(--text);font-family:var(--font-b);font-size:.86rem;outline:none;box-sizing:border-box">
+          </div>
+          <div>
+            <label style="display:block;font-size:.7rem;font-weight:600;color:var(--muted);margin-bottom:.35rem">Date *</label>
+            <input id="liveDate" type="date" style="width:100%;padding:.65rem .9rem;background:var(--bg3);border:1.5px solid var(--border2);border-radius:8px;color:var(--text);font-family:var(--font-b);font-size:.86rem;outline:none;box-sizing:border-box">
+          </div>
+          <div>
+            <label style="display:block;font-size:.7rem;font-weight:600;color:var(--muted);margin-bottom:.35rem">Time (WAT) *</label>
+            <input id="liveTime" type="time" style="width:100%;padding:.65rem .9rem;background:var(--bg3);border:1.5px solid var(--border2);border-radius:8px;color:var(--text);font-family:var(--font-b);font-size:.86rem;outline:none;box-sizing:border-box">
+          </div>
+          <div>
+            <label style="display:block;font-size:.7rem;font-weight:600;color:var(--muted);margin-bottom:.35rem">Platform</label>
+            <select id="livePlatform" style="width:100%;padding:.65rem .9rem;background:var(--bg3);border:1.5px solid var(--border2);border-radius:8px;color:var(--text);font-family:var(--font-b);font-size:.86rem;outline:none;appearance:none">
+              <option>YouTube Live</option><option>Google Meet</option><option>Zoom</option><option>WhatsApp Live</option>
+            </select>
+          </div>
+          <div>
+            <label style="display:block;font-size:.7rem;font-weight:600;color:var(--muted);margin-bottom:.35rem">Stage</label>
+            <select id="liveStage" style="width:100%;padding:.65rem .9rem;background:var(--bg3);border:1.5px solid var(--border2);border-radius:8px;color:var(--text);font-family:var(--font-b);font-size:.86rem;outline:none;appearance:none">
+              <option value="">— Optional —</option>
+              <option>Stage 1: Remote Mindset</option><option>Stage 2: Digital Toolkit</option>
+              <option>Stage 3: CV & LinkedIn</option><option>Stage 4: Job Search</option><option>Stage 5: Negotiation</option>
+            </select>
+          </div>
+          <div style="grid-column:1/-1">
+            <label style="display:block;font-size:.7rem;font-weight:600;color:var(--muted);margin-bottom:.35rem">Join Link *</label>
+            <input id="liveLink" type="url" placeholder="https://youtube.com/@everythingremotejob" style="width:100%;padding:.65rem .9rem;background:var(--bg3);border:1.5px solid var(--border2);border-radius:8px;color:var(--text);font-family:var(--font-b);font-size:.86rem;outline:none;box-sizing:border-box">
+          </div>
+          <div style="grid-column:1/-1">
+            <label style="display:block;font-size:.7rem;font-weight:600;color:var(--muted);margin-bottom:.35rem">Notes for Participants</label>
+            <textarea id="liveNotes" placeholder="e.g. Have your CV ready. Join 5 minutes early." style="width:100%;padding:.65rem .9rem;background:var(--bg3);border:1.5px solid var(--border2);border-radius:8px;color:var(--text);font-family:var(--font-b);font-size:.84rem;outline:none;resize:vertical;min-height:58px;box-sizing:border-box"></textarea>
+          </div>
+        </div>
+        <div style="display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:.8rem">
+          <button onclick="saveInstrClass()" style="flex:1;background:var(--accent);color:#fff;border:none;border-radius:8px;padding:.6rem 1rem;font-weight:700;font-size:.84rem;cursor:pointer">💾 Save to Participant Dashboard</button>
+          <button onclick="copyLiveMessage()" style="background:rgba(26,24,20,.12);color:#25D366;border:1px solid rgba(26,24,20,.3);border-radius:8px;padding:.6rem 1rem;font-weight:700;font-size:.82rem;cursor:pointer">📋 Copy WhatsApp Msg</button>
+        </div>
+        <div id="liveLinkMsg" style="display:none;background:rgba(20,184,166,.07);border:1px solid rgba(20,184,166,.2);border-radius:8px;padding:.8rem 1rem;font-size:.8rem;color:var(--muted);white-space:pre-wrap;word-break:break-word"></div>
+      </div>
+    </div>
+    <div id="viewResources" class="view" style="display:none">
+      <div class="section-title">📁 All Teaching Resources</div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.5rem">
+
+        <!-- Instructor Manuals -->
+        <div class="panel">
+          <div class="panel-header"><div class="panel-title">📖 Instructor Manuals</div></div>
+          <div class="resource-links">
+            <a href="https://docs.google.com/document/d/1DIKTRUm4zQz7FjFP6tC_uv7iBrz5M2y2/edit?usp=sharing" target="_blank" rel="noopener" class="res-link"><span class="res-link-icon">🧠</span><div class="res-link-info"><div class="res-link-title">Stage 1 — Instructor Manual</div><div class="res-link-meta">Remote Mindset Blueprint</div></div><span class="res-link-dl">↗ Open</span></a>
+            <a href="https://docs.google.com/document/d/1OaHthan1LEREcSJuULP0gOnUNLkUM6mc/edit?usp=sharing" target="_blank" rel="noopener" class="res-link"><span class="res-link-icon">🛠️</span><div class="res-link-info"><div class="res-link-title">Stage 2 — Instructor Manual</div><div class="res-link-meta">Professional Identity & Toolkit</div></div><span class="res-link-dl">↗ Open</span></a>
+            <a href="https://docs.google.com/document/d/1w9WcJ8jvhUI9lXh0lzhnjprVwP-OzZdT/edit?usp=sharing" target="_blank" rel="noopener" class="res-link"><span class="res-link-icon">📄</span><div class="res-link-info"><div class="res-link-title">Stage 3 — Instructor Manual</div><div class="res-link-meta">CV & LinkedIn Transformation</div></div><span class="res-link-dl">↗ Open</span></a>
+            <a href="https://docs.google.com/document/d/190ud7xApkblTYwyDD6LRuheGDI96RNFo/edit?usp=sharing" target="_blank" rel="noopener" class="res-link"><span class="res-link-icon">🔍</span><div class="res-link-info"><div class="res-link-title">Stage 4 — Instructor Manual</div><div class="res-link-meta">Global Job Search Mastery</div></div><span class="res-link-dl">↗ Open</span></a>
+            <a href="https://docs.google.com/document/d/1ShYhJRzglN1_146RNSDa9iuvukxyrx9T/edit?usp=sharing" target="_blank" rel="noopener" class="res-link"><span class="res-link-icon">💰</span><div class="res-link-info"><div class="res-link-title">Stage 5 — Instructor Manual</div><div class="res-link-meta">Offer Negotiation & Onboarding</div></div><span class="res-link-dl">↗ Open</span></a>
+          </div>
+        </div>
+
+        <!-- Slide Decks -->
+        <div class="panel">
+          <div class="panel-header"><div class="panel-title">🎞️ Stage Slide Decks</div></div>
+          <div class="resource-links">
+            <a href="https://docs.google.com/presentation/d/1ZpqlDPebvO9yyYRaGQ4RPzAv_tqyQ5YT/edit?usp=sharing" target="_blank" rel="noopener" class="res-link"><span class="res-link-icon">🧠</span><div class="res-link-info"><div class="res-link-title">Stage 1 Slides — Remote Mindset Blueprint</div><div class="res-link-meta">Sessions 1 & 2</div></div><span class="res-link-dl">↗ Open</span></a>
+            <a href="https://docs.google.com/presentation/d/1a_DK-axvPo1x7V7hPdpdQ9EFqmb7tSrv/edit?usp=sharing" target="_blank" rel="noopener" class="res-link"><span class="res-link-icon">🛠️</span><div class="res-link-info"><div class="res-link-title">Stage 2 Slides — The Digital Toolkit</div><div class="res-link-meta">Sessions 3 & 4</div></div><span class="res-link-dl">↗ Open</span></a>
+            <a href="https://docs.google.com/presentation/d/1r7dJvXQbFC4QQGWXL8JYy_QAMiXXpIuk/edit?usp=sharing" target="_blank" rel="noopener" class="res-link"><span class="res-link-icon">📡</span><div class="res-link-info"><div class="res-link-title">Stage 3 Slides — Async Communication</div><div class="res-link-meta">Sessions 5 & 6</div></div><span class="res-link-dl">↗ Open</span></a>
+            <a href="https://docs.google.com/presentation/d/1esTZfKNm8HiKaLUTa_xzlMunNO12BJkc/edit?usp=sharing" target="_blank" rel="noopener" class="res-link"><span class="res-link-icon">🔍</span><div class="res-link-info"><div class="res-link-title">Stage 4 Slides — Job Search Mastery</div><div class="res-link-meta">Sessions 7 & 8</div></div><span class="res-link-dl">↗ Open</span></a>
+            <a href="https://docs.google.com/presentation/d/1yXgfoU1k0QyXtGiw6-YOeGhxOWQrIb4K/edit?usp=sharing" target="_blank" rel="noopener" class="res-link"><span class="res-link-icon">🌟</span><div class="res-link-info"><div class="res-link-title">Stage 5 Slides — The Thrive Programme</div><div class="res-link-meta">Sessions 9 & 10</div></div><span class="res-link-dl">↗ Open</span></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Participant Workbooks -->
+      <div class="panel">
+        <div class="panel-header"><div class="panel-title">📒 Participant Workbooks</div></div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.7rem">
+          <a href="https://docs.google.com/document/d/1-hkntAHJMObEnlnj46k8gmnhteua4ws9/edit?usp=sharing" target="_blank" rel="noopener" class="res-link"><span class="res-link-icon">📒</span><div class="res-link-info"><div class="res-link-title">Stage 1 Workbook</div><div class="res-link-meta">Participant copy</div></div><span class="res-link-dl">↗</span></a>
+          <a href="https://docs.google.com/document/d/1lBr38HcT2Zg_43Pd-DzegSRoq8QXgxLB/edit?usp=sharing" target="_blank" rel="noopener" class="res-link"><span class="res-link-icon">📒</span><div class="res-link-info"><div class="res-link-title">Stage 2 Workbook</div><div class="res-link-meta">Participant copy</div></div><span class="res-link-dl">↗</span></a>
+          <a href="https://docs.google.com/document/d/1yKXGv4aSgWCqG1p9kSb8fc85F_wexFoc/edit?usp=sharing" target="_blank" rel="noopener" class="res-link"><span class="res-link-icon">📒</span><div class="res-link-info"><div class="res-link-title">Stage 3 Workbook</div><div class="res-link-meta">Participant copy</div></div><span class="res-link-dl">↗</span></a>
+          <a href="https://docs.google.com/document/d/1hBdH5Quu7xc3BwBpqhiLgDs_OwI_8Arv/edit?usp=sharing" target="_blank" rel="noopener" class="res-link"><span class="res-link-icon">📒</span><div class="res-link-info"><div class="res-link-title">Stage 4 Workbook</div><div class="res-link-meta">Participant copy</div></div><span class="res-link-dl">↗</span></a>
+          <a href="https://docs.google.com/document/d/17uMf44bl9RTHHTzf6pTxh_3GDR33q1qH/edit?usp=sharing" target="_blank" rel="noopener" class="res-link"><span class="res-link-icon">📒</span><div class="res-link-info"><div class="res-link-title">Stage 5 Workbook</div><div class="res-link-meta">Participant copy</div></div><span class="res-link-dl">↗</span></a>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<!-- MANUAL VIEWER MODAL -->
+<div class="modal-overlay" id="manualModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div id="modalContent"></div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast-ct" id="toastCt"></div>
+
+<!-- WA Float -->
+<a href="https://wa.me/2348032925957" class="wa-float" title="WhatsApp">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<!-- Mobile bottom navigation removed (sidebar via floating toggle is the single nav) -->
+
+<script>
+/* ── MOBILE BOTTOM NAV SWITCH ── */
+function mbnSwitch(v) {
+  showView(v);
+  closeMobileSidebar();
+  document.querySelectorAll('.mbn-item').forEach(el => el.classList.remove('active'));
+  const btn = document.getElementById('mbn-' + v);
+  if (btn) btn.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+/* ── MOBILE SIDEBAR ── */
+function toggleMobileSidebar() {
+  const sb = document.getElementById('sidebar') || document.querySelector('.sidebar');
+  const ov = document.getElementById('sidebarOverlay');
+  if (!sb) return;
+  sb.classList.toggle('mobile-open');
+  ov.classList.toggle('show');
+}
+function closeMobileSidebar() {
+  const sb = document.getElementById('sidebar') || document.querySelector('.sidebar');
+  const ov = document.getElementById('sidebarOverlay');
+  if (sb) sb.classList.remove('mobile-open');
+  if (ov) ov.classList.remove('show');
+}
+
+/* ── AUTH ── */
+(function() {
+  const raw = localStorage.getItem('rjm_session');
+  if (!raw) { window.location.href = 'login.html'; return; }
+  try {
+    const s = JSON.parse(raw);
+    if (s.role !== 'instructor') {
+      const map = { admin:'admin.html', student:'dashboard.html', participant:'participant.html' };
+      window.location.href = map[s.role] || 'login.html'; return;
+    }
+    var _ia=document.getElementById('iAvatar'); if(_ia) _ia.textContent = s.avatar || 'I';
+    var _in=document.getElementById('iName');   if(_in) _in.textContent   = (s.name||'Instructor').split(' ')[0];
+    document.getElementById('iWelcome').textContent = `Welcome, ${s.name||'Instructor'} 👋`;
+  } catch { window.location.href = 'login.html'; }
+})();
+
+/* ── SESSION MANUALS DATA (10 sessions × 2 per stage) ── */
+const MANUALS = [
+  {
+    id:1, icon:'🧠', color:'#E8470F', stage:'Stage 1', session:'Session 1',
+    title:'Remote Mindset Blueprint',
+    sub:'Establishing the psychological foundation for remote work success',
+    dur:'~2.5h', topics:5,
+    sections:[
+      { heading:'Session Objectives',
+        content:'By the end of this session, students understand the psychology of remote work, have audited their mindset, and can articulate the difference between presence-based and output-based work.',
+        list:['Define the remote professional mindset vs office mindset','Identify and eliminate the top 5 remote productivity killers','Understand Deep Work: what it is and why it dominates remote success','Set up their first 90-minute Deep Work block on a live calendar']
+      },
+      { heading:'Session Flow (120 minutes)',
+        table:{ headers:['Time','Activity','Method'],
+          rows:[
+            ['0–10 min','Welcome & expectations','Facilitator-led'],
+            ['10–30 min','Remote Work Reality Check','Presentation + Q&A'],
+            ['30–60 min','Deep Work Explained','Lecture + demonstration'],
+            ['60–80 min','Mindset Self-Assessment','Individual exercise'],
+            ['80–100 min','Calendar Blocking Workshop','Hands-on practical'],
+            ['100–120 min','Day 1 Wrap-up & Assignment','Facilitator-led'],
+          ]}
+      },
+      { heading:'Student Deliverable', content:'A completed Mindset Scorecard + one 90-minute Deep Work block scheduled on their calendar for tomorrow.' },
+      { heading:'Instructor Tip', tip:'Open with the question: "When you\'re at your most productive — what does that environment look like?" Let 3 students answer. Then show them research on how remote workers lose 3–5 hours daily to shallow work. The contrast creates urgency for everything that follows.' }
+    ]
+  },
+  {
+    id:2, icon:'📋', color:'#E8470F', stage:'Stage 1', session:'Session 2',
+    title:'KPI Setting & EOD Reporting',
+    sub:'Building the accountability systems that make remote workers indispensable',
+    dur:'~2.5h', topics:5,
+    sections:[
+      { heading:'Session Objectives',
+        list:['Write 3 specific, measurable KPIs for their current or target role','Distinguish between tasks (to-do lists) and KPIs (measurable outcomes)','Complete a structured End-of-Day report using the 3-section format','Audit and configure their workspace for zero-distraction remote work']
+      },
+      { heading:'Session Flow (120 minutes)',
+        table:{ headers:['Time','Activity','Method'],
+          rows:[
+            ['0–15 min','KPI vs Tasks — the critical difference','Lecture + live contrast'],
+            ['15–45 min','KPI Writing Workshop','Group exercise — write, share, critique'],
+            ['45–70 min','EOD Report Structure & Live Demo','Facilitator models a full EOD report'],
+            ['70–95 min','Students write their first EOD','Individual exercise'],
+            ['95–110 min','Workspace Audit','Screen-share walkthroughs'],
+            ['110–120 min','Assignment + preview of Stage 2','Facilitator-led'],
+          ]}
+      },
+      { heading:'Student Deliverable', content:'3 role-specific KPIs + their first completed EOD report submitted to the group by 9 PM same day.' },
+      { heading:'Instructor Tip', tip:'The most common failure: students write tasks not KPIs. Show this contrast live: "Worked on client proposals" (task) vs "Completed 2 of 3 proposal sections; pending client brief by 5 PM" (KPI). Run a live rewrite exercise — ask students to convert 3 of their own tasks into KPIs in real time.' }
+    ]
+  },
+  {
+    id:3, icon:'🛠️', color:'#E8470F', stage:'Stage 2', session:'Session 3',
+    title:'Remote Tools Masterclass',
+    sub:'Configuring the complete professional remote work toolkit',
+    dur:'~2.5h', topics:5,
+    sections:[
+      { heading:'Session Objectives',
+        list:['Set up Notion as a personal remote work OS','Configure Slack with professional status, notification settings, and channel etiquette','Set up Zoom with proper background, lighting, audio, and muting discipline','Understand and practise async communication protocols','Know the 3 digital security essentials every remote worker must have']
+      },
+      { heading:'Session Flow (120 minutes)',
+        table:{ headers:['Time','Activity','Method'],
+          rows:[
+            ['0–20 min','Tools overview + why they matter globally','Presentation'],
+            ['20–50 min','Notion workspace live setup','Screen-share walkthrough'],
+            ['50–70 min','Slack + professional Zoom setup','Demonstration + student practice'],
+            ['70–90 min','Async communication rules','Case study + roleplay'],
+            ['90–110 min','Digital security checklist','Individual audit'],
+            ['110–120 min','Assignment brief','Facilitator-led'],
+          ]}
+      },
+      { heading:'Student Deliverable', content:'Screenshots of: configured Notion workspace, Slack profile with professional status, Zoom background. Digital security audit checklist completed.' },
+      { heading:'Instructor Tip', tip:'Many students already use these tools casually. Reset that. Do a "before and after" of a Zoom call: messy background, no lighting, bad audio — then professional setup. The visual contrast in under 2 minutes creates the standard.' }
+    ]
+  },
+  {
+    id:4, icon:'✨', color:'#E8470F', stage:'Stage 2', session:'Session 4',
+    title:'Digital Brand & Time Zone Mastery',
+    sub:'Building a global professional identity and mastering async scheduling',
+    dur:'~2.5h', topics:5,
+    sections:[
+      { heading:'Session Objectives',
+        list:['Build a cohesive, global-facing professional digital brand','Write a professional bio for email, LinkedIn, and Zoom profiles','Configure world clock + a global scheduling system','Understand what "working across time zones" actually means in practice','Complete a full digital brand audit']
+      },
+      { heading:'Student Deliverable', content:'Professional bio (50 words), world clock setup with 3 key global time zones, LinkedIn headline updated.' },
+      { heading:'Instructor Tip', tip:'Have students Google themselves during the session. What comes up? That\'s their current brand. The gap between what appears and what a global hiring manager expects is the motivation for everything in this session.' }
+    ]
+  },
+  {
+    id:5, icon:'📄', color:'#C96130', stage:'Stage 3', session:'Session 5',
+    title:'ATS CV Architecture Workshop',
+    sub:'Engineering a CV that scores 80%+ on every ATS scan',
+    dur:'~2.5h', topics:5,
+    sections:[
+      { heading:'Session Objectives',
+        list:['Understand exactly how ATS systems score and filter CVs','Audit their existing CV against a real remote job description','Rewrite every bullet point using the Achievement + Metric formula','Eliminate all ATS-invisible formatting (tables, columns, images)','Produce a 1-page, ATS-optimised CV skeleton']
+      },
+      { heading:'Session Flow (120 minutes)',
+        table:{ headers:['Time','Activity','Method'],
+          rows:[
+            ['0–20 min','How ATS works — live demo with Jobscan.co','Facilitator-led demo'],
+            ['20–40 min','Student CV audit — paste + scan live','Group exercise'],
+            ['40–80 min','Bullet point rewriting workshop','Peer review pairs'],
+            ['80–105 min','Students rebuild CV structure','Individual work'],
+            ['105–120 min','Assignment + Stage 3 preview','Facilitator-led'],
+          ]}
+      },
+      { heading:'Instructor Tip', tip:'Run the ATS scan live on a volunteer\'s CV. When the score appears (usually 30–50%), the silence in the room does more teaching than 20 minutes of lecture. Then show the same job description with an optimised CV scoring 87%. That moment converts the room.' }
+    ]
+  },
+  {
+    id:6, icon:'💼', color:'#C96130', stage:'Stage 3', session:'Session 6',
+    title:'LinkedIn & Portfolio Workshop',
+    sub:'Transforming LinkedIn into an inbound hiring machine',
+    dur:'~2.5h', topics:5,
+    sections:[
+      { heading:'Session Objectives',
+        list:['Rewrite the LinkedIn headline using the role + value + differentiator formula','Write an About section that speaks to global hiring managers','Optimise the Experience section with achievement-driven bullets','Create one portfolio piece or case study document','Draft 3 tailored cover letters using the ERJ cover letter template']
+      },
+      { heading:'Student Deliverable', content:'Updated LinkedIn headline + About section + one portfolio or case study document. LinkedIn SSI score screenshot before and after.' },
+      { heading:'Instructor Tip', tip:'Have every student check their LinkedIn SSI score at the start: linkedin.com/sales/ssi. Typical score: 25–40. Target: 60+. Tracking this number before and after makes the improvement tangible and motivating.' }
+    ]
+  },
+  {
+    id:7, icon:'🌐', color:'#E8470F', stage:'Stage 4', session:'Session 7',
+    title:'Global Job Platforms Deep Dive',
+    sub:'Finding and filtering remote jobs where 99% of candidates never look',
+    dur:'~2.5h', topics:5,
+    sections:[
+      { heading:'Session Objectives',
+        list:['Navigate 15 remote job platforms with advanced filters','Build 3 Boolean search strings for their target role','Execute one direct company application through the careers page','Execute one cold outreach message to a hiring manager on LinkedIn','Set up a live job application tracker']
+      },
+      { heading:'Student Deliverable', content:'Job tracker with 10 live applications entered. 3 Boolean search strings. 5 cold outreach messages drafted.' },
+      { heading:'Instructor Tip', tip:'Show the math live: 100 targeted outreach messages × 5% reply rate = 5 hiring conversations. Most students are sending 5 applications total. The scale shift is the lesson.' }
+    ]
+  },
+  {
+    id:8, icon:'🎤', color:'#E8470F', stage:'Stage 4', session:'Session 8',
+    title:'Application Tracking & Interview Prep',
+    sub:'Systematising the job search and passing remote role interviews',
+    dur:'~2.5h', topics:5,
+    sections:[
+      { heading:'Session Objectives',
+        list:['Set up a complete application tracking system','Understand the structure of a remote role interview','Answer the 10 most common remote-specific interview questions','Complete a mock video interview (recorded, with feedback)','Build a follow-up email sequence for after interviews']
+      },
+      { heading:'Student Deliverable', content:'Completed application tracker + recorded mock interview (Zoom) + follow-up email template.' },
+      { heading:'Instructor Tip', tip:'Record every mock interview and play back the first 30 seconds. Most students are unaware of how they come across on video: background noise, poor framing, hesitant openers. Seeing it is the lesson that sticks.' }
+    ]
+  },
+  {
+    id:9, icon:'🤝', color:'#7A8B5A', stage:'Stage 5', session:'Session 9',
+    title:'Salary Negotiation Masterclass',
+    sub:'Negotiating global salaries with evidence, confidence, and silence',
+    dur:'~2.5h', topics:5,
+    sections:[
+      { heading:'Session Objectives',
+        list:['Research and document a competitive salary range for their target role','Deliver a counter-offer using the ERJ Negotiation Script','Understand when and how to use silence as a negotiation tool','Handle the 4 most common pushbacks from hiring managers','Know when to walk away']
+      },
+      { heading:'Session Flow (120 minutes)',
+        table:{ headers:['Time','Activity','Method'],
+          rows:[
+            ['0–20 min','Salary benchmarking live session','Facilitator demo with Glassdoor, Levels.fyi'],
+            ['20–50 min','Negotiation Script walkthrough','Lecture + script reading'],
+            ['50–90 min','Live negotiation roleplay (pairs)','Student pairs, recorded'],
+            ['90–110 min','Playback + feedback','Group debrief'],
+            ['110–120 min','Assignment + Stage 5 finale preview','Facilitator-led'],
+          ]}
+      },
+      { heading:'Instructor Tip', tip:'Teach the silence rule explicitly: after naming your counter-offer, count to 10 in your head before speaking again. Role-play it. Students almost always break first — that\'s the teaching moment.' }
+    ]
+  },
+  {
+    id:10, icon:'🏆', color:'#7A8B5A', stage:'Stage 5', session:'Session 10',
+    title:'Remote Onboarding & 90-Day Plan',
+    sub:'Nailing your first 90 days — and graduating as a Remote Job Master',
+    dur:'~2h', topics:5,
+    sections:[
+      { heading:'Session Objectives',
+        list:['Understand the 30-60-90 day remote onboarding framework','Know how to build trust with a distributed team asynchronously','Create a personal 90-Day Remote Success Plan','Complete the ERJ Graduate Checklist','Receive digital graduation certificate']
+      },
+      { heading:'Session Flow (120 minutes)',
+        table:{ headers:['Time','Activity','Method'],
+          rows:[
+            ['0–30 min','30-60-90 Day Framework','Lecture + case study'],
+            ['30–60 min','Building trust remotely','Group discussion + scenarios'],
+            ['60–85 min','Students write their 90-Day Plan','Individual exercise'],
+            ['85–105 min','Graduate showcase: each student presents 1 achievement','Student-led'],
+            ['105–120 min','Certificate presentation + community welcome','Ceremony'],
+          ]}
+      },
+      { heading:'Instructor Tip', tip:'The graduation session sets the tone for the ERJ alumni community. Have each student share their single biggest shift from when they started to now. These testimonials — collected live — are both motivating for the cohort and valuable for future marketing.' }
+    ]
+  },
+];
+/* ── RENDER MANUALS (session cards) ── */
+function renderManuals() {
+  const g = document.getElementById('manualsGrid');
+  g.innerHTML = MANUALS.map(m => `
+    <div class="manual-card" onclick="openManual(${m.id})">
+      <div class="mc-top">
+        <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.7rem">
+          <span class="mc-stage-badge" style="background:${m.color}22;color:${m.color};border:1px solid ${m.color}33">${m.stage}</span>
+          <span class="mc-stage-badge" style="background:rgba(100,116,139,.12);color:var(--muted2);border:1px solid rgba(100,116,139,.2)">${m.session}</span>
+        </div>
+        <span class="mc-icon">${m.icon}</span>
+        <div class="mc-title">${m.title}</div>
+        <div class="mc-sub">${m.sub}</div>
+        <div class="mc-meta">
+          <span class="mc-tag">⏱️ ${m.dur}</span>
+          <span class="mc-tag">📖 ${m.topics} topics</span>
+        </div>
+      </div>
+      <div class="mc-actions">
+        <button class="mc-btn primary" onclick="event.stopPropagation();openManual(${m.id})">📖 Open Manual</button>
+        <a class="mc-btn outline" href="https://docs.google.com/presentation/d/1ZpqlDPebvO9yyYRaGQ4RPzAv_tqyQ5YT/edit?usp=sharing" target="_blank" onclick="event.stopPropagation()">🎞️ Slides</a>
+      </div>
+    </div>`).join('');
+}
+
+/* ── MANUAL MODAL ── */
+function openManual(id) {
+  const m = MANUALS.find(x => x.id === id);
+  if (!m) return;
+  let html = `
+    <div class="modal-stage">${m.stage}</div>
+    <div class="modal-title">${m.icon} ${m.title}</div>
+    <div class="modal-desc">${m.sub} · ${m.pages} pages · ${m.lessons} lessons · ${m.duration}</div>`;
+  m.sections.forEach(s => {
+    html += `<div class="manual-section"><div class="ms-heading">${s.heading}</div>`;
+    if (s.content) html += `<p class="ms-content">${s.content}</p>`;
+    if (s.list) html += `<ul class="ms-list">${s.list.map(l=>`<li>${l}</li>`).join('')}</ul>`;
+    if (s.table) {
+      html += `<table class="ms-table"><thead><tr>${s.table.headers.map(h=>`<th>${h}</th>`).join('')}</tr></thead><tbody>`;
+      s.table.rows.forEach(r => { html += `<tr>${r.map(c=>`<td>${c}</td>`).join('')}</tr>`; });
+      html += '</tbody></table>';
+    }
+    if (s.rubric) {
+      html += s.rubric.map(r=>`<div class="rubric-item"><div class="rubric-score">${r.score}</div><div class="rubric-label">${r.label}</div></div>`).join('');
+    }
+    if (s.tip) html += `<div class="tip-box"><div class="tip-head">💡 Instructor Tip</div><p>${s.tip}</p></div>`;
+    html += '</div>';
+  });
+  document.getElementById('modalContent').innerHTML = html;
+  document.getElementById('manualModal').classList.add('open');
+}
+function closeModal() { document.getElementById('manualModal').classList.remove('open'); }
+document.getElementById('manualModal').addEventListener('click', function(e) { if(e.target===this) closeModal(); });
+
+/* ── STUDENT PROGRESS ── */
+function renderStudents() {
+  const users = JSON.parse(localStorage.getItem('rjm_users')||'[]').filter(u=>u.role==='student');
+  const total = users.length;
+  let lessonsTotal = 0, graduates = 0;
+  users.forEach(u => {
+    const p = JSON.parse(localStorage.getItem(`rjm_progress_${u.email}`)||'null');
+    if (!p) return;
+    const done = Object.values(p).reduce((a,s)=>a+(s.lessons?.length||0),0);
+    lessonsTotal += done;
+    if (Object.values(p).every(s=>s.completed)) graduates++;
+  });
+  document.getElementById('totalStudents').textContent = total;
+  document.getElementById('completedCount').textContent = lessonsTotal;
+  document.getElementById('graduateCount').textContent  = graduates;
+
+  const tbl = document.getElementById('studentsTable');
+  if (!users.length) { tbl.innerHTML = '<p style="color:var(--muted);text-align:center;padding:2rem">No participants registered yet.</p>'; return; }
+  tbl.innerHTML = `<table style="width:100%;border-collapse:collapse">
+    <thead><tr style="border-bottom:1px solid var(--border2)">
+      <th style="padding:.7rem 1rem;font-size:.7rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted2);text-align:left">Participant</th>
+      <th style="padding:.7rem 1rem;font-size:.7rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted2);text-align:left">Stage Progress</th>
+      <th style="padding:.7rem 1rem;font-size:.7rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted2);text-align:left">Lessons Done</th>
+    </tr></thead><tbody>${users.map(u => {
+      const p = JSON.parse(localStorage.getItem(`rjm_progress_${u.email}`)||'null');
+      const done = p ? Object.values(p).reduce((a,s)=>a+(s.lessons?.length||0),0) : 0;
+      const pct  = Math.round(done/25*100);
+      return `<tr style="border-bottom:1px solid var(--border2)">
+        <td style="padding:.8rem 1rem;font-weight:600">${u.name}</td>
+        <td style="padding:.8rem 1rem"><div style="display:flex;align-items:center;gap:8px;font-size:.8rem;color:var(--muted)">${pct}%<div style="flex:1;height:5px;background:var(--border2);border-radius:100px;overflow:hidden"><div style="height:100%;width:${pct}%;background:var(--teal);border-radius:100px"></div></div></div></td>
+        <td style="padding:.8rem 1rem;color:var(--muted)">${done}/25</td>
+      </tr>`;
+    }).join('')}</tbody></table>`;
+}
+
+/* ── VIEW SWITCH ── */
+function showView(v) {
+  ['Manuals','Slides','Liveclass','Schedule','Students','Resources'].forEach(n=>document.getElementById('view'+n).style.display=n.toLowerCase()===v?'':'none');
+  document.querySelectorAll('.sidebar-item').forEach(el=>el.classList.remove('active'));
+  const map={manuals:0,slides:1,liveclass:2,schedule:3,students:4,resources:5};
+  document.querySelectorAll('.sidebar-item')[map[v]]?.classList.add('active');
+  // sync mobile bottom nav
+  document.querySelectorAll('.mbn-item').forEach(el=>el.classList.remove('active'));
+  const mbnBtn = document.getElementById('mbn-'+v);
+  if (mbnBtn) mbnBtn.classList.add('active');
+  if(v==='students') renderStudents();
+}
+
+/* ════════════════════════════════════════
+   CLASS SCHEDULING (Instructor)
+══════════════════════════════════════════ */
+const CLASS_KEY = 'erj_next_class';
+
+function buildInstrClassObj() {
+  return {
+    title:    (document.getElementById('liveTitle')?.value || '').trim(),
+    date:     document.getElementById('liveDate')?.value  || '',
+    time:     document.getElementById('liveTime')?.value  || '',
+    timezone: 'WAT (UTC+1)',
+    stage:    document.getElementById('liveStage')?.value || '',
+    platform: document.getElementById('livePlatform')?.value || 'YouTube Live',
+    duration: 90,
+    link:     (document.getElementById('liveLink')?.value || '').trim(),
+    notes:    (document.getElementById('liveNotes')?.value || '').trim(),
+    setBy:    'Instructor',
+    setAt:    new Date().toISOString()
+  };
+}
+
+function buildWaText(cls) {
+  const d  = new Date(cls.date + 'T' + cls.time);
+  const ds = d.toLocaleDateString('en-NG',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+  const ts = d.toLocaleTimeString('en-NG',{hour:'2-digit',minute:'2-digit'});
+  return `🔴 *LIVE CLASS ALERT*\n\n📚 *${cls.title || 'Live Training Session'}*\n📅 ${ds}\n⏰ ${ts} ${cls.timezone}\n📺 Platform: ${cls.platform}\n\n👉 *Join here:*\n${cls.link}\n\n${cls.notes ? '📌 ' + cls.notes + '\n\n' : ''}See you there! 🚀\n— Everything Remote Job`;
+}
+
+function saveInstrClass() {
+  const cls = buildInstrClassObj();
+  if (!cls.title || !cls.date || !cls.time || !cls.link) {
+    toast('Please fill in Title, Date, Time, and Join Link.'); return;
+  }
+  localStorage.setItem(CLASS_KEY, JSON.stringify(cls));
+  const el = document.getElementById('liveLinkMsg');
+  el.textContent = '✅ Saved! Participants can now see this on their dashboard bell.';
+  el.style.display = 'block';
+  toast('✅ Class scheduled and visible to participants!');
+}
+
+function copyLiveMessage() {
+  const cls = buildInstrClassObj();
+  if (!cls.link) { toast('Enter a join link first.'); return; }
+  const msg = buildWaText(cls);
+  navigator.clipboard.writeText(msg).then(() => {
+    const el = document.getElementById('liveLinkMsg');
+    el.textContent = msg;
+    el.style.display = 'block';
+    toast('📋 WhatsApp message copied!');
+  }).catch(() => {
+    const el = document.getElementById('liveLinkMsg');
+    el.textContent = msg;
+    el.style.display = 'block';
+    toast('Copy the message above manually.');
+  });
+}
+
+function openInstrSchedule() {
+  showView('liveclass');
+  // Pre-fill if schedule already exists
+  const existing = JSON.parse(localStorage.getItem(CLASS_KEY) || 'null');
+  if (existing) {
+    const fields = {liveTitle:'title',liveDate:'date',liveTime:'time',liveLink:'link',liveNotes:'notes',livePlatform:'platform',liveStage:'stage'};
+    Object.entries(fields).forEach(([id,key]) => {
+      const el = document.getElementById(id); if (el && existing[key]) el.value = existing[key];
+    });
+  } else {
+    const tom = new Date(); tom.setDate(tom.getDate()+1);
+    const d = document.getElementById('liveDate'); if(d) d.value = tom.toISOString().split('T')[0];
+    const t = document.getElementById('liveTime'); if(t) t.value = '18:00';
+    const l = document.getElementById('liveLink'); if(l) l.value = 'https://youtube.com/@everythingremotejob';
+  }
+}
+
+/* ── THEME ── */
+function applyTheme(t) { document.documentElement.setAttribute('data-theme',t); var _tb=document.getElementById('themeBtn'); if(_tb) _tb.textContent=t==='day'?'🌙':'☀️'; localStorage.setItem('rjt-theme',t); }
+var _legacyTB=document.getElementById('themeBtn');
+if(_legacyTB) _legacyTB.addEventListener('click',()=>applyTheme(document.documentElement.getAttribute('data-theme')==='day'?'night':'day'));
+applyTheme(localStorage.getItem('rjt-theme')||'night');
+
+/* ── TOAST ── */
+function toast(msg) {
+  const c=document.getElementById('toastCt'), t=document.createElement('div');
+  t.className='toast'; t.textContent=msg; c.appendChild(t);
+  setTimeout(()=>{t.style.opacity='0';t.style.transition='.3s';setTimeout(()=>t.remove(),300);},3000);
+}
+
+/* ── LOGOUT ── */
+function logout() { localStorage.removeItem('rjm_session'); window.location.href='login.html'; }
+
+/* ── INIT ── */
+renderManuals();
+renderStudents();
+</script>
+<script id="erjPWA">
+(function(){
+  // Register service worker (enables offline + install criteria)
+  if('serviceWorker' in navigator){
+    window.addEventListener('load',function(){
+      navigator.serviceWorker.register('sw.js').then(function(reg){reg.update();}).catch(function(){});
+    });
+  }
+  // Capture install prompt
+  var deferred=null, btn=null;
+  function makeBtn(){
+    if(btn) return btn;
+    btn=document.createElement('button');
+    btn.id='erjInstallBtn';
+    btn.textContent='⤓ Install App';
+    btn.style.cssText='position:fixed;left:16px;bottom:16px;z-index:980;display:none;align-items:center;gap:7px;background:var(--accent-btn,#FF5722);color:#14110E;border:none;border-radius:10px;padding:9px 14px;font-weight:700;font-family:Inter,system-ui,sans-serif;font-size:.8rem;font-weight:600;cursor:pointer;box-shadow:0 4px 18px rgba(0,0,0,.18);';
+    btn.addEventListener('click',async function(){
+      if(!deferred) return;
+      deferred.prompt();
+      try{ await deferred.userChoice; }catch(e){}
+      deferred=null; btn.style.display='none';
+    });
+    document.body.appendChild(btn);
+    return btn;
+  }
+  window.addEventListener('beforeinstallprompt',function(e){
+    e.preventDefault(); deferred=e; makeBtn().style.display='inline-flex';
+  });
+  window.addEventListener('appinstalled',function(){ if(btn) btn.style.display='none'; deferred=null; });
+  // iOS Safari: no beforeinstallprompt — show a hint button that explains Add to Home Screen
+  var isIOS=/iphone|ipad|ipod/i.test(navigator.userAgent);
+  var standalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
+  if(isIOS && !standalone){
+    window.addEventListener('load',function(){
+      var b=makeBtn(); b.textContent='⤓ Add to Home Screen'; b.style.display='inline-flex';
+      b.addEventListener('click',function(){ alert('To install: tap the Share icon, then “Add to Home Screen”.'); });
+    });
+  }
+})();
+</script>
+<!-- ===== Unified Theme Control (Day / System / Night) — header based ===== -->
+<script id="erjThemeJS">
+(function(){
+  var KEY='rjt-theme', html=document.documentElement;
+  var ICON={day:'☀️',night:'🌙',system:'💻'};
+  var NEXT={day:'system',system:'night',night:'day'};   // cycle order
+  var TITLE={day:'Theme: Day (tap for System)',system:'Theme: System (tap for Night)',night:'Theme: Night (tap for Day)'};
+  function sys(){return window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'night':'day';}
+  function bar(resolved){
+    var m=document.getElementById('metaThemeColor')||document.querySelector('meta[name="theme-color"]:not([media])');
+    if(!m){m=document.createElement('meta');m.name='theme-color';m.id='metaThemeColor';document.head.appendChild(m);}
+    m.setAttribute('content', resolved==='night'?'#000000':'#FAFAF8');
+  }
+  function curPref(){ var p=localStorage.getItem(KEY); return ICON[p]?p:'system'; }
+  function apply(pref){
+    if(!ICON[pref]) pref='system';
+    var resolved = pref==='system'? sys() : pref;
+    html.setAttribute('data-theme', resolved);
+    localStorage.setItem(KEY, pref);
+    bar(resolved);
+    // update every in-header theme button on the page
+    document.querySelectorAll('[data-erj-theme-btn], #themeToggle, #themeBtn').forEach(function(btn){
+      btn.textContent = ICON[pref];
+      btn.setAttribute('title', TITLE[pref]);
+      btn.setAttribute('aria-label', TITLE[pref]);
+    });
+  }
+  window.erjApplyTheme=apply;
+  function wire(btn){
+    if(!btn || btn.__erjWired) return; btn.__erjWired=true;
+    // strip any legacy onclick and clone to drop old listeners
+    btn.removeAttribute('onclick');
+    var fresh=btn.cloneNode(true); btn.parentNode.replaceChild(fresh,btn);
+    fresh.addEventListener('click',function(e){ e.preventDefault(); e.stopPropagation(); apply(NEXT[curPref()]); });
+    fresh.style.cursor='pointer';
+  }
+  function wireAll(){ document.querySelectorAll('[data-erj-theme-btn], #themeToggle, #themeBtn').forEach(wire); }
+  if(window.matchMedia){window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change',function(){if(curPref()==='system')apply('system');});}
+  if(document.readyState!=='loading'){ wireAll(); apply(curPref()); }
+  else document.addEventListener('DOMContentLoaded',function(){ wireAll(); apply(curPref()); });
+  // re-apply after a tick in case header is injected late
+  setTimeout(function(){ wireAll(); apply(curPref()); }, 300);
+})();
+</script>
+<!-- ===== /Unified Theme Control ===== -->
+
+<script src="erj-nav.js" defer></script>
+</body>
+</html>

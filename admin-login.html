@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="night">
+<head>
+<link rel="manifest" href="manifest.json">
+<meta charset="UTF-8">
+
+<link rel="icon" type="image/png" sizes="64x64" href="favicon32.png" media="(prefers-color-scheme: light)">
+<link rel="icon" type="image/png" sizes="64x64" href="favicon32-dark.png" media="(prefers-color-scheme: dark)">
+<link rel="icon" type="image/png" sizes="64x64" href="favicon32.png">
+
+
+<link rel="apple-touch-icon" href="appletouchicon.png">
+<meta name="theme-color" content="#000000" id="metaThemeColor">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Portal | Everything Remote Job</title>
+
+
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  /* RocketAir · NIGHT (default) — pure black */
+  --bg:#000000; --bg2:#0d0d0d; --bg3:#111111; --bg4:#0a0a0a;
+  --paper:#000000; --card:#0d0d0d; --sidebar:#000000; --input-bg:#111111;
+  --ink:#FFFFFF; --text:#FFFFFF; --txt:#FFFFFF; --t:#FFFFFF;
+  --ink-soft:#A1A1A1; --muted:#A1A1A1; --ink-faint:#858585; --muted2:#858585;
+  --accent:#FF5722; --accent-h:#ff6f43; --accent2:#FF5722; --electric:#FF5722;
+  --border:rgba(255,255,255,0.10); --border2:rgba(255,255,255,0.055);
+  --nav-bg:rgba(0,0,0,0.85); --nav:rgba(0,0,0,0.85);
+  --green:#3FB950; --amber:#FF5722; --red:#F85149; --teal:#39C5BB; --purple:#A371F7;
+  --glow:transparent; --fb:#FFFFFF; --fd:#FFFFFF;
+  --shadow:0 1px 0 rgba(0,0,0,0.5); --shadow-lg:0 8px 60px rgba(0,0,0,0.8);
+  --sh:0 1px 0 rgba(0,0,0,0.5); --sh2:0 8px 60px rgba(0,0,0,0.8); --sab:#000000;
+  --font-display:'Space Grotesk',system-ui,sans-serif; --font-body:'Inter',system-ui,sans-serif;
+  --font-d:'Space Grotesk',system-ui,sans-serif; --font-b:'Inter',system-ui,sans-serif;
+  --radius:16px; --r:16px; --transition:all 0.3s ease; --tr:all 0.3s ease;
+}
+html[data-theme="day"]{
+  /* RocketAir · DAY — clean light counterpart */
+  --bg:#FAFAF8; --bg2:#FFFFFF; --bg3:#F2F1ED; --bg4:#F2F1ED;
+  --paper:#FAFAF8; --card:#FFFFFF; --sidebar:#FFFFFF; --input-bg:#FFFFFF;
+  --ink:#0A0A0A; --text:#0A0A0A; --txt:#0A0A0A; --t:#0A0A0A;
+  --ink-soft:#52514C; --muted:#52514C; --ink-faint:#6E6C65; --muted2:#6E6C65;
+  --accent:#AD350A;--accent-btn:#FF5722;--accent-text:#AD350A; --accent-h:#C53A0B; --accent2:#FF5722; --electric:#E8470F;
+  --border:rgba(10,10,10,0.12); --border2:rgba(10,10,10,0.06);
+  --nav-bg:rgba(250,250,248,0.9); --nav:rgba(250,250,248,0.9);
+  --glow:transparent; --fb:#0A0A0A; --fd:#0A0A0A;
+  --shadow:0 1px 0 rgba(10,10,10,0.06); --shadow-lg:0 12px 50px rgba(10,10,10,0.10);
+  --sh:0 1px 0 rgba(10,10,10,0.06); --sh2:0 12px 50px rgba(10,10,10,0.10); --sab:#FFFFFF;
+}
+html[data-theme="night"]{
+  --bg:#000000; --bg2:#0d0d0d; --bg3:#111111; --bg4:#0a0a0a;
+  --paper:#000000; --card:#0d0d0d; --sidebar:#000000; --input-bg:#111111;
+  --ink:#FFFFFF; --text:#FFFFFF; --txt:#FFFFFF; --t:#FFFFFF;
+  --ink-soft:#A1A1A1; --muted:#A1A1A1; --ink-faint:#858585; --muted2:#858585;
+  --accent:#FF5722; --accent-h:#ff6f43; --accent2:#FF5722; --electric:#FF5722;
+  --border:rgba(255,255,255,0.10); --border2:rgba(255,255,255,0.055);
+  --nav-bg:rgba(0,0,0,0.85); --nav:rgba(0,0,0,0.85);
+  --green:#3FB950; --amber:#FF5722; --red:#F85149; --teal:#39C5BB; --purple:#A371F7;
+  --glow:transparent; --fb:#FFFFFF; --fd:#FFFFFF;
+  --shadow:0 1px 0 rgba(0,0,0,0.5); --shadow-lg:0 8px 60px rgba(0,0,0,0.8);
+  --sh:0 1px 0 rgba(0,0,0,0.5); --sh2:0 8px 60px rgba(0,0,0,0.8); --sab:#000000;
+}
+
+
+
+
+html{scroll-behavior:smooth;overflow-x:hidden;}
+body{background:var(--bg);color:var(--text);font-family:var(--font-b);min-height:100vh;display:flex;align-items:center;justify-content:center;overflow-x:hidden;position:relative;padding:1.5rem 1.5rem 2rem;}
+
+/* Background */
+#particles{position:fixed;inset:0;z-index:0;pointer-events:none;}
+.grid-overlay{position:fixed;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(rgba(255,87,34,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,87,34,.03) 1px,transparent 1px);background-size:60px 60px;}
+.radial-glow{position:fixed;top:-200px;left:50%;transform:translateX(-50%);width:700px;height:600px;background:radial-gradient(ellipse,rgba(239,68,68,.12) 0%,transparent 70%);pointer-events:none;z-index:0;}
+
+/* Nav */
+.nav{position:fixed;top:0;left:0;right:0;z-index:200;background:var(--nav-bg);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);height:60px;padding:0 5%;display:flex;align-items:center;justify-content:space-between;}
+.nav-brand{font-family:var(--font-d);font-weight:800;font-size:.95rem;color:var(--text);text-decoration:none;letter-spacing:-.4px;}
+.nav-brand span{color:var(--electric);font-style:italic;font-weight:800;margin-left:-0.08em;}
+.nav-right{display:flex;align-items:center;gap:.7rem;}
+.nav-btn{width:34px;height:34px;border-radius:8px;border:1px solid var(--border);background:var(--bg3);cursor:pointer;color:var(--muted);display:flex;align-items:center;justify-content:center;font-size:.9rem;transition:var(--tr);}
+.nav-btn:hover{color:var(--electric);}
+.nav-back{font-size:.8rem;color:var(--muted);text-decoration:none;display:flex;align-items:center;gap:5px;transition:color .2s;}
+.nav-back:hover{color:var(--electric);}
+
+/* Card */
+.page-wrap{position:relative;z-index:10;width:100%;max-width:440px;}
+.admin-badge{display:flex;align-items:center;justify-content:center;gap:.6rem;margin-bottom:1.8rem;text-align:center;}
+.shield{width:52px;height:52px;border-radius:14px;background:linear-gradient(135deg,#C9613020,#1A181408);display:flex;align-items:center;justify-content:center;font-size:1.5rem;box-shadow:0 4px 20px rgba(239,68,68,.3);}
+.badge-text{font-family:var(--font-d);font-size:.65rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#f87171;background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.25);padding:4px 12px;border-radius:100px;}
+
+.auth-card{background:var(--card);border:1px solid var(--border);border-radius:22px;padding:2.5rem 2.2rem;box-shadow:var(--shadow);backdrop-filter:blur(24px);position:relative;overflow:hidden;}
+.auth-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(239,68,68,.6),rgba(239,68,68,.9),rgba(239,68,68,.6),transparent);}
+
+.card-title{font-family:var(--font-d);font-size:1.4rem;font-weight:800;color:var(--text);text-align:center;margin-bottom:.35rem;letter-spacing:-.4px;}
+.card-sub{font-size:.83rem;color:var(--muted);text-align:center;margin-bottom:2rem;}
+
+/* Alert */
+.alert{padding:.8rem 1rem;border-radius:10px;margin-bottom:1.2rem;font-size:.83rem;font-weight:500;display:none;align-items:center;gap:8px;border:1px solid;}
+.alert.show{display:flex;animation:fadeUp .3s ease;}
+.alert-error{background:rgba(220,38,38,.1);border-color:rgba(220,38,38,.3);color:#f87171;}
+.alert-success{background:rgba(16,185,129,.1);border-color:rgba(16,185,129,.3);color:#34d399;}
+
+/* Fields */
+.field{margin-bottom:1.1rem;}
+.field label{display:block;font-size:.75rem;font-weight:600;color:var(--muted);margin-bottom:.45rem;letter-spacing:.3px;}
+.field input{width:100%;padding:.82rem 1rem;background:var(--input-bg);border:1.5px solid var(--border2);border-radius:10px;color:var(--text);font-family:var(--font-b);font-size:.92rem;outline:none;transition:var(--tr);}
+.field input:focus{border-color:#EF4444;box-shadow:0 0 0 3px rgba(239,68,68,.12);}
+.field input::placeholder{color:var(--muted2);}
+.pw-wrap{position:relative;}
+.pw-wrap input{padding-right:3rem;}
+.pw-toggle{position:absolute;right:.85rem;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:var(--muted);font-size:1rem;padding:4px;transition:color .2s;}
+.pw-toggle:hover{color:var(--electric);}
+
+/* Button */
+.btn-login{width:100%;padding:.9rem;background:linear-gradient(135deg,#C9613020,#1A181408);color:#fff;border:none;border-radius:10px;cursor:pointer;font-family:var(--font-d);font-size:.95rem;font-weight:700;letter-spacing:-.2px;transition:var(--tr);box-shadow:0 4px 20px rgba(239,68,68,.35);display:flex;align-items:center;justify-content:center;gap:8px;position:relative;overflow:hidden;}
+.btn-login::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.15),transparent 60%);opacity:0;transition:opacity .25s;}
+.btn-login:hover{transform:translateY(-2px);box-shadow:0 6px 28px rgba(239,68,68,.5);}
+.btn-login:hover::before{opacity:1;}
+.btn-login:active{transform:translateY(0);}
+.btn-login.loading{pointer-events:none;opacity:.72;}
+.spinner{width:17px;height:17px;border-radius:50%;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;animation:spin .7s linear infinite;display:none;}
+.btn-login.loading .spinner{display:block;}
+.btn-login.loading .btn-text{display:none;}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* Security notice */
+.security-note{margin-top:1.4rem;padding:.85rem 1rem;background:rgba(239,68,68,.05);border:1px solid rgba(239,68,68,.15);border-radius:10px;font-size:.75rem;color:var(--muted);text-align:center;line-height:1.6;}
+.security-note strong{color:#f87171;}
+
+/* Footer link */
+.card-footer{text-align:center;margin-top:1.3rem;font-size:.78rem;color:var(--muted2);}
+.card-footer a{color:var(--electric);text-decoration:none;}
+.card-footer a:hover{text-decoration:underline;}
+
+/* Attempt counter */
+.attempt-warn{font-size:.72rem;color:#f87171;text-align:center;margin-top:.6rem;display:none;}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:480px){.auth-card{padding:2rem 1.4rem;}}
+
+/* ── Cohort 9 minimalist overrides ── */
+#particles,.radial-glow,.grid-overlay{display:none!important}
+*{text-shadow:none!important}
+h1 strong,h1 em{ -webkit-text-fill-color:currentColor!important;background:none!important;color:var(--accent)!important;}
+.btn-register::before,.btn-primary::before,.timer-wrap::before,.auth-card::before{display:none!important}
+.btn-register,.btn-primary{box-shadow:none!important;border-radius:2px!important;font-family:'DM Sans',system-ui,sans-serif!important;font-weight:500!important;letter-spacing:0.3px!important;}
+.btn-register:hover,.btn-primary:hover{box-shadow:none!important;}
+.auth-card,.timer-wrap,.card,.stage-card,.lesson-card{backdrop-filter:none!important;}
+.wa-float{background:var(--text)!important;box-shadow:none!important;border-radius:50%!important;}
+.wa-float svg{fill:var(--bg)!important;}
+.wa-float:hover{box-shadow:none!important;}
+
+/* ── Cohort 9 cleanup ── */
+h1 span,h2 span,.hero h1 span,[class*="grad"]{ -webkit-text-fill-color:var(--accent)!important;background:none!important;background-image:none!important;color:var(--accent)!important;-webkit-background-clip:initial!important;background-clip:initial!important;}
+.nav,nav{background:var(--bg)!important;}
+html[data-theme="day"] .nav,html[data-theme="day"] nav{background:var(--bg)!important;}
+.featured-badge,.badge,.tag,.pill{box-shadow:none!important;}
+.cover,.post-cover,.art-cover,.card-cover,.featured-img{filter:saturate(0.6);}
+</style>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;800&family=Inter:wght@300;400;500&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"></noscript>
+<meta property="og:image" content="https://everythingremotejob.com/preview-portal.jpg" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Everything Remote Job" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://everythingremotejob.com/preview-portal.jpg" />
+<style id="erjHideLegacy">#themeDropdown,.theme-drop,.theme-drop-menu,#themeMenu,#erjTheme{display:none !important;}</style>
+  <meta name="robots" content="noindex,nofollow,noarchive,nosnippet,noimageindex">
+<meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+</head>
+<body>
+
+<canvas id="particles"></canvas>
+<div class="grid-overlay"></div>
+<div class="radial-glow"></div>
+
+<!-- Nav -->
+<div id="erjNavMount"></div>
+<script>window.ERJ_NAV={active:'login',onPage:[{label:'Participant Login',href:'login.html'},{label:'Instructor Login',href:'instructor-login.html'}]};</script>
+
+<div class="page-wrap">
+
+  <!-- Shield Badge -->
+  <div class="admin-badge">
+    <div>
+      <div style="display:flex;justify-content:center;margin-bottom:.7rem"><div class="shield">🛡️</div></div>
+      <div class="badge-text">ADMIN PORTAL</div>
+    </div>
+  </div>
+
+  <!-- Card -->
+  <div class="auth-card">
+
+    <div class="card-title">Admin Sign In</div>
+    <div class="card-sub">Restricted access — authorised personnel only.</div>
+
+    <!-- Alerts -->
+    <div class="alert alert-error" id="alertBox"><span>⚠</span><span id="alertMsg"></span></div>
+    <div class="alert alert-success" id="successBox"><span>✓</span><span id="successMsg"></span></div>
+
+    <!-- Form -->
+    <div class="field">
+      <label for="adminUser">Username</label>
+      <input type="text" id="adminUser" placeholder="Enter admin username" autocomplete="username" autofocus>
+    </div>
+    <div class="field">
+      <label for="adminPw">Password</label>
+      <div class="pw-wrap">
+        <input type="password" id="adminPw" placeholder="••••••••••" autocomplete="current-password">
+        <button class="pw-toggle" type="button" onclick="togglePw()" title="Show/hide">👁</button>
+      </div>
+    </div>
+
+    <button class="btn-login" id="loginBtn" onclick="doLogin()">
+      <span class="btn-text">🛡️ Access Admin Panel</span>
+      <span class="spinner"></span>
+    </button>
+
+    <div class="attempt-warn" id="attemptWarn"></div>
+
+    <div class="security-note">
+      <strong>🔒 Secure Zone.</strong> All admin actions are logged. Unauthorised access attempts are recorded.
+    </div>
+
+    <div class="card-footer">
+      Not an admin? <a href="login.html">← Participant Login</a> &nbsp;·&nbsp; <a href="index.html">Back to site</a>
+    </div>
+
+  </div>
+</div>
+
+<script>
+/* ── AUTH STATE ── */
+let attempts = 0;
+const MAX_ATTEMPTS = 5;
+
+/* ── ADMIN CREDENTIALS (source of truth — never depends on localStorage) ── */
+const ADMIN_CREDS = {
+  username: 'admin',           // case-insensitive match
+  email:    'admin@erjm.com',  // alternative identifier
+  password: '1711@Admin',      // exact match, case-sensitive
+  name:     'Oluwaseyi Ashiru',
+  avatar:   'OA',
+  role:     'admin'
+};
+
+/* ── ALREADY LOGGED IN? ── */
+(function checkSession() {
+  try {
+    const s = JSON.parse(localStorage.getItem('rjm_session') || 'null');
+    if (s && s.role === 'admin') window.location.href = 'admin.html';
+  } catch(e) {}
+})();
+
+/* ── LOGIN ── */
+function doLogin() {
+  clearAlerts();
+  const user = document.getElementById('adminUser').value.trim();
+  const pass = document.getElementById('adminPw').value;
+
+  if (!user || !pass) { showError('Please enter your username and password.'); return; }
+
+  if (attempts >= MAX_ATTEMPTS) {
+    showError('Too many failed attempts. Please refresh the page and try again.');
+    return;
+  }
+
+  const btn = document.getElementById('loginBtn');
+  btn.classList.add('loading');
+
+  setTimeout(() => {
+    btn.classList.remove('loading');
+
+    const uid = user.toLowerCase().trim();
+    const validUser = uid === ADMIN_CREDS.username || uid === ADMIN_CREDS.email;
+    const validPass = pass === ADMIN_CREDS.password;
+
+    if (!validUser || !validPass) {
+      attempts++;
+      const left = MAX_ATTEMPTS - attempts;
+      const msg  = left > 0
+        ? `Incorrect credentials. ${left} attempt${left === 1 ? '' : 's'} remaining.`
+        : 'Account locked — refresh the page to reset.';
+      showError(msg);
+      if (left <= 2 && left > 0) {
+        const w = document.getElementById('attemptWarn');
+        w.style.display = 'block';
+        w.textContent = `⚠ Warning: ${left} attempt${left === 1 ? '' : 's'} remaining before lockout.`;
+      }
+      return;
+    }
+
+    /* ── Success: write session and redirect ── */
+    localStorage.setItem('rjm_session', JSON.stringify({
+      email:   ADMIN_CREDS.email,
+      name:    ADMIN_CREDS.name,
+      role:    ADMIN_CREDS.role,
+      avatar:  ADMIN_CREDS.avatar,
+      loginAt: new Date().toISOString()
+    }));
+    showSuccess(`Welcome, ${ADMIN_CREDS.name}! Redirecting to Admin Panel…`);
+    setTimeout(() => window.location.href = 'admin.html', 1100);
+
+  }, 800);
+}
+
+/* Allow Enter key */
+['adminUser','adminPw'].forEach(id => {
+  document.getElementById(id).addEventListener('keydown', e => { if(e.key === 'Enter') doLogin(); });
+});
+
+/* ── PASSWORD TOGGLE ── */
+function togglePw() {
+  const inp = document.getElementById('adminPw');
+  const btn = document.querySelector('.pw-toggle');
+  if (inp.type === 'password') { inp.type = 'text'; btn.textContent = '🙈'; }
+  else { inp.type = 'password'; btn.textContent = '👁'; }
+}
+
+/* ── ALERTS ── */
+function showError(msg) {
+  clearAlerts();
+  document.getElementById('alertMsg').textContent = msg;
+  document.getElementById('alertBox').classList.add('show');
+}
+function showSuccess(msg) {
+  clearAlerts();
+  document.getElementById('successMsg').textContent = msg;
+  document.getElementById('successBox').classList.add('show');
+}
+function clearAlerts() {
+  document.getElementById('alertBox').classList.remove('show');
+  document.getElementById('successBox').classList.remove('show');
+}
+
+/* ── THEME (legacy; guarded — unified erjThemeJS governs theming) ── */
+function applyTheme(t) {
+  document.documentElement.setAttribute('data-theme', t);
+  var b=document.getElementById('themeBtn'); if(b) b.textContent = t === 'day' ? '🌙' : '☀️';
+  localStorage.setItem('rjt-theme', t);
+}
+(function(){ var b=document.getElementById('themeBtn'); if(b) b.addEventListener('click', () =>
+  applyTheme(document.documentElement.getAttribute('data-theme') === 'day' ? 'night' : 'day')
+); })();
+(function(){ var s=localStorage.getItem('rjt-theme'); if(s==='day'||s==='night') applyTheme(s); })();
+
+/* ── PARTICLES ── */
+(function() {
+  const c = document.getElementById('particles');
+  const ctx = c.getContext('2d');
+  let W, H;
+  const pts = [];
+  function resize() { W = c.width = innerWidth; H = c.height = innerHeight; }
+  resize(); window.addEventListener('resize', resize);
+  for (let i = 0; i < 35; i++) pts.push({
+    x:Math.random()*window.innerWidth, y:Math.random()*window.innerHeight,
+    r:Math.random()*1.2+.3, dx:(Math.random()-.5)*.22, dy:(Math.random()-.5)*.22, o:Math.random()*.3+.08
+  });
+  function draw() {
+    ctx.clearRect(0,0,W,H);
+    pts.forEach(p => {
+      p.x+=p.dx; p.y+=p.dy;
+      if(p.x<0)p.x=W; if(p.x>W)p.x=0; if(p.y<0)p.y=H; if(p.y>H)p.y=0;
+      ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      ctx.fillStyle=`rgba(239,68,68,${p.o})`; ctx.fill();
+    });
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+</script>
+<script id="erjPWA">
+(function(){
+  // Register service worker (enables offline + install criteria)
+  if('serviceWorker' in navigator){
+    window.addEventListener('load',function(){
+      navigator.serviceWorker.register('sw.js').then(function(reg){reg.update();}).catch(function(){});
+    });
+  }
+  // Capture install prompt
+  var deferred=null, btn=null;
+  function makeBtn(){
+    if(btn) return btn;
+    btn=document.createElement('button');
+    btn.id='erjInstallBtn';
+    btn.textContent='⤓ Install App';
+    btn.style.cssText='position:fixed;left:16px;bottom:16px;z-index:980;display:none;align-items:center;gap:7px;background:var(--accent-btn,#FF5722);color:#14110E;border:none;border-radius:10px;padding:9px 14px;font-weight:700;font-family:Inter,system-ui,sans-serif;font-size:.8rem;font-weight:600;cursor:pointer;box-shadow:0 4px 18px rgba(0,0,0,.18);';
+    btn.addEventListener('click',async function(){
+      if(!deferred) return;
+      deferred.prompt();
+      try{ await deferred.userChoice; }catch(e){}
+      deferred=null; btn.style.display='none';
+    });
+    document.body.appendChild(btn);
+    return btn;
+  }
+  window.addEventListener('beforeinstallprompt',function(e){
+    e.preventDefault(); deferred=e; makeBtn().style.display='inline-flex';
+  });
+  window.addEventListener('appinstalled',function(){ if(btn) btn.style.display='none'; deferred=null; });
+  // iOS Safari: no beforeinstallprompt — show a hint button that explains Add to Home Screen
+  var isIOS=/iphone|ipad|ipod/i.test(navigator.userAgent);
+  var standalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
+  if(isIOS && !standalone){
+    window.addEventListener('load',function(){
+      var b=makeBtn(); b.textContent='⤓ Add to Home Screen'; b.style.display='inline-flex';
+      b.addEventListener('click',function(){ alert('To install: tap the Share icon, then “Add to Home Screen”.'); });
+    });
+  }
+})();
+</script>
+<!-- ===== Unified Theme Control (Day / System / Night) — header based ===== -->
+<script id="erjThemeJS">
+(function(){
+  var KEY='rjt-theme', html=document.documentElement;
+  var ICON={day:'☀️',night:'🌙',system:'💻'};
+  var NEXT={day:'system',system:'night',night:'day'};   // cycle order
+  var TITLE={day:'Theme: Day (tap for System)',system:'Theme: System (tap for Night)',night:'Theme: Night (tap for Day)'};
+  function sys(){return window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'night':'day';}
+  function bar(resolved){
+    var m=document.getElementById('metaThemeColor')||document.querySelector('meta[name="theme-color"]:not([media])');
+    if(!m){m=document.createElement('meta');m.name='theme-color';m.id='metaThemeColor';document.head.appendChild(m);}
+    m.setAttribute('content', resolved==='night'?'#000000':'#FAFAF8');
+  }
+  function curPref(){ var p=localStorage.getItem(KEY); return ICON[p]?p:'system'; }
+  function apply(pref){
+    if(!ICON[pref]) pref='system';
+    var resolved = pref==='system'? sys() : pref;
+    html.setAttribute('data-theme', resolved);
+    localStorage.setItem(KEY, pref);
+    bar(resolved);
+    // update every in-header theme button on the page
+    document.querySelectorAll('[data-erj-theme-btn], #themeToggle, #themeBtn').forEach(function(btn){
+      btn.textContent = ICON[pref];
+      btn.setAttribute('title', TITLE[pref]);
+      btn.setAttribute('aria-label', TITLE[pref]);
+    });
+  }
+  window.erjApplyTheme=apply;
+  function wire(btn){
+    if(!btn || btn.__erjWired) return; btn.__erjWired=true;
+    // strip any legacy onclick and clone to drop old listeners
+    btn.removeAttribute('onclick');
+    var fresh=btn.cloneNode(true); btn.parentNode.replaceChild(fresh,btn);
+    fresh.addEventListener('click',function(e){ e.preventDefault(); e.stopPropagation(); apply(NEXT[curPref()]); });
+    fresh.style.cursor='pointer';
+  }
+  function wireAll(){ document.querySelectorAll('[data-erj-theme-btn], #themeToggle, #themeBtn').forEach(wire); }
+  if(window.matchMedia){window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change',function(){if(curPref()==='system')apply('system');});}
+  if(document.readyState!=='loading'){ wireAll(); apply(curPref()); }
+  else document.addEventListener('DOMContentLoaded',function(){ wireAll(); apply(curPref()); });
+  // re-apply after a tick in case header is injected late
+  setTimeout(function(){ wireAll(); apply(curPref()); }, 300);
+})();
+</script>
+<!-- ===== /Unified Theme Control ===== -->
+
+<script src="erj-nav.js" defer></script>
+</body>
+</html>

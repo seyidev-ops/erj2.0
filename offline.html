@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="night">
+<head>
+<meta charset="UTF-8">
+
+
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/png" sizes="64x64" href="favicon32.png" media="(prefers-color-scheme: light)">
+<link rel="icon" type="image/png" sizes="64x64" href="favicon32-dark.png" media="(prefers-color-scheme: dark)">
+<link rel="icon" type="image/png" sizes="64x64" href="favicon32.png">
+
+
+<link rel="apple-touch-icon" href="appletouchicon.png">
+<meta name="theme-color" content="#FAFAF8" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#000000" id="metaThemeColor">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Offline | ERJ Training</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;800&family=Inter:wght@300;400;500&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"></noscript>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{--paper:#000000;--ink:#FFFFFF;--ink-soft:#A1A1A1;--ink-faint:#858585;--accent:#FF5722;--line:rgba(255,255,255,0.10);}
+html[data-theme="day"]{--paper:#FAFAF8;--ink:#0A0A0A;--ink-soft:#52514C;--ink-faint:#6E6C65;--accent:#AD350A;--accent-btn:#FF5722;--accent-text:#AD350A;--line:rgba(10,10,10,0.12);}
+body{background:var(--paper);color:var(--ink);font-family:'Inter',system-ui,sans-serif;font-weight:300;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:2rem;-webkit-font-smoothing:antialiased;transition:background .4s ease,color .3s ease;}
+.wrap{max-width:420px;}
+.badge{display:inline-flex;align-items:center;gap:9px;font-size:0.7rem;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:2rem;}
+.badge .mark{width:20px;height:1px;background:var(--accent);}
+h1{font-family:'Space Grotesk',system-ui,sans-serif;font-size:2.4rem;font-weight:800;letter-spacing:-0.03em;margin-bottom:1rem;}
+p{color:var(--ink-soft);font-size:0.95rem;line-height:1.7;margin-bottom:2rem;}
+.btn{display:inline-flex;align-items:center;gap:9px;background:var(--accent);color:#fff;padding:0.9rem 2rem;border-radius:100px;text-decoration:none;font-weight:500;font-size:0.9rem;border:1px solid var(--accent);transition:all 0.3s cubic-bezier(0.22,1,0.36,1);}
+.btn:hover{filter:brightness(1.08);transform:translateY(-2px);}
+.hint{margin-top:1.5rem;font-size:0.78rem;color:var(--ink-faint);}
+</style>
+<meta property="og:image" content="https://everythingremotejob.com/preview-portal.jpg" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Everything Remote Job" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://everythingremotejob.com/preview-portal.jpg" />
+<style id="erjHideLegacy">#themeDropdown,.theme-drop,.theme-drop-menu,#themeMenu,#erjTheme{display:none !important;}</style>
+  <meta name="robots" content="noindex,nofollow">
+</head>
+<body>
+<div id="erjNavMount"></div>
+<script>window.ERJ_NAV={active:'home'};</script>
+<div class="wrap">
+  <div class="badge"><span class="mark"></span> No Connection</div>
+  <h1>You're offline</h1>
+  <p>It looks like you've lost your internet connection. Your progress and downloaded materials are still available.</p>
+  <a href="/dashboard.html" class="btn">&larr; Back to Dashboard</a>
+  <p class="hint">Once you're back online, the app will sync automatically.</p>
+</div>
+<script>
+(function(){var s=localStorage.getItem('rjt-theme');if(s&&s!=='system')document.documentElement.setAttribute('data-theme',s==='night'?'night':'day');else if(s==='system')document.documentElement.setAttribute('data-theme',window.matchMedia('(prefers-color-scheme: light)').matches?'day':'night');else document.documentElement.setAttribute('data-theme','night');})();
+</script>
+<script id="erjPWA">
+(function(){
+  // Register service worker (enables offline + install criteria)
+  if('serviceWorker' in navigator){
+    window.addEventListener('load',function(){
+      navigator.serviceWorker.register('sw.js').then(function(reg){reg.update();}).catch(function(){});
+    });
+  }
+  // Capture install prompt
+  var deferred=null, btn=null;
+  function makeBtn(){
+    if(btn) return btn;
+    btn=document.createElement('button');
+    btn.id='erjInstallBtn';
+    btn.textContent='⤓ Install App';
+    btn.style.cssText='position:fixed;left:16px;bottom:16px;z-index:980;display:none;align-items:center;gap:7px;background:var(--accent-btn,#FF5722);color:#14110E;border:none;border-radius:10px;padding:9px 14px;font-weight:700;font-family:Inter,system-ui,sans-serif;font-size:.8rem;font-weight:600;cursor:pointer;box-shadow:0 4px 18px rgba(0,0,0,.18);';
+    btn.addEventListener('click',async function(){
+      if(!deferred) return;
+      deferred.prompt();
+      try{ await deferred.userChoice; }catch(e){}
+      deferred=null; btn.style.display='none';
+    });
+    document.body.appendChild(btn);
+    return btn;
+  }
+  window.addEventListener('beforeinstallprompt',function(e){
+    e.preventDefault(); deferred=e; makeBtn().style.display='inline-flex';
+  });
+  window.addEventListener('appinstalled',function(){ if(btn) btn.style.display='none'; deferred=null; });
+  // iOS Safari: no beforeinstallprompt — show a hint button that explains Add to Home Screen
+  var isIOS=/iphone|ipad|ipod/i.test(navigator.userAgent);
+  var standalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
+  if(isIOS && !standalone){
+    window.addEventListener('load',function(){
+      var b=makeBtn(); b.textContent='⤓ Add to Home Screen'; b.style.display='inline-flex';
+      b.addEventListener('click',function(){ alert('To install: tap the Share icon, then “Add to Home Screen”.'); });
+    });
+  }
+})();
+</script>
+<!-- ===== Unified Theme Control (Day / System / Night) — header based ===== -->
+<script id="erjThemeJS">
+(function(){
+  var KEY='rjt-theme', html=document.documentElement;
+  var ICON={day:'☀️',night:'🌙',system:'💻'};
+  var NEXT={day:'system',system:'night',night:'day'};   // cycle order
+  var TITLE={day:'Theme: Day (tap for System)',system:'Theme: System (tap for Night)',night:'Theme: Night (tap for Day)'};
+  function sys(){return window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'night':'day';}
+  function bar(resolved){
+    var m=document.getElementById('metaThemeColor')||document.querySelector('meta[name="theme-color"]:not([media])');
+    if(!m){m=document.createElement('meta');m.name='theme-color';m.id='metaThemeColor';document.head.appendChild(m);}
+    m.setAttribute('content', resolved==='night'?'#000000':'#FAFAF8');
+  }
+  function curPref(){ var p=localStorage.getItem(KEY); return ICON[p]?p:'night'; }
+  function apply(pref){
+    if(!ICON[pref]) pref='system';
+    var resolved = pref==='system'? sys() : pref;
+    html.setAttribute('data-theme', resolved);
+    localStorage.setItem(KEY, pref);
+    bar(resolved);
+    // update every in-header theme button on the page
+    document.querySelectorAll('[data-erj-theme-btn], #themeToggle, #themeBtn').forEach(function(btn){
+      btn.textContent = ICON[pref];
+      btn.setAttribute('title', TITLE[pref]);
+      btn.setAttribute('aria-label', TITLE[pref]);
+    });
+  }
+  window.erjApplyTheme=apply;
+  function wire(btn){
+    if(!btn || btn.__erjWired) return; btn.__erjWired=true;
+    // strip any legacy onclick and clone to drop old listeners
+    btn.removeAttribute('onclick');
+    var fresh=btn.cloneNode(true); btn.parentNode.replaceChild(fresh,btn);
+    fresh.addEventListener('click',function(e){ e.preventDefault(); e.stopPropagation(); apply(NEXT[curPref()]); });
+    fresh.style.cursor='pointer';
+  }
+  function wireAll(){ document.querySelectorAll('[data-erj-theme-btn], #themeToggle, #themeBtn').forEach(wire); }
+  if(window.matchMedia){window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change',function(){if(curPref()==='system')apply('system');});}
+  if(document.readyState!=='loading'){ wireAll(); apply(curPref()); }
+  else document.addEventListener('DOMContentLoaded',function(){ wireAll(); apply(curPref()); });
+  // re-apply after a tick in case header is injected late
+  setTimeout(function(){ wireAll(); apply(curPref()); }, 300);
+})();
+</script>
+<!-- ===== /Unified Theme Control ===== -->
+
+<script src="erj-nav.js" defer></script>
+</body>
+</html>

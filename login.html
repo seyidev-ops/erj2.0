@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="night">
+<head>
+<link rel="manifest" href="manifest.json">
+<meta charset="UTF-8">
+
+<link rel="icon" type="image/png" sizes="64x64" href="favicon32.png" media="(prefers-color-scheme: light)">
+<link rel="icon" type="image/png" sizes="64x64" href="favicon32-dark.png" media="(prefers-color-scheme: dark)">
+<link rel="icon" type="image/png" sizes="64x64" href="favicon32.png">
+
+
+<link rel="apple-touch-icon" href="appletouchicon.png">
+<meta name="theme-color" content="#000000" id="metaThemeColor">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Participant Login | Everything Remote Job</title>
+<meta name="description" content="Log in to your Everything Remote Job participant portal.">
+
+
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root{
+  /* RocketAir · NIGHT (default) — pure black */
+  --bg:#000000; --bg2:#0d0d0d; --bg3:#111111; --bg4:#0a0a0a;
+  --paper:#000000; --card:#0d0d0d; --sidebar:#000000; --input-bg:#111111;
+  --ink:#FFFFFF; --text:#FFFFFF; --txt:#FFFFFF; --t:#FFFFFF;
+  --ink-soft:#A1A1A1; --muted:#A1A1A1; --ink-faint:#858585; --muted2:#858585;
+  --accent:#FF5722; --accent-h:#ff6f43; --accent2:#FF5722; --electric:#FF5722;
+  --border:rgba(255,255,255,0.10); --border2:rgba(255,255,255,0.055);
+  --nav-bg:rgba(0,0,0,0.85); --nav:rgba(0,0,0,0.85);
+  --green:#3FB950; --amber:#FF5722; --red:#F85149; --teal:#39C5BB; --purple:#A371F7;
+  --glow:transparent; --fb:#FFFFFF; --fd:#FFFFFF;
+  --shadow:0 1px 0 rgba(0,0,0,0.5); --shadow-lg:0 8px 60px rgba(0,0,0,0.8);
+  --sh:0 1px 0 rgba(0,0,0,0.5); --sh2:0 8px 60px rgba(0,0,0,0.8); --sab:#000000;
+  --font-display:'Space Grotesk',system-ui,sans-serif; --font-body:'Inter',system-ui,sans-serif;
+  --font-d:'Space Grotesk',system-ui,sans-serif; --font-b:'Inter',system-ui,sans-serif;
+  --radius:16px; --r:16px; --transition:all 0.3s ease; --tr:all 0.3s ease;
+}
+html[data-theme="day"]{
+  /* RocketAir · DAY — clean light counterpart */
+  --bg:#FAFAF8; --bg2:#FFFFFF; --bg3:#F2F1ED; --bg4:#F2F1ED;
+  --paper:#FAFAF8; --card:#FFFFFF; --sidebar:#FFFFFF; --input-bg:#FFFFFF;
+  --ink:#0A0A0A; --text:#0A0A0A; --txt:#0A0A0A; --t:#0A0A0A;
+  --ink-soft:#52514C; --muted:#52514C; --ink-faint:#6E6C65; --muted2:#6E6C65;
+  --accent:#AD350A;--accent-btn:#FF5722;--accent-text:#AD350A; --accent-h:#C53A0B; --accent2:#FF5722; --electric:#E8470F;
+  --border:rgba(10,10,10,0.12); --border2:rgba(10,10,10,0.06);
+  --nav-bg:rgba(250,250,248,0.9); --nav:rgba(250,250,248,0.9);
+  --glow:transparent; --fb:#0A0A0A; --fd:#0A0A0A;
+  --shadow:0 1px 0 rgba(10,10,10,0.06); --shadow-lg:0 12px 50px rgba(10,10,10,0.10);
+  --sh:0 1px 0 rgba(10,10,10,0.06); --sh2:0 12px 50px rgba(10,10,10,0.10); --sab:#FFFFFF;
+}
+html[data-theme="night"]{
+  --bg:#000000; --bg2:#0d0d0d; --bg3:#111111; --bg4:#0a0a0a;
+  --paper:#000000; --card:#0d0d0d; --sidebar:#000000; --input-bg:#111111;
+  --ink:#FFFFFF; --text:#FFFFFF; --txt:#FFFFFF; --t:#FFFFFF;
+  --ink-soft:#A1A1A1; --muted:#A1A1A1; --ink-faint:#858585; --muted2:#858585;
+  --accent:#FF5722; --accent-h:#ff6f43; --accent2:#FF5722; --electric:#FF5722;
+  --border:rgba(255,255,255,0.10); --border2:rgba(255,255,255,0.055);
+  --nav-bg:rgba(0,0,0,0.85); --nav:rgba(0,0,0,0.85);
+  --green:#3FB950; --amber:#FF5722; --red:#F85149; --teal:#39C5BB; --purple:#A371F7;
+  --glow:transparent; --fb:#FFFFFF; --fd:#FFFFFF;
+  --shadow:0 1px 0 rgba(0,0,0,0.5); --shadow-lg:0 8px 60px rgba(0,0,0,0.8);
+  --sh:0 1px 0 rgba(0,0,0,0.5); --sh2:0 8px 60px rgba(0,0,0,0.8); --sab:#000000;
+}
+
+
+
+
+
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  min-height: 100vh;
+  display: flex; align-items: center; justify-content: center;
+  overflow-x: hidden;
+  transition: var(--transition);
+  position: relative;
+}
+
+/* Background */
+#particles { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
+.radial-glow {
+  position: fixed; top: -200px; left: 50%; transform: translateX(-50%);
+  width: 900px; height: 700px;
+  background: radial-gradient(ellipse at center, var(--glow) 0%, transparent 70%);
+  pointer-events: none; z-index: 0;
+  animation: glowPulse 4s ease-in-out infinite;
+}
+@keyframes glowPulse { 0%,100%{opacity:.7;transform:translateX(-50%) scale(1)} 50%{opacity:1;transform:translateX(-50%) scale(1.08)} }
+.grid-overlay {
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background-image: linear-gradient(rgba(255,87,34,0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,87,34,0.035) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* Layout */
+.page-wrap {
+  position: relative; z-index: 10;
+  width: 100%; max-width: 480px;
+  margin: 0 auto; padding: 2rem 1.5rem;
+  display: flex; flex-direction: column; align-items: center;
+}
+
+/* Brand header */
+.brand-header {
+  text-align: center; margin-bottom: 2.5rem;
+  animation: fadeDown 0.7s ease both;
+}
+.brand-logo {
+  display: inline-flex; align-items: center; gap: 10px;
+  text-decoration: none; margin-bottom: 0.5rem;
+}
+.brand-icon {
+  width: 46px; height: 46px; border-radius:4px;
+  background: var(--accent);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display); font-weight: 800; font-size: 1rem; color: #fff;
+  box-shadow: 0 4px 20px rgba(255,87,34,0.4);
+}
+.brand-name {
+  font-family: var(--font-display); font-weight: 800; font-size: 1.1rem;
+  color: var(--text); letter-spacing: -0.5px;
+}
+.brand-name span { color: var(--electric); }
+.brand-tagline { font-size: 0.82rem; color: var(--muted); margin-top: 0.3rem; }
+
+/* Card */
+.auth-card {
+  width: 100%; background: var(--card);
+  border: 1px solid var(--border);
+  border-radius:6px;
+  padding: 2.8rem 2.5rem;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(24px);
+  animation: fadeUp 0.8s ease 0.1s both;
+  position: relative; overflow: hidden;
+}
+.auth-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,87,34,0.6), rgba(255,87,34,0.8), rgba(255,87,34,0.6), transparent);
+}
+
+/* Tabs */
+.auth-tabs {
+  display: flex; gap: 0; margin-bottom: 2rem;
+  background: var(--input-bg); border-radius: 10px; padding: 4px;
+  border: 1px solid var(--border);
+}
+.tab-btn {
+  flex: 1; padding: 0.6rem; border: none; background: none;
+  cursor: pointer; border-radius: 7px;
+  font-family: var(--font-body); font-size: 0.88rem; font-weight: 600;
+  color: var(--muted); transition: var(--transition);
+}
+.tab-btn.active {
+  background: var(--accent); color: #fff; font-size:1.18rem; font-weight:700;
+  box-shadow: 0 2px 12px rgba(255,87,34,0.35);
+}
+
+/* Form heading */
+.form-title {
+  font-family: var(--font-display); font-size: 1.45rem; font-weight: 800;
+  letter-spacing: -0.5px; margin-bottom: 0.4rem; color: var(--text);
+}
+.form-sub { font-size: 0.85rem; color: var(--muted); margin-bottom: 2rem; }
+
+/* Form fields */
+.field { margin-bottom: 1.2rem; }
+.field label {
+  display: block; font-size: 0.8rem; font-weight: 600;
+  color: var(--muted); margin-bottom: 0.5rem; letter-spacing: 0.3px;
+}
+.field input, .field select {
+  width: 100%; padding: 0.85rem 1rem;
+  background: var(--input-bg); border: 1.5px solid var(--border);
+  border-radius: 10px; color: var(--text);
+  font-family: var(--font-body); font-size: 0.95rem;
+  outline: none; transition: var(--transition);
+  appearance: none; -webkit-appearance: none;
+}
+.field input:focus, .field select:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(255,87,34,0.15);
+  background: var(--bg3);
+}
+.field input::placeholder { color: var(--muted); opacity: 0.6; }
+
+/* Password wrapper */
+.pw-wrap { position: relative; }
+.pw-wrap input { padding-right: 3rem; }
+.pw-toggle {
+  position: absolute; right: 0.9rem; top: 50%; transform: translateY(-50%);
+  background: none; border: none; cursor: pointer; color: var(--muted);
+  font-size: 1.1rem; transition: color 0.2s; padding: 4px;
+}
+.pw-toggle:hover { color: var(--electric); }
+
+/* Row layout */
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+/* Checkbox */
+.field-check {
+  display: flex; align-items: center; gap: 0.6rem;
+  margin-bottom: 1.5rem;
+}
+.field-check input[type="checkbox"] {
+  width: 18px; height: 18px; flex-shrink: 0; accent-color: var(--accent);
+}
+.field-check label { font-size: 0.82rem; color: var(--muted); cursor: pointer; }
+.field-check label a { color: var(--electric); text-decoration: none; }
+.field-check label a:hover { text-decoration: underline; }
+
+/* Forgot */
+.forgot-row {
+  display: flex; justify-content: flex-end; margin-top: -0.8rem; margin-bottom: 1.2rem;
+}
+.forgot-link { font-size: 0.8rem; color: var(--electric); text-decoration: none; transition: opacity 0.2s; }
+.forgot-link:hover { opacity: 0.8; text-decoration: underline; }
+
+/* Role selector */
+.role-selector { margin-bottom: 1.5rem; }
+.role-selector label {
+  display: block; font-size: 0.8rem; font-weight: 600;
+  color: var(--muted); margin-bottom: 0.6rem;
+}
+.role-options { display: grid; grid-template-columns: repeat(3,1fr); gap: 0.6rem; }
+.role-option { position: relative; }
+.role-option input[type="radio"] { position: absolute; opacity: 0; pointer-events: none; }
+.role-label {
+  display: flex; flex-direction: column; align-items: center; gap: 4px;
+  padding: 0.8rem 0.5rem; border-radius: 10px;
+  border: 1.5px solid var(--border); background: var(--input-bg);
+  cursor: pointer; transition: var(--transition); text-align: center;
+}
+.role-label .role-icon { font-size: 1.4rem; }
+.role-label .role-name { font-size: 0.72rem; font-weight: 700; color: var(--muted); letter-spacing: 0.3px; }
+.role-option input[type="radio"]:checked + .role-label {
+  border-color: var(--accent); background: rgba(255,87,34,0.1);
+  box-shadow: 0 0 0 3px rgba(255,87,34,0.15);
+}
+.role-option input[type="radio"]:checked + .role-label .role-name { color: var(--electric); }
+
+/* Primary button */
+.btn-primary {
+  width: 100%; padding: 0.95rem;
+  background: var(--accent); color: #fff; border: none;
+  border-radius: 10px; cursor: pointer;
+  font-family: var(--font-display); font-size: 1rem; font-weight: 700;
+  letter-spacing: -0.3px; transition: var(--transition);
+  box-shadow: 0 4px 20px rgba(255,87,34,0.4);
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  position: relative; overflow: hidden;
+}
+.btn-primary::before {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, transparent 60%);
+  opacity: 0; transition: opacity 0.25s;
+}
+.btn-primary:hover { background: var(--accent-h); transform: translateY(-2px); box-shadow: 0 8px 32px rgba(255,87,34,0.55); }
+.btn-primary:hover::before { opacity: 1; }
+.btn-primary:active { transform: translateY(0); }
+.btn-primary.loading { pointer-events: none; opacity: 0.7; }
+
+/* Loading spinner */
+.spinner {
+  width: 18px; height: 18px; border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.3);
+  border-top-color: #fff;
+  animation: spin 0.7s linear infinite;
+  display: none;
+}
+.btn-primary.loading .spinner { display: block; }
+.btn-primary.loading .btn-text { display: none; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Divider */
+.or-divider {
+  display: flex; align-items: center; gap: 1rem;
+  margin: 1.5rem 0; color: var(--muted); font-size: 0.8rem;
+}
+.or-divider::before, .or-divider::after {
+  content: ''; flex: 1; height: 1px;
+  background: var(--border);
+}
+
+/* Google button */
+.btn-google {
+  width: 100%; padding: 0.9rem;
+  background: var(--input-bg); color: var(--text);
+  border: 1.5px solid var(--border); border-radius: 10px;
+  cursor: pointer; font-family: var(--font-body);
+  font-size: 0.92rem; font-weight: 600; transition: var(--transition);
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+}
+.btn-google:hover { border-color: rgba(255,87,34,0.4); background: var(--bg3); transform: translateY(-1px); }
+.google-logo { width: 20px; height: 20px; flex-shrink: 0; }
+
+/* Auth footer */
+.auth-footer {
+  text-align: center; margin-top: 1.8rem;
+  font-size: 0.84rem; color: var(--muted);
+}
+.auth-footer a { color: var(--electric); text-decoration: none; font-weight: 600; }
+.auth-footer a:hover { text-decoration: underline; }
+
+/* Alert */
+.alert {
+  padding: 0.85rem 1.1rem; border-radius: 10px; margin-bottom: 1.2rem;
+  font-size: 0.85rem; font-weight: 500; display: none;
+  align-items: center; gap: 8px; border: 1px solid;
+}
+.alert.show { display: flex; animation: fadeUp 0.3s ease; }
+.alert-error { background: rgba(220,38,38,0.1); border-color: rgba(220,38,38,0.3); color: #f87171; }
+.alert-success { background: rgba(16,185,129,0.1); border-color: rgba(16,185,129,0.3); color: #34d399; }
+
+
+/* Nav bar */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  background: rgba(5,9,26,0.92); backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 4%; height: 60px;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: .5rem;
+}
+html[data-theme="day"] .nav { background: rgba(243,240,234,0.92); }
+
+/* Brand — full text on desktop, icon+short on mobile */
+.nav-brand {
+  font-family: var(--font-display); font-weight: 800; font-size: 1rem;
+  color: var(--text); text-decoration: none; letter-spacing: -0.5px;
+  display: inline-flex; align-items: center; gap: 8px;
+  flex-shrink: 1; min-width: 0; overflow: hidden;
+}
+.nav-brand span { color: var(--electric); font-style: italic; font-weight:800; margin-left:-0.08em; }
+.nav-brand-text { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.nav-brand-short { display: none; font-size: .95rem; }
+
+/* Right side buttons */
+.nav-right-group {
+  display: flex; align-items: center; gap: .5rem; flex-shrink: 0;
+}
+.nav-back {
+  font-size: 0.78rem; color: var(--muted); text-decoration: none;
+  display: flex; align-items: center; gap: 5px; transition: color 0.2s;
+  white-space: nowrap;
+}
+.nav-back:hover { color: var(--electric); }
+/* Hide the text label on very small screens, keep the icon */
+.nav-back-label { display: inline; }
+
+/* Theme toggle */
+.nav-theme-btn {
+  width: 34px; height: 34px; border-radius: 8px;
+  border: 1px solid var(--border); background: rgba(13,21,53,0.6);
+  cursor: pointer; color: var(--muted);
+  display: flex; align-items: center; justify-content: center;
+  font-size: .95rem; transition: var(--transition); flex-shrink: 0;
+}
+.nav-theme-btn:hover { color: var(--electric); }
+html[data-theme="day"] .nav-theme-btn { background: rgba(232,227,218,0.6); }
+
+/* Mobile breakpoints */
+@media (max-width: 480px) {
+  .nav { padding: 0 3.5%; }
+  /* Collapse brand to icon + short name */
+  .nav-brand-text { display: none; }
+  .nav-brand-short { display: inline; }
+  /* Shorten link labels */
+  .nav-back-label { display: none; }
+}
+@media (max-width: 360px) {
+  .nav-right-group { gap: .3rem; }
+  .nav-theme-btn { width: 30px; height: 30px; font-size: .8rem; }
+}
+
+/* Animations */
+@keyframes fadeDown { from{opacity:0;transform:translateY(-16px)} to{opacity:1;transform:translateY(0)} }
+@keyframes fadeUp   { from{opacity:0;transform:translateY(16px)}  to{opacity:1;transform:translateY(0)} }
+
+/* Page padding for nav */
+.page-wrap { padding-top: 1.5rem; padding-bottom: 2rem; }
+
+/* WA float */
+.wa-float {
+  position: fixed; bottom: 28px; right: 28px; z-index: 999;
+  width: 52px; height: 52px; border-radius: 50%;
+  background: #25D366; display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 20px rgba(26,24,20,0.4); transition: var(--transition); text-decoration: none;
+}
+.wa-float:hover { transform: scale(1.1); }
+.wa-float svg { width: 26px; height: 26px; fill: #fff; }
+
+/* Responsive */
+@media(max-width:500px) {
+  .auth-card { padding: 2rem 1.5rem; }
+  .field-row { grid-template-columns: 1fr; }
+  .role-options { grid-template-columns: repeat(3,1fr); }
+}
+
+/* ── Cohort 9 minimalist overrides ── */
+#particles,.radial-glow,.grid-overlay{display:none!important}
+*{text-shadow:none!important}
+h1 strong,h1 em{ -webkit-text-fill-color:currentColor!important;background:none!important;color:var(--accent)!important;}
+.btn-register::before,.btn-primary::before,.timer-wrap::before,.auth-card::before{display:none!important}
+.btn-register,.btn-primary{box-shadow:none!important;border-radius:2px!important;font-family:'DM Sans',system-ui,sans-serif!important;font-weight:500!important;letter-spacing:0.3px!important;}
+.btn-register:hover,.btn-primary:hover{box-shadow:none!important;}
+.auth-card,.timer-wrap,.card,.stage-card,.lesson-card{backdrop-filter:none!important;}
+.wa-float{background:var(--text)!important;box-shadow:none!important;border-radius:50%!important;}
+.wa-float svg{fill:var(--bg)!important;}
+.wa-float:hover{box-shadow:none!important;}
+</style>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;800&family=Inter:wght@300;400;500&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"></noscript>
+<meta property="og:image" content="https://everythingremotejob.com/preview-login.jpg" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Everything Remote Job" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://everythingremotejob.com/preview-login.jpg" />
+<style id="erjHideLegacy">#themeDropdown,.theme-drop,.theme-drop-menu,#themeMenu,#erjTheme{display:none !important;}</style>
+  <meta name="robots" content="noindex,nofollow,noarchive,nosnippet,noimageindex">
+<meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+</head>
+<body>
+
+<canvas id="particles"></canvas>
+<div class="radial-glow"></div>
+<div class="grid-overlay"></div>
+
+<!-- Nav -->
+<div id="erjNavMount"></div>
+<script>window.ERJ_NAV={active:'login'};</script>
+
+<div class="page-wrap">
+
+  <!-- Brand header -->
+  <div class="brand-header">
+    <p class="brand-tagline">Your gateway to global remote employment</p>
+  </div>
+
+  <!-- Auth card -->
+  <div class="auth-card" id="authCard">
+
+    <!-- Tabs -->
+    <div class="auth-tabs">
+      <button class="tab-btn active" id="tabLogin" onclick="switchTab('login')">Sign In</button>
+      <button class="tab-btn" id="tabRegister" onclick="switchTab('register')">Register</button>
+    </div>
+
+    <!-- Alert -->
+    <div class="alert alert-error" id="alertBox">
+      <span>⚠</span> <span id="alertMsg"></span>
+    </div>
+    <div class="alert alert-success" id="successBox">
+      <span>✓</span> <span id="successMsg"></span>
+    </div>
+
+    <!-- ── LOGIN FORM ── -->
+    <div id="loginForm">
+      <h2 class="form-title" style="text-align:center">Welcome Back</h2>
+      <p class="form-sub" style="text-align:center">Continue your remote job mastery journey.</p>
+
+      <div class="field">
+        <label for="loginEmail">Username or Email</label>
+        <input type="text" id="loginEmail" placeholder="Username or email address" autocomplete="username">
+      </div>
+      <div class="field">
+        <label for="loginPw">Password</label>
+        <div class="pw-wrap">
+          <input type="password" id="loginPw" placeholder="••••••••" autocomplete="current-password">
+          <button class="pw-toggle" type="button" onclick="togglePw('loginPw',this)" title="Show/hide password">👁</button>
+        </div>
+      </div>
+      <div class="forgot-row">
+        <a href="#" class="forgot-link" onclick="showForgot(event)">Forgot password?</a>
+      </div>
+      <button class="btn-primary" id="loginBtn" onclick="handleLogin()">
+        <span class="btn-text">🔐 Sign In to Dashboard</span>
+        <span class="spinner"></span>
+      </button>
+
+      <div class="or-divider">or continue with</div>
+
+      <button class="btn-google" onclick="handleGoogleLogin()">
+        <svg class="google-logo" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+          <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+          <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+          <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+        </svg>
+        Continue with Google
+      </button>
+
+      <div class="auth-footer">
+        Don't have an account? <a href="#" onclick="switchTab('register');return false">Register now</a> ·
+        <a href="index.html">Back to site</a>
+      </div>
+      <div style="text-align:center;margin-top:.9rem;padding-top:.9rem;border-top:1px solid var(--border2);">
+        <a href="admin-login.html" style="font-size:.76rem;color:var(--muted);text-decoration:none;display:inline-flex;align-items:center;gap:5px;transition:color .2s;" onmouseover="this.style.color='var(--electric)'" onmouseout="this.style.color='var(--muted)'">🛡️ Admin Portal Login</a>
+      </div>
+    </div>
+
+    <!-- ── REGISTER FORM ── -->
+    <div id="registerForm" style="display:none">
+      <h2 class="form-title">Create Account</h2>
+      <p class="form-sub">Join 446+ professionals trained through ERJ. Create your free account.</p>
+
+      <div class="field-row">
+        <div class="field">
+          <label for="regFirst">First Name</label>
+          <input type="text" id="regFirst" placeholder="John" autocomplete="given-name">
+        </div>
+        <div class="field">
+          <label for="regLast">Last Name</label>
+          <input type="text" id="regLast" placeholder="Doe" autocomplete="family-name">
+        </div>
+      </div>
+      <div class="field">
+        <label for="regEmail">Email Address</label>
+        <input type="email" id="regEmail" placeholder="your@email.com" autocomplete="email">
+      </div>
+      <div class="field">
+        <label for="regPhone">WhatsApp Number</label>
+        <input type="tel" id="regPhone" placeholder="Your WhatsApp number" autocomplete="tel">
+      </div>
+      <div class="field">
+        <label for="regPw">Password</label>
+        <div class="pw-wrap">
+          <input type="password" id="regPw" placeholder="Min 8 characters" autocomplete="new-password">
+          <button class="pw-toggle" type="button" onclick="togglePw('regPw',this)" title="Show/hide">👁</button>
+        </div>
+      </div>
+
+      <!-- Role: Student only — Instructor/Admin are staff-assigned -->
+      <div style="background:rgba(255,87,34,0.06);border:1px solid rgba(255,87,34,0.15);border-radius:10px;padding:.8rem 1.1rem;margin-bottom:1.5rem;font-size:.8rem;color:var(--muted)">
+        🎓 All public registrations are enrolled as <strong style="color:var(--electric)">Participants</strong>. Instructor and Admin roles are assigned internally by the team.
+      </div>
+
+      <div class="field-check">
+        <input type="checkbox" id="regTerms">
+        <label for="regTerms">I agree to the <a href="terms.html" target="_blank" rel="noopener">Terms of Use</a> and <a href="privacy.html" target="_blank" rel="noopener">Privacy Policy</a></label>
+      </div>
+
+      <button class="btn-primary" id="registerBtn" onclick="handleRegister()">
+        <span class="btn-text">🚀 Create My Account</span>
+        <span class="spinner"></span>
+      </button>
+
+      <div class="or-divider">or continue with</div>
+
+      <button class="btn-google" onclick="handleGoogleLogin()">
+        <svg class="google-logo" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+          <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+          <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+          <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+        </svg>
+        Sign up with Google
+      </button>
+
+      <div class="auth-footer">
+        Already have an account? <a href="#" onclick="switchTab('login');return false">Sign in</a>
+      </div>
+    </div>
+
+  </div><!-- /auth-card -->
+
+  <!-- Footer -->
+  <p style="margin-top:2rem; text-align:center; font-size:0.75rem; color:var(--muted)">
+    © 2026 Everything Remote Job. Built for <span style="color:var(--accent)">global career scale.</span>
+  </p>
+
+</div>
+
+<!-- WhatsApp Float -->
+<a href="https://wa.me/2348032925957" class="wa-float" title="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+<script>
+
+function getUsers() {
+  try { return JSON.parse(localStorage.getItem('rjm_users') || '[]'); } catch { return []; }
+}
+function saveUsers(u) { localStorage.setItem('rjm_users', JSON.stringify(u)); }
+
+/* ── INIT: force-seed admin, wipe all demo/stale entries ── */
+(function seedAdmin() {
+  const WIPE_EMAILS    = ['student@rjm.com','admin@rjm.com','instructor@rjm.com','participant@rjm.com','google.user@gmail.com'];
+  const WIPE_USERNAMES = ['Admin','admin'];
+  const ADMIN = {
+    username: 'Admin',
+    email:    'admin@erjm.com',
+    password: '1711@Admin',
+    role:     'admin',
+    name:     'Oluwaseyi Ashiru',
+    avatar:   'OA',
+    joinDate: '2026-01-01T00:00:00.000Z'
+  };
+  /* ── Permanent seeded participant account(s) ──
+     These always exist regardless of cache clears, just like the admin.
+     Add more objects here to pre-provision other students. */
+  const SEED_USERS = [
+    {
+      email:    'lordseyii@gmail.com',
+      password: '1711@Seyi',
+      role:     'student',
+      name:     'Oluwaseyi Ashiru',
+      avatar:   'OA',
+      joinDate: '2026-01-01T00:00:00.000Z'
+    }
+  ];
+  // Always strip old/stale admin + demo accounts, then insert fresh admin first
+  let clean = getUsers().filter(u =>
+    !WIPE_EMAILS.includes(u.email) &&
+    !WIPE_USERNAMES.includes(u.username)
+  );
+  // Refresh any seeded accounts to their canonical values (so a stale/edited
+  // copy in localStorage can't lock them out), preserving genuine user records.
+  const seedEmails = new Set(SEED_USERS.map(s => s.email.toLowerCase()));
+  clean = clean.filter(u => !(u.email && seedEmails.has(u.email.toLowerCase())));
+  saveUsers([ADMIN, ...SEED_USERS, ...clean]);
+})();
+
+/* ── TAB SWITCH ── */
+function switchTab(tab) {
+  hideAlerts();
+  document.getElementById('loginForm').style.display    = tab === 'login'    ? '' : 'none';
+  document.getElementById('registerForm').style.display = tab === 'register' ? '' : 'none';
+  document.getElementById('tabLogin').classList.toggle('active', tab === 'login');
+  document.getElementById('tabRegister').classList.toggle('active', tab === 'register');
+}
+
+/* ── ALERTS ── */
+function showError(msg) {
+  hideAlerts();
+  const b = document.getElementById('alertBox');
+  document.getElementById('alertMsg').textContent = msg;
+  b.classList.add('show');
+}
+function showSuccess(msg) {
+  hideAlerts();
+  const b = document.getElementById('successBox');
+  document.getElementById('successMsg').textContent = msg;
+  b.classList.add('show');
+}
+function hideAlerts() {
+  document.getElementById('alertBox').classList.remove('show');
+  document.getElementById('successBox').classList.remove('show');
+}
+
+/* ── PASSWORD TOGGLE ── */
+function togglePw(id, btn) {
+  const inp = document.getElementById(id);
+  if (inp.type === 'password') { inp.type = 'text'; btn.textContent = '🙈'; }
+  else { inp.type = 'password'; btn.textContent = '👁'; }
+}
+
+
+/* ── LOGIN ── */
+function handleLogin() {
+  hideAlerts();
+  const identifier = document.getElementById('loginEmail').value.trim();
+  const pw         = document.getElementById('loginPw').value;
+  if (!identifier || !pw) { showError('Please enter your username/email and password.'); return; }
+
+  const btn = document.getElementById('loginBtn');
+  btn.classList.add('loading');
+
+  setTimeout(() => {
+    btn.classList.remove('loading');
+
+    const id = identifier.toLowerCase().trim();
+    const pwTrimmed = pw.trim();
+
+    /* ── Hardcoded admin check (never relies on localStorage) ── */
+    const isAdminUser = id === 'admin' || id === 'admin@erjm.com';
+    if (isAdminUser) {
+      if (pwTrimmed === '1711@Admin') {
+        localStorage.setItem('rjm_session', JSON.stringify({
+          email: 'admin@erjm.com', name: 'Oluwaseyi Ashiru',
+          role: 'admin', avatar: 'OA', loginAt: new Date().toISOString()
+        }));
+        showSuccess('Welcome, Oluwaseyi Ashiru! Redirecting…');
+        setTimeout(() => window.location.href = 'admin.html', 1100);
+      } else {
+        showError('Incorrect password for admin account.');
+      }
+      return;
+    }
+
+    /* ── Regular participant/instructor lookup via localStorage ── */
+    const users = getUsers();
+    const user  = users.find(u =>
+      (u.email    && u.email.toLowerCase().trim()    === id) ||
+      (u.username && u.username.toLowerCase().trim() === id)
+    );
+    if (!user) {
+      showError('No account found with that email or username. Please register first.'); return;
+    }
+    // Compare trimmed passwords to avoid whitespace issues
+    if (user.password.trim() !== pwTrimmed && user.password !== pw) {
+      showError('Incorrect password. Please try again.'); return;
+    }
+    loginUser(user);
+  }, 1200);
+}
+
+/* ── REGISTER ── */
+function handleRegister() {
+  hideAlerts();
+  const first = document.getElementById('regFirst').value.trim();
+  const last  = document.getElementById('regLast').value.trim();
+  const email = document.getElementById('regEmail').value.trim().toLowerCase();
+  const phone = document.getElementById('regPhone').value.trim();
+  const pw    = document.getElementById('regPw').value;
+  const role  = 'student'; // Public registrations are always Students
+  const terms = document.getElementById('regTerms').checked;
+
+  if (!first || !last) { showError('Please enter your full name.'); return; }
+  if (!email || !/\S+@\S+\.\S+/.test(email)) { showError('Please enter a valid email address.'); return; }
+  if (!pw || pw.length < 6) { showError('Password must be at least 6 characters.'); return; }
+  if (!terms) { showError('Please accept the Terms of Service to continue.'); return; }
+
+  const btn = document.getElementById('registerBtn');
+  btn.classList.add('loading');
+
+  setTimeout(() => {
+    btn.classList.remove('loading');
+    const users = getUsers();
+    if (users.find(u => u.email.toLowerCase() === email)) {
+      showError('An account with this email already exists. Please sign in.'); return;
+    }
+    const initials = (first[0] + last[0]).toUpperCase();
+    const newUser = { email, password: pw, role, name: `${first} ${last}`, avatar: initials, phone, joinDate: new Date().toISOString() };
+    users.push(newUser);
+    saveUsers(users);
+    loginUser(newUser);
+  }, 1400);
+}
+
+/* ── GOOGLE LOGIN (popup picker) ── */
+function handleGoogleLogin() {
+  // Show Google account picker modal
+  const overlay = document.getElementById('googlePickerOverlay');
+  if (overlay) { overlay.style.display = 'flex'; document.getElementById('googleEmailInput').focus(); }
+}
+function closeGooglePicker() {
+  const overlay = document.getElementById('googlePickerOverlay');
+  if (overlay) { overlay.style.display = 'none'; document.getElementById('googleEmailInput').value = ''; }
+}
+function submitGoogleAccount() {
+  const emailEl = document.getElementById('googleEmailInput');
+  const email   = (emailEl ? emailEl.value : '').trim().toLowerCase();
+  if (!email || !/\S+@\S+\.\S+/.test(email)) {
+    emailEl.style.borderColor = '#EF4444'; return;
+  }
+  closeGooglePicker();
+  // Check if already registered
+  const users = getUsers();
+  let user = users.find(u => u.email === email);
+  if (!user) {
+    // Auto-register as student
+    const namePart = email.split('@')[0].replace(/[^a-zA-Z]/g,' ').trim();
+    const parts = namePart.split(' ').filter(Boolean);
+    const name  = parts.map(p => p[0].toUpperCase() + p.slice(1)).join(' ') || 'Google User';
+    const avatar = name.split(' ').map(p=>p[0]).join('').toUpperCase().slice(0,2) || 'GU';
+    user = { email, password: 'google-oauth-'+Date.now(), role: 'student', name, avatar, provider:'google', joinDate: new Date().toISOString() };
+    users.push(user);
+    saveUsers(users);
+  }
+  showSuccess('Google sign-in successful! Redirecting…');
+  setTimeout(() => loginUser(user), 1000);
+}
+
+/* ── SHARED LOGIN REDIRECT ── */
+function loginUser(user) {
+  localStorage.setItem('rjm_session', JSON.stringify({
+    email: user.email,
+    name: user.name,
+    role: user.role,
+    avatar: user.avatar,
+    loginAt: new Date().toISOString()
+  }));
+  // Seed progress — Stage 1 auto-unlocked for all registered students/participants
+  if (['student','participant'].includes(user.role)) {
+    const key = `rjm_progress_${user.email}`;
+    if (!localStorage.getItem(key)) {
+      localStorage.setItem(key, JSON.stringify({
+        stage1:{ unlocked:true,  completed:false, lessons:[] },
+        stage2:{ unlocked:false, completed:false, lessons:[] },
+        stage3:{ unlocked:false, completed:false, lessons:[] },
+        stage4:{ unlocked:false, completed:false, lessons:[] },
+        stage5:{ unlocked:false, completed:false, lessons:[] },
+      }));
+    } else {
+      // Ensure stage1 is always unlocked for existing accounts
+      try {
+        const prog = JSON.parse(localStorage.getItem(key));
+        if (!prog.stage1?.unlocked) {
+          prog.stage1.unlocked = true;
+          localStorage.setItem(key, JSON.stringify(prog));
+        }
+      } catch {}
+    }
+  }
+  showSuccess(`Welcome, ${user.name}! Redirecting to your portal…`);
+  setTimeout(() => {
+    if (user.role === 'admin')           window.location.href = 'admin.html';
+    else if (user.role === 'instructor') window.location.href = 'instructor.html';
+    else                                 window.location.href = 'dashboard.html'; // student + participant merged
+  }, 1200);
+}
+
+/* ── FORGOT PASSWORD ── */
+function showForgot(e) {
+  e.preventDefault();
+  const email = document.getElementById('loginEmail').value.trim();
+  if (!email) { showError('Enter your email address first, then click "Forgot password".'); return; }
+  showSuccess(`Password reset instructions sent to ${email}. (Demo mode — check console)`);
+}
+
+/* ── THEME (legacy; guarded — unified erjThemeJS now governs theming) ── */
+(function() {
+  const html = document.documentElement;
+  const btn  = document.getElementById('themeToggle');
+  function applyTheme(t) {
+    html.setAttribute('data-theme', t);
+    if (btn) btn.textContent = t === 'day' ? '☀️' : '🌙';
+    localStorage.setItem('rjt-theme', t);
+  }
+  const saved = localStorage.getItem('rjt-theme');
+  const sys   = window.matchMedia('(prefers-color-scheme: light)').matches ? 'day' : 'night';
+  if (saved !== 'system') applyTheme(saved || sys);
+  if (btn) btn.addEventListener('click', () => {
+    applyTheme(html.getAttribute('data-theme') === 'day' ? 'night' : 'day');
+  });
+})();
+
+/* ── PARTICLES ── */
+(function() {
+  const c = document.getElementById('particles');
+  const ctx = c.getContext('2d');
+  let W, H, pts = [];
+  function resize() { W = c.width = window.innerWidth; H = c.height = window.innerHeight; }
+  resize(); window.addEventListener('resize', resize);
+  for (let i = 0; i < 45; i++) pts.push({ x:Math.random()*W, y:Math.random()*H, r:Math.random()*1.5+0.3, dx:(Math.random()-.5)*.25, dy:(Math.random()-.5)*.25, o:Math.random()*.4+.1 });
+  function draw() {
+    ctx.clearRect(0,0,W,H);
+    const rgb = document.documentElement.getAttribute('data-theme') === 'day' ? '180,84,30' : '180,84,30';
+    pts.forEach(p => {
+      p.x += p.dx; p.y += p.dy;
+      if(p.x<0)p.x=W; if(p.x>W)p.x=0; if(p.y<0)p.y=H; if(p.y>H)p.y=0;
+      ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      ctx.fillStyle=`rgba(${rgb},${p.o})`; ctx.fill();
+    });
+    for(let i=0;i<pts.length;i++) for(let j=i+1;j<pts.length;j++) {
+      const dx=pts[i].x-pts[j].x, dy=pts[i].y-pts[j].y, d=Math.sqrt(dx*dx+dy*dy);
+      if(d<120) { ctx.beginPath(); ctx.moveTo(pts[i].x,pts[i].y); ctx.lineTo(pts[j].x,pts[j].y); ctx.strokeStyle=`rgba(${rgb},${.08*(1-d/120)})`; ctx.lineWidth=.5; ctx.stroke(); }
+    }
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+/* ── CHECK ALREADY LOGGED IN ── */
+(function() {
+  const sess = localStorage.getItem('rjm_session');
+  if (sess) {
+    try {
+      const s = JSON.parse(sess);
+      if (s.role === 'admin')        window.location.href = 'admin.html';
+      else if (s.role === 'instructor')  window.location.href = 'instructor.html';
+      else if (s.role === 'participant') window.location.href = 'participant.html';
+      else window.location.href = 'dashboard.html';
+    } catch(e) {}
+  }
+})();
+</script>
+
+<!-- GOOGLE PICKER MODAL -->
+<div id="googlePickerOverlay" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.7);backdrop-filter:blur(6px);align-items:center;justify-content:center;padding:1rem;">
+  <div style="background:#fff;border-radius:6px;padding:2rem;max-width:380px;width:100%;box-shadow:0 20px 60px rgba(0,0,0,.4);animation:scaleIn .25s ease;position:relative;">
+    <div style="text-align:center;margin-bottom:1.5rem">
+      <svg width="40" height="40" viewBox="0 0 24 24" style="margin:0 auto .8rem;display:block"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+      <div style="font-size:1.1rem;font-weight:700;color:#202124;margin-bottom:.25rem">Sign in with Google</div>
+      <div style="font-size:.82rem;color:#5F6368">Enter your Google email address</div>
+    </div>
+    <input id="googleEmailInput" type="email" placeholder="you@gmail.com"
+      style="width:100%;padding:.8rem 1rem;border:1.5px solid #DADCE0;border-radius:8px;font-size:.95rem;outline:none;box-sizing:border-box;margin-bottom:1rem;font-family:sans-serif;transition:border-color .2s"
+      onfocus="this.style.borderColor='#4285F4'" onblur="this.style.borderColor='#DADCE0'"
+      onkeydown="if(event.key==='Enter') submitGoogleAccount()">
+    <div style="display:flex;gap:.6rem">
+      <button onclick="closeGooglePicker()" style="flex:1;padding:.7rem;border:1px solid #DADCE0;border-radius:8px;background:#fff;color:#5F6368;font-size:.88rem;font-weight:600;cursor:pointer">Cancel</button>
+      <button onclick="submitGoogleAccount()" style="flex:1;padding:.7rem;border:none;border-radius:8px;background:#4285F4;color:#fff;font-size:.88rem;font-weight:600;cursor:pointer">Continue</button>
+    </div>
+    <p style="font-size:.72rem;color:#9AA0A6;text-align:center;margin-top:.9rem;line-height:1.5">By continuing, you agree to our <a href="terms.html" target="_blank" rel="noopener" style="color:#FF5722">Terms of Use</a> and <a href="privacy.html" target="_blank" rel="noopener" style="color:#FF5722">Privacy Policy</a>.</p>
+  </div>
+</div>
+<style>
+@keyframes scaleIn{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:scale(1)}}
+
+/* ── Cohort 9 cleanup ── */
+h1 span,h2 span,.hero h1 span,[class*="grad"]{ -webkit-text-fill-color:var(--accent)!important;background:none!important;background-image:none!important;color:var(--accent)!important;-webkit-background-clip:initial!important;background-clip:initial!important;}
+.nav,nav{background:var(--bg)!important;}
+html[data-theme="day"] .nav,html[data-theme="day"] nav{background:var(--bg)!important;}
+.featured-badge,.badge,.tag,.pill{box-shadow:none!important;}
+.cover,.post-cover,.art-cover,.card-cover,.featured-img{filter:saturate(0.6);}
+
+/* Button labels stay on one line. The type size is NOT reduced to make them
+   fit — white on #FF5722 is 3.16:1, which passes WCAG only as LARGE text
+   (18.66px bold), and the buttons sit at 18.88px. Shrinking the font would
+   quietly make every CTA non-compliant. Fit is bought with shorter labels
+   and tighter padding instead. */
+.btn-yes,.btn-pay,.btn-block,.fi-go,.r-go,.dfy-btn,.cvp-btn,.ts-cta-btn{white-space:nowrap;}
+@media(max-width:520px){.btn-yes,.btn-pay{padding-left:1.25rem;padding-right:1.25rem;gap:0.45rem;}}
+
+/* The sign-in button carries white ink on orange, so it takes the same
+   1.18rem/700 floor as every other filled orange control. */
+.btn-primary{font-size:1.18rem!important;font-weight:700!important;}
+/* Sign-in button carries white ink */
+</style>
+<script id="erjPWA">
+(function(){
+  // Register service worker (enables offline + install criteria)
+  if('serviceWorker' in navigator){
+    window.addEventListener('load',function(){
+      navigator.serviceWorker.register('sw.js').then(function(reg){reg.update();}).catch(function(){});
+    });
+  }
+  // Capture install prompt
+  var deferred=null, btn=null;
+  function makeBtn(){
+    if(btn) return btn;
+    btn=document.createElement('button');
+    btn.id='erjInstallBtn';
+    btn.textContent='⤓ Install App';
+    btn.style.cssText='position:fixed;left:16px;bottom:16px;z-index:980;display:none;align-items:center;gap:7px;background:var(--accent-btn,#FF5722);color:#14110E;border:none;border-radius:10px;padding:9px 14px;font-weight:700;font-family:Inter,system-ui,sans-serif;font-size:.8rem;font-weight:600;cursor:pointer;box-shadow:0 4px 18px rgba(0,0,0,.18);';
+    btn.addEventListener('click',async function(){
+      if(!deferred) return;
+      deferred.prompt();
+      try{ await deferred.userChoice; }catch(e){}
+      deferred=null; btn.style.display='none';
+    });
+    document.body.appendChild(btn);
+    return btn;
+  }
+  window.addEventListener('beforeinstallprompt',function(e){
+    e.preventDefault(); deferred=e; makeBtn().style.display='inline-flex';
+  });
+  window.addEventListener('appinstalled',function(){ if(btn) btn.style.display='none'; deferred=null; });
+  // iOS Safari: no beforeinstallprompt — show a hint button that explains Add to Home Screen
+  var isIOS=/iphone|ipad|ipod/i.test(navigator.userAgent);
+  var standalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
+  if(isIOS && !standalone){
+    window.addEventListener('load',function(){
+      var b=makeBtn(); b.textContent='⤓ Add to Home Screen'; b.style.display='inline-flex';
+      b.addEventListener('click',function(){ alert('To install: tap the Share icon, then “Add to Home Screen”.'); });
+    });
+  }
+})();
+</script>
+<!-- ===== Unified Theme Control (Day / System / Night) — header based ===== -->
+<script id="erjThemeJS">
+(function(){
+  var KEY='rjt-theme', html=document.documentElement;
+  var ICON={day:'☀️',night:'🌙',system:'💻'};
+  var NEXT={day:'system',system:'night',night:'day'};   // cycle order
+  var TITLE={day:'Theme: Day (tap for System)',system:'Theme: System (tap for Night)',night:'Theme: Night (tap for Day)'};
+  function sys(){return window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'night':'day';}
+  function bar(resolved){
+    var m=document.getElementById('metaThemeColor')||document.querySelector('meta[name="theme-color"]:not([media])');
+    if(!m){m=document.createElement('meta');m.name='theme-color';m.id='metaThemeColor';document.head.appendChild(m);}
+    m.setAttribute('content', resolved==='night'?'#000000':'#FAFAF8');
+  }
+  function curPref(){ var p=localStorage.getItem(KEY); return ICON[p]?p:'system'; }
+  function apply(pref){
+    if(!ICON[pref]) pref='system';
+    var resolved = pref==='system'? sys() : pref;
+    html.setAttribute('data-theme', resolved);
+    localStorage.setItem(KEY, pref);
+    bar(resolved);
+    // update every in-header theme button on the page
+    document.querySelectorAll('[data-erj-theme-btn], #themeToggle, #themeBtn').forEach(function(btn){
+      btn.textContent = ICON[pref];
+      btn.setAttribute('title', TITLE[pref]);
+      btn.setAttribute('aria-label', TITLE[pref]);
+    });
+  }
+  window.erjApplyTheme=apply;
+  function wire(btn){
+    if(!btn || btn.__erjWired) return; btn.__erjWired=true;
+    // strip any legacy onclick and clone to drop old listeners
+    btn.removeAttribute('onclick');
+    var fresh=btn.cloneNode(true); btn.parentNode.replaceChild(fresh,btn);
+    fresh.addEventListener('click',function(e){ e.preventDefault(); e.stopPropagation(); apply(NEXT[curPref()]); });
+    fresh.style.cursor='pointer';
+  }
+  function wireAll(){ document.querySelectorAll('[data-erj-theme-btn], #themeToggle, #themeBtn').forEach(wire); }
+  if(window.matchMedia){window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change',function(){if(curPref()==='system')apply('system');});}
+  if(document.readyState!=='loading'){ wireAll(); apply(curPref()); }
+  else document.addEventListener('DOMContentLoaded',function(){ wireAll(); apply(curPref()); });
+  // re-apply after a tick in case header is injected late
+  setTimeout(function(){ wireAll(); apply(curPref()); }, 300);
+})();
+</script>
+<!-- ===== /Unified Theme Control ===== -->
+
+<script src="erj-nav.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="night">
+<head>
+<meta charset="UTF-8">
+<!-- Meta Pixel + Google Tag Manager -->
+<script src="../erj-track.js" async></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="manifest" href="../manifest.json">
+<link rel="icon" type="image/png" sizes="64x64" href="../favicon32.png" media="(prefers-color-scheme: light)">
+<link rel="icon" type="image/png" sizes="64x64" href="../favicon32-dark.png" media="(prefers-color-scheme: dark)">
+<link rel="icon" type="image/png" sizes="64x64" href="../favicon32.png">
+<link rel="apple-touch-icon" href="../appletouchicon.png">
+<meta name="theme-color" content="#000000" id="metaThemeColor">
+<title>Free Remote Job Application Clinic — CV + Job Advert Review | Everything Remote Job</title>
+<meta name="description" content="Free live Remote Job Application Clinic: bring your CV and one remote job advert. We will diagnose where your search is leaking, review ATS fit and show you what to fix first. Saturday 29 August 2026, 7:00 PM WAT on Zoom.">
+<meta property="og:title" content="Free Remote Job Application Clinic — Bring Your CV + One Job Advert">
+<meta property="og:description" content="Bring your CV and one remote job advert. We will diagnose the leak, review ATS fit and show you what to fix first. Live on Zoom, Saturday 29 August, 7:00 PM WAT. Free.">
+<meta property="og:image" content="https://everythingremotejob.com/preview-masterclass.jpg">
+<meta property="og:url" content="https://everythingremotejob.com/masterclass/">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://everythingremotejob.com/masterclass/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://everythingremotejob.com/preview-masterclass.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;800&family=Inter:wght@300;400;500&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="../product.css?v=126">
+<style>
+  /* ── Live badge ── */
+  .live-badge{display:inline-flex;align-items:center;gap:0.5rem;padding:0.4rem 0.85rem;border-radius:100px;
+    border:1px solid var(--accent);background:color-mix(in srgb,var(--accent) 10%,transparent);
+    font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;font-weight:700;color:var(--accent);margin-bottom:1.2rem;}
+  .live-dot{width:7px;height:7px;border-radius:50%;background:var(--accent);animation:lvPulse 1.8s ease-in-out infinite;}
+  @keyframes lvPulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.35;transform:scale(.7);}}
+
+  /* ── Session facts strip ── */
+  .facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1px;background:var(--card-line);
+    border:1px solid var(--card-line);border-radius:14px;overflow:hidden;margin:2rem 0 0;}
+  .fact{background:var(--card);padding:1.1rem 1.2rem;}
+  .fact-k{font-size:0.58rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:0.4rem;}
+  .fact-v{font-family:var(--font-display);font-size:1rem;font-weight:700;color:var(--ink);line-height:1.3;}
+  .fact-v em{font-style:normal;color:var(--accent);}
+
+  /* ── Countdown ── */
+  .mc-count{margin:2rem 0 0;border:1px solid var(--card-line);background:var(--card);border-radius:16px;
+    padding:1.4rem 1.6rem;display:flex;flex-wrap:wrap;align-items:center;gap:1rem 2rem;}
+  .mc-lbl{font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);font-weight:600;}
+  .mc-blocks{display:flex;align-items:baseline;gap:1.3rem;}
+  .mc-b{text-align:center;}
+  .mc-n{font-family:var(--font-display);font-size:clamp(1.5rem,4.5vw,2.1rem);font-weight:800;color:var(--ink);
+    line-height:1;letter-spacing:-0.02em;font-variant-numeric:tabular-nums;}
+  .mc-l{font-size:0.56rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-faint);margin-top:0.35rem;}
+  .mc-when{font-size:0.85rem;color:var(--ink-soft);font-weight:300;}
+  .mc-when strong{color:var(--ink);font-weight:600;}
+  @media(max-width:560px){.mc-count{flex-direction:column;align-items:flex-start;gap:1rem;}}
+
+  /* ── Agenda list ── */
+  .agenda{list-style:none;display:flex;flex-direction:column;margin-top:1.6rem;}
+  .agenda li{display:grid;grid-template-columns:auto 1fr;gap:1.1rem;padding:1.3rem 0;border-bottom:1px solid var(--line);}
+  .agenda li:first-child{border-top:1px solid var(--line);}
+  .ag-n{font-family:var(--font-display);font-size:0.72rem;font-weight:800;color:var(--accent);letter-spacing:0.1em;padding-top:0.25rem;}
+  .ag-t{font-family:var(--font-display);font-size:1.12rem;font-weight:600;color:var(--ink);margin-bottom:0.35rem;line-height:1.3;}
+  .ag-d{font-size:0.92rem;color:var(--ink-soft);font-weight:300;line-height:1.6;}
+
+  /* ── Registration form ── */
+  .clinic-note{border:1px solid var(--card-line);background:var(--card);border-radius:14px;padding:1.25rem 1.4rem;margin-top:1.8rem;}
+  .clinic-note strong{color:var(--ink);font-weight:600;}
+  .clinic-note p{font-size:.88rem;color:var(--ink-soft);font-weight:300;line-height:1.7;margin:0;}
+  .reg-form{display:grid;grid-template-columns:1fr 1fr;gap:1rem;text-align:left;margin-top:1.5rem;}
+  .reg-form .full{grid-column:1/-1;}
+  .reg-form label{display:block;font-size:.62rem;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-faint);font-weight:600;margin-bottom:.45rem;}
+  .reg-form input,.reg-form select,.reg-form textarea{width:100%;border:1px solid var(--card-line);background:var(--bg);color:var(--ink);border-radius:10px;padding:.9rem 1rem;font:inherit;line-height:1.4;}
+  .reg-form textarea{min-height:92px;resize:vertical;}
+  .reg-form input:focus,.reg-form select:focus,.reg-form textarea:focus{outline:2px solid var(--accent);outline-offset:1px;}
+  .reg-submit{grid-column:1/-1;display:flex;align-items:center;gap:.8rem;flex-wrap:wrap;}
+  .reg-privacy{font-size:.76rem;color:var(--ink-faint);line-height:1.55;margin:0;}
+  .reg-status{grid-column:1/-1;border-left:3px solid var(--accent);padding:.9rem 1rem;background:var(--card);color:var(--ink-soft);font-size:.86rem;line-height:1.6;}
+  @media(max-width:680px){.reg-form{grid-template-columns:1fr;}.reg-form .full,.reg-submit,.reg-status{grid-column:1;}}
+  .zoom-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;text-align:left;margin-top:1.7rem;}
+  .zoom-step{border:1px solid var(--card-line);border-radius:14px;background:var(--bg);padding:1.15rem;}
+  .zoom-step-n{font-family:var(--font-display);font-size:.72rem;font-weight:800;color:var(--accent);letter-spacing:.12em;margin-bottom:.5rem;}
+  .zoom-step h3{font-family:var(--font-display);font-size:1rem;font-weight:800;color:var(--ink);line-height:1.25;margin:0 0 .5rem;}
+  .zoom-step p{font-size:.84rem;color:var(--ink-soft);line-height:1.65;margin:0 0 .9rem;}
+  .zoom-step .btn-yes,.zoom-step .btn-more{width:100%;justify-content:center;text-align:center;}
+  .zoom-note{margin-top:1rem;font-size:.78rem;color:var(--ink-faint);line-height:1.6;}
+  @media(max-width:760px){.zoom-steps{grid-template-columns:1fr;}}
+
+  /* ── Host block ── */
+  .host{display:grid;grid-template-columns:minmax(180px,240px) 1fr;gap:clamp(1.5rem,4vw,3rem);align-items:center;margin-top:1.8rem;}
+  .host-photo{position:relative;border-radius:16px;overflow:hidden;border:1px solid var(--card-line);background:var(--card);}
+  .host-photo img{display:block;width:100%;height:auto;}
+  .host-name{font-family:var(--font-display);font-size:1.25rem;font-weight:800;color:var(--ink);margin-bottom:0.3rem;}
+  .host-role{font-size:0.62rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;font-weight:600;}
+  .host-bio{font-size:0.95rem;color:var(--ink-soft);font-weight:300;line-height:1.75;max-width:58ch;}
+  .host-bio strong{color:var(--ink);font-weight:500;}
+  @media(max-width:700px){.host{grid-template-columns:1fr;}.host-photo{max-width:220px;}}
+
+  /* ── Big CTA panel ── */
+  .cta-panel{border:1px solid var(--accent);border-radius:20px;background:var(--card);
+    padding:clamp(1.8rem,5vw,3rem);text-align:center;}
+  .cta-h{font-family:var(--font-display);font-size:clamp(1.6rem,4.4vw,2.5rem);font-weight:800;letter-spacing:-0.02em;
+    color:var(--ink);line-height:1.15;margin-bottom:0.9rem;}
+  .cta-h em{font-style:normal;color:var(--accent);}
+  .cta-p{font-size:0.98rem;color:var(--ink-soft);font-weight:300;line-height:1.7;max-width:56ch;margin:0 auto 1.6rem;}
+  .cta-how{font-size:0.82rem;color:var(--ink-faint);font-weight:300;margin-top:1rem;line-height:1.7;}
+  .cta-how strong{color:var(--ink);font-weight:500;}
+</style>
+  <meta property="og:locale" content="en_NG">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"EducationEvent","name":"Remote Job Application Clinic — free live masterclass","description":"A free live application clinic where participants bring a CV and one remote job advert, diagnose the failing point in the Four Points model, review ATS and role fit, and leave with the first correction to make.","url":"https://everythingremotejob.com/masterclass/","eventAttendanceMode":"https://schema.org/OnlineEventAttendanceMode","eventStatus":"https://schema.org/EventScheduled","startDate":"2026-08-29T19:00:00+01:00","endDate":"2026-08-29T20:15:00+01:00","location":{"@type":"VirtualLocation","url":"https://everythingremotejob.com/masterclass/"},"organizer":{"@type":"Organization","name":"Everything Remote Job","url":"https://everythingremotejob.com/","@id":"https://everythingremotejob.com/#organization"},"inLanguage":"en","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"NGN","availability":"https://schema.org/InStock","url":"https://us06web.zoom.us/meeting/register/Ca4SH87JS3OZtL2hZrwj1g"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://everythingremotejob.com/"},{"@type":"ListItem","position":2,"name":"Free Masterclass","item":"https://everythingremotejob.com/masterclass/"}]}</script>
+  <style id="erjNavReserve">body{padding-top:63px}@media(min-width:980px){body{padding-top:65px}}
+/* Button labels stay on one line. The type size is NOT reduced to make them
+   fit — white on #FF5722 is 3.16:1, which passes WCAG only as LARGE text
+   (18.66px bold), and the buttons sit at 18.88px. Shrinking the font would
+   quietly make every CTA non-compliant. Fit is bought with shorter labels
+   and tighter padding instead. */
+.btn-yes,.btn-pay,.btn-block,.fi-go,.r-go,.dfy-btn,.cvp-btn,.ts-cta-btn{white-space:nowrap;}
+@media(max-width:520px){.btn-yes,.btn-pay{padding-left:1.25rem;padding-right:1.25rem;gap:0.45rem;}}
+</style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NMFHS59B"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<div id="erjNavMount"></div>
+<script>window.ERJ_NAV={active:'masterclass',base:'../',onPage:[
+  {label:'What you will get',href:'#agenda'},
+  {label:'Who it is for',href:'#who'},
+  {label:'Your host',href:'#host'},
+  {label:'Register for the clinic',href:'#reserve'}
+]};</script>
+
+<main>
+<a class="pledge-marq" href="#reserve" aria-label="We will not let you go until you're hired."><span>We will not let you go <em>until you're hired.</em></span></a>
+
+  <!-- HERO -->
+  <section class="hero wrap reveal">
+    <span class="live-badge"><span class="live-dot"></span> Free Live Application Clinic</span>
+    <h1>Bring your CV + one remote job advert. <em>We’ll show you where the search is leaking.</em></h1>
+    <p class="lede">This is the practical edition of the ERJ free masterclass. Instead of another broad webinar, we will use the Four Points — Supply, Representation, Aim and Conversion — to diagnose real job searches, review CV/ATS fit and show participants what to fix first.</p>
+
+    <div class="mc-count" id="mcCount">
+      <div>
+        <div class="mc-lbl" id="mcLbl">Clinic starts in</div>
+        <div class="mc-when" id="mcWhen">Loading session…</div>
+      </div>
+      <div class="mc-blocks">
+        <div class="mc-b"><div class="mc-n" id="mcD">–</div><div class="mc-l">Days</div></div>
+        <div class="mc-b"><div class="mc-n" id="mcH">–</div><div class="mc-l">Hrs</div></div>
+        <div class="mc-b"><div class="mc-n" id="mcM">–</div><div class="mc-l">Min</div></div>
+        <div class="mc-b"><div class="mc-n" id="mcS">–</div><div class="mc-l">Sec</div></div>
+      </div>
+    </div>
+
+    <div class="hero-cta" style="margin-top:1.8rem;">
+      <a href="#reserve" class="btn-yes">Register for the free clinic <span class="arrow">→</span></a>
+      <a href="#agenda" class="btn-more">See what we’ll diagnose ↓</a>
+    </div>
+
+    <div class="facts">
+      <div class="fact"><div class="fact-k">Date</div><div class="fact-v"><em>Sat 29 August 2026</em></div></div>
+      <div class="fact"><div class="fact-k">Time</div><div class="fact-v">7:00 PM <em>WAT</em></div></div>
+      <div class="fact"><div class="fact-k">Where</div><div class="fact-v">Live on <em>Zoom</em></div></div>
+      <div class="fact"><div class="fact-k">Price</div><div class="fact-v"><em>Free</em> · registration required</div></div>
+    </div>
+  </section>
+
+  <!-- AGENDA -->
+  <section class="section-line wrap" id="agenda">
+    <p class="section-label"><span class="mark"></span> What happens in the clinic</p>
+    <h2>Bring a real search. <span>Leave knowing what to fix first.</span></h2>
+    <ul class="agenda">
+      <li class="reveal"><div class="ag-n">01</div><div><div class="ag-t">Find your leak using the Four Points</div><div class="ag-d">We separate Supply, Representation, Aim and Conversion so you stop trying to repair everything at once. The earliest failing point becomes the first correction.</div></div></li>
+      <li class="reveal"><div class="ag-n">02</div><div><div class="ag-t">Live CV + ATS teardown</div><div class="ag-d">We review selected participant CVs against the ERJ ten-point rubric and show what software and a hiring manager can — and cannot — read quickly.</div></div></li>
+      <li class="reveal"><div class="ag-n">03</div><div><div class="ag-t">Job-advert fit check</div><div class="ag-d">Bring one role you genuinely want. We check whether the company can hire across borders, whether the role fits your evidence and what the advert is actually asking you to prove.</div></div></li>
+      <li class="reveal"><div class="ag-n">04</div><div><div class="ag-t">Position the application before you send it</div><div class="ag-d">We show how to reflect the role title, evidence, keywords and proof without turning your CV into keyword stuffing or sending forty hopeful applications.</div></div></li>
+      <li class="reveal"><div class="ag-n">05</div><div><div class="ag-t">Your next honest door</div><div class="ag-d">You may need a free fix, the CV Engine, Self-Learn, Foundation Training, DFY or no paid ERJ service at all. The diagnosis decides — not the price list.</div></div></li>
+    </ul>
+
+    <div class="clinic-note">
+      <p><strong>Registration is for commitment and reminders, not a fake seat counter.</strong> Register directly on Zoom to receive your personal join link by email. Then message <strong>CLINIC</strong> on WhatsApp for ERJ reminders and the preparation checklist.</p>
+    </div>
+  </section>
+
+  <!-- WHO IT'S FOR -->
+  <section class="section-line wrap" id="who">
+    <p class="section-label"><span class="mark"></span> Who this is for</p>
+    <h2>If any of these is you, <span>this hour was built for you.</span></h2>
+    <div class="cards" style="margin-top:1.6rem;">
+      <div class="card reveal">
+        <div class="card-k">01</div>
+        <h3>You've applied and heard nothing</h3>
+        <p>Dozens — maybe hundreds — of applications into silence, and you've started to wonder whether the problem is you. It isn't. You'll see exactly where the applications were dying.</p>
+      </div>
+      <div class="card reveal">
+        <div class="card-k">02</div>
+        <h3>You're earning in Naira and watching it shrink</h3>
+        <p>You're good at what you do; the currency is the problem, not the competence. This is the route to a payroll that doesn't melt every quarter.</p>
+      </div>
+      <div class="card reveal">
+        <div class="card-k">03</div>
+        <h3>You don't want to japa</h3>
+        <p>You want the global salary without leaving your family, your city or your country. That's precisely what remote work makes possible — and precisely what this session maps.</p>
+      </div>
+      <div class="card reveal">
+        <div class="card-k">04</div>
+        <h3>You have no connections abroad</h3>
+        <p>No uncle in Canada, no friend who "referred" you. Good — the system taught here is built for people starting with no network at all.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOST -->
+  <section class="section-line wrap" id="host">
+    <p class="section-label"><span class="mark"></span> Your host</p>
+    <div class="host">
+      <div class="host-photo reveal">
+        <img src="../founder-oluwaseyi.jpg" alt="Oluwaseyi Ashiru — Lead Facilitator, Everything Remote Job" width="760" height="1064" loading="lazy">
+      </div>
+      <div class="reveal">
+        <div class="host-name">Oluwaseyi Ashiru</div>
+        <div class="host-role">Lead Facilitator · Everything Remote Job</div>
+        <p class="host-bio">I've spent the last several years doing one thing: helping African professionals get hired into globally competitive remote roles — from right where they are. After every cohort, I refine the system from what we see in real searches, interviews and offers.</p>
+        <p class="host-bio" style="margin-top:0.9rem;">This masterclass is the honest version of what I've learned: <strong>the system, the company categories, the ATS machine, and the routes most people never hear about.</strong> Seventy-five focused minutes, everything on the table, nothing held back for the paid programme.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESERVE -->
+  <section class="section-line wrap" id="reserve">
+    <div class="cta-panel reveal">
+      <span class="live-badge"><span class="live-dot"></span> Free · Saturday 29 August</span>
+      <h2 class="cta-h">Register for the <em>Remote Job Application Clinic.</em></h2>
+      <p class="cta-p">Registration now happens directly on Zoom. Zoom sends your personal join link by email. After that, use the WhatsApp step below so ERJ can send the preparation checklist and the 24-hour, 3-hour and 30-minute reminders.</p>
+
+      <div class="zoom-steps">
+        <div class="zoom-step">
+          <div class="zoom-step-n">STEP 01</div>
+          <h3>Register on Zoom</h3>
+          <p>Complete the Zoom registration first. Use an email address you can open on the device you will join from.</p>
+          <a id="zoomRegBtn" class="btn-yes" href="https://us06web.zoom.us/meeting/register/Ca4SH87JS3OZtL2hZrwj1g" target="_blank" rel="noopener">Register on Zoom <span class="arrow">→</span></a>
+        </div>
+        <div class="zoom-step">
+          <div class="zoom-step-n">STEP 02</div>
+          <h3>Add it to your calendar</h3>
+          <p>After registration, open Zoom's confirmation email. It contains your personal join information and an Add to Calendar option. Keep that email — your join link is personal.</p>
+          <span class="btn-more" style="cursor:default;opacity:.85;">Use the Zoom confirmation email</span>
+        </div>
+        <div class="zoom-step">
+          <div class="zoom-step-n">STEP 03</div>
+          <h3>Get WhatsApp reminders</h3>
+          <p>Once you have registered on Zoom, message ERJ so we can match your registration and send the preparation checklist and session reminders.</p>
+          <a id="clinicReminderBtn" class="btn-more" href="https://wa.me/2348032925957?text=CLINIC%0A%0AI%20have%20registered%20on%20Zoom%20for%20the%20Remote%20Job%20Application%20Clinic%20on%20Saturday%2029%20August%202026%20at%207%3A00%20PM%20WAT.%0A%0AName%3A%0AEmail%20used%20for%20Zoom%20registration%3A%0ATarget%20remote%20role%3A%0A%0APlease%20add%20me%20to%20the%20WhatsApp%20reminder%20list." target="_blank" rel="noopener">Get WhatsApp reminders →</a>
+        </div>
+      </div>
+      <p class="cta-how">Saturday 29 August 2026 · 7:00 PM WAT · Live on Zoom · Free.<br>Bring your current CV and one real remote job advert you would genuinely apply for. If you want your CV considered for a live teardown, tell us in the WhatsApp conversation.</p>
+      <p class="zoom-note"><strong>Registration is not complete until Zoom confirms it.</strong> ERJ will not manually send a general meeting link; registered participants should use the personal link in Zoom's confirmation email.</p>
+    </div>
+  </section>
+
+  <!-- AFTER -->
+  <section class="section-line wrap">
+    <p class="section-label"><span class="mark"></span> After the clinic</p>
+    <h2>The diagnosis comes first. <span>The product comes second.</span></h2>
+    <p class="section-sub" style="max-width:64ch;">You can attend, take the diagnosis and spend nothing. If the live review shows that you need the full build and can do the work, Cohort 10 may be the right door. If your assets are already strong and time is the gap, DFY may fit better. If you do not need a paid ERJ service, we will say so.</p>
+    <div class="clinic-note">
+      <p><strong>If Foundation Training is confirmed as your door and month-end timing is the only obstacle:</strong> a qualified Cohort 10 prospect may reserve with ₦50,000, credited fully toward the ₦250,000 tuition, then complete the ₦200,000 balance by 6:00 PM WAT on 30 August. The Registrar confirms fit first and sends the official bank-transfer instructions privately.</p>
+    </div>
+    <div class="hero-cta" style="margin-top:1.6rem;">
+      <a href="../diagnose/" class="btn-more">Run the 90-second diagnosis →</a>
+      <a href="../register.html#sec-chooser" class="btn-more">See which ERJ door fits →</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot wrap">
+<nav class="foot-links"><a href="../index.html">Home</a><a href="../free.html">Free For You</a><a href="../starting-line.html">Your Starting Line</a><a href="../blog.html">Blog</a><a href="../register.html">Register</a><a href="../login.html">Participant Login</a></nav>
+  <div class="erj-rights-line" role="note" style="max-width:900px;margin:1rem auto 0;padding-top:.85rem;border-top:1px solid rgba(127,127,127,.18);font-size:.68rem;line-height:1.55;letter-spacing:.02em;opacity:.72;text-align:center;">© 2026 Business Play Limited · Everything Remote Job. Built for <span style="color:var(--accent,#FF5722)">global career scale.</span> All rights reserved. ERJ frameworks, curriculum and paid resources are not licensed for redistribution. <a href="../terms.html" style="color:var(--accent,#FF5722);text-decoration:none">Terms</a> · <a href="../privacy.html" style="color:var(--accent,#FF5722);text-decoration:none">Privacy</a></div>
+</footer>
+
+<a href="https://wa.me/2348032925957" class="wa-float" title="Chat on WhatsApp" target="_blank" rel="noopener">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script>
+  /* Session countdown — auto-advances to the repeat session, then to standby. */
+  (function () {
+    var SESSIONS = [
+      { start: '2026-08-29T19:00:00+01:00', label: 'Sat, 29 August 2026 · 7:00 PM WAT' }
+    ];
+    var LIVE_MINUTES = 75; /* keep "live now" state through the hour + buffer */
+    var d = document.getElementById('mcD'), h = document.getElementById('mcH'),
+        m = document.getElementById('mcM'), s = document.getElementById('mcS'),
+        when = document.getElementById('mcWhen'), lbl = document.getElementById('mcLbl'),
+        blocks = document.querySelector('.mc-blocks');
+    if (!d) return;
+    function pad(n) { return n < 10 ? '0' + n : '' + n; }
+    function tick() {
+      var now = Date.now(), next = null, live = null;
+      for (var i = 0; i < SESSIONS.length; i++) {
+        var t = new Date(SESSIONS[i].start).getTime();
+        if (now >= t && now < t + LIVE_MINUTES * 60000) { live = SESSIONS[i]; break; }
+        if (now < t) { next = SESSIONS[i]; break; }
+      }
+      if (live) {
+        lbl.textContent = 'Happening now';
+        when.innerHTML = '<strong>We are live.</strong> If you registered, open your Zoom confirmation email and use your personal join link.';
+        if (blocks) blocks.style.display = 'none';
+        return;
+      }
+      if (!next) {
+        lbl.textContent = 'Next session';
+        when.innerHTML = '<strong>Dates for the next masterclass are being announced.</strong> Message us to be told first.';
+        if (blocks) blocks.style.display = 'none';
+        return;
+      }
+      if (blocks) blocks.style.display = '';
+      when.innerHTML = '<strong>' + next.label + '</strong>';
+      var diff = new Date(next.start).getTime() - now;
+      var dd = Math.floor(diff / 86400000);
+      var hh = Math.floor(diff % 86400000 / 3600000);
+      var mm = Math.floor(diff % 3600000 / 60000);
+      var ss = Math.floor(diff % 60000 / 1000);
+      d.textContent = pad(dd); h.textContent = pad(hh); m.textContent = pad(mm); s.textContent = pad(ss);
+    }
+    tick(); setInterval(tick, 1000);
+  })();
+
+  /* Track the two intentional conversion steps: Zoom registration and WhatsApp reminder opt-in. */
+  (function(){
+    var z=document.getElementById('zoomRegBtn'), w=document.getElementById('clinicReminderBtn');
+    if(z)z.addEventListener('click',function(){if(window.erjTrack)window.erjTrack('MasterclassRegistrationStarted',{content_name:'Application Clinic Zoom registration',method:'zoom',value:0,link_url:z.href});});
+    if(w)w.addEventListener('click',function(){if(window.erjTrack)window.erjTrack('ClinicReminderOptIn',{content_name:'Application Clinic WhatsApp reminders',method:'whatsapp',value:0,link_url:w.href});});
+  })();
+
+</script>
+<script src="../erj-theme.js"></script>
+<script src="../erj-product.js"></script>
+<script src="../erj-nav.js"></script>
+<script src="../erj-config.js"></script>
+<script src="../erj-capture.js"></script>
+<script>if("serviceWorker" in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js").then(function(reg){reg.update();}).catch(function(){});});}</script>
+<script src="../erj-schema.js"></script>
+</body>
+</html>

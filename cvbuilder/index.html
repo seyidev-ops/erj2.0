@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<!-- Meta Pixel + Google Tag Manager -->
+<script src="../erj-track.js" async></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ERJ CV Engine · Everything Remote Job</title>
+<meta name="robots" content="noindex,nofollow,noarchive,nosnippet,noimageindex">
+<meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<meta name="theme-color" content="#000000">
+<link rel="stylesheet" href="../product.css?v=126">
+<style>
+  :root{ --ok:#4ADE80; --warn:#FBBF24; --bad:#F87171; }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--paper);color:var(--ink);
+    font-family:var(--font-body,'Inter',system-ui,sans-serif);}
+  .cvwrap{max-width:1280px;margin:0 auto;padding:1.2rem clamp(0.9rem,3vw,2rem) 5rem;}
+
+  /* ── gate ── */
+  #gate{position:fixed;inset:0;z-index:9999;background:var(--paper);
+    display:flex;align-items:center;justify-content:center;padding:1.5rem;}
+  .gate-card{width:min(460px,100%);border:1px solid var(--line);border-radius:18px;
+    padding:clamp(1.6rem,4vw,2.4rem);background:var(--card);}
+  .gate-k{font-size:0.62rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;
+    color:var(--accent);margin-bottom:0.7rem;}
+  .gate-h{font-family:var(--font-display,'Space Grotesk',Georgia,serif);font-size:1.6rem;
+    font-weight:800;letter-spacing:-0.02em;margin:0 0 0.6rem;line-height:1.15;}
+  .gate-p{font-size:0.86rem;color:var(--ink-soft);line-height:1.65;margin:0 0 1.3rem;}
+  .gate-in{width:100%;padding:0.8rem 1rem;border-radius:10px;border:1.5px solid var(--line);
+    background:var(--paper);color:var(--ink);font-size:0.95rem;font-family:inherit;
+    letter-spacing:0.04em;text-transform:uppercase;}
+  .gate-in:focus{outline:none;border-color:var(--accent);}
+  .gate-btn{width:100%;margin-top:0.8rem;padding:0.85rem 1rem;border:none;border-radius:10px;
+    background:var(--accent-btn,#FF5722);color:#fff;font-weight:700;font-size:1.18rem;cursor:pointer;
+    font-family:inherit;}
+  .gate-btn:hover{background:var(--accent-h,#ff6f43);}
+  .gate-msg{margin-top:0.9rem;font-size:0.8rem;line-height:1.55;min-height:1.2em;}
+  .gate-note{margin-top:1.4rem;padding-top:1.1rem;border-top:1px solid var(--line);
+    font-size:0.74rem;color:var(--ink-faint);line-height:1.6;}
+  .gate-note a{color:var(--accent);}
+
+  /* ── CV Engine pass · days remaining ── */
+  .passbar{display:flex;flex-wrap:wrap;gap:0.5rem 1rem;align-items:center;justify-content:space-between;
+    margin:0 0 1.1rem;padding:0.62rem 0.95rem;border-radius:10px;font-size:0.79rem;line-height:1.5;
+    background:rgba(255,87,34,0.07);border:1px solid rgba(255,87,34,0.28);color:var(--ink-soft);}
+  .passbar b{color:var(--ink);font-weight:700;}
+  .passbar a{color:var(--accent);font-weight:600;text-decoration:none;white-space:nowrap;}
+  .passbar a:hover{text-decoration:underline;}
+  .passbar-soon{background:rgba(245,158,11,0.09);border-color:rgba(245,158,11,0.4);}
+
+  /* ── header ── */
+  .cvhead{display:flex;flex-wrap:wrap;gap:1rem;align-items:center;justify-content:space-between;
+    padding:1rem 0 1.2rem;border-bottom:1px solid var(--line);margin-bottom:1.4rem;}
+  .cvbrand{font-family:var(--font-display,'Space Grotesk',Georgia,serif);font-size:1.1rem;font-weight:800;
+    letter-spacing:-0.02em;}
+  .cvbrand span{color:var(--accent);}
+  .cvbrand small{display:block;font-family:var(--font-body,Inter);font-size:0.6rem;font-weight:500;
+    letter-spacing:0.2em;text-transform:uppercase;color:var(--ink-faint);margin-top:0.25rem;}
+  .cvtools{display:flex;gap:0.5rem;flex-wrap:wrap;}
+  .tbtn{padding:0.5rem 0.85rem;border-radius:9px;border:1px solid var(--line);background:transparent;
+    color:var(--ink);font-size:0.78rem;font-weight:600;cursor:pointer;font-family:inherit;}
+  .tbtn:hover{border-color:var(--accent);color:var(--accent);}
+  .tbtn.pri{background:var(--accent);border-color:var(--accent);color:#fff;}
+  .tbtn.pri:hover{background:var(--accent-h,#ff6f43);color:#fff;}
+
+  /* ── layout ── */
+  .cvgrid{display:grid;grid-template-columns:1fr;gap:1.4rem;}
+  @media(min-width:1040px){.cvgrid{grid-template-columns:1fr 340px;align-items:start;}}
+
+  .panel{border:1px solid var(--line);border-radius:14px;padding:1.2rem 1.1rem;margin-bottom:1rem;
+    background:var(--card);}
+  .panel h2{font-family:var(--font-display,'Space Grotesk',Georgia,serif);font-size:1.05rem;font-weight:800;
+    letter-spacing:-0.01em;margin:0 0 0.3rem;}
+  .panel .hint{font-size:0.78rem;color:var(--ink-faint);line-height:1.6;margin:0 0 1rem;}
+  .panel .hint b{color:var(--ink-soft);}
+
+  label{display:block;font-size:0.7rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;
+    color:var(--ink-faint);margin:0.9rem 0 0.35rem;}
+  input[type=text],input[type=email],input[type=url],textarea,select{
+    width:100%;padding:0.62rem 0.75rem;border-radius:9px;border:1px solid var(--line);
+    background:var(--paper);color:var(--ink);font-size:0.88rem;font-family:inherit;line-height:1.55;}
+  input:focus,textarea:focus,select:focus{outline:none;border-color:var(--accent);}
+  textarea{resize:vertical;min-height:80px;}
+  .impdrop{border:2px dashed var(--line);border-radius:12px;padding:1.4rem 1rem;text-align:center;cursor:pointer;
+    transition:border-color .15s,background .15s;user-select:none;}
+  .impdrop:hover,.impdrop:focus-visible,.impdrop.over{border-color:var(--accent);background:rgba(255,87,34,0.05);outline:none;}
+  .impdrop-big{font-weight:700;font-size:0.95rem;}
+  .impdrop-big b{color:var(--accent);}
+  .impdrop-small{font-size:0.78rem;opacity:0.65;margin-top:0.3rem;}
+  .row2{display:grid;grid-template-columns:1fr;gap:0 0.8rem;}
+  @media(min-width:620px){.row2{grid-template-columns:1fr 1fr;}}
+
+  .roleblk{border:1px solid var(--line);border-radius:12px;padding:0.9rem;margin-top:0.9rem;
+    background:var(--paper);}
+  .roleblk-top{display:flex;justify-content:space-between;align-items:center;gap:0.6rem;}
+  .roleblk-n{font-size:0.66rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent);}
+  .xbtn{border:none;background:none;color:var(--ink-faint);cursor:pointer;font-size:0.9rem;padding:0.2rem 0.4rem;}
+  .xbtn:hover{color:var(--bad);}
+  .addbtn{margin-top:0.8rem;padding:0.55rem 0.95rem;border-radius:9px;border:1px dashed var(--line);
+    background:transparent;color:var(--accent);font-size:0.8rem;font-weight:600;cursor:pointer;
+    font-family:inherit;width:100%;}
+  .addbtn:hover{border-color:var(--accent);border-style:solid;}
+
+  /* ── score rail ── */
+  .rail{position:sticky;top:1rem;}
+  .scorebox{border:1px solid var(--line);border-radius:14px;padding:1.2rem 1.1rem;background:var(--card);
+    text-align:center;margin-bottom:1rem;}
+  .scoren{font-family:var(--font-display,'Space Grotesk',Georgia,serif);font-size:3rem;font-weight:800;
+    line-height:1;letter-spacing:-0.03em;}
+  .scoren small{font-size:1.1rem;color:var(--ink-faint);font-weight:600;}
+  .scorel{font-size:0.68rem;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;
+    color:var(--ink-faint);margin-top:0.5rem;}
+  .bar{height:6px;border-radius:3px;background:var(--line);margin-top:0.9rem;overflow:hidden;}
+  .bar i{display:block;height:100%;width:0;border-radius:3px;background:var(--bad);
+    transition:width .35s ease,background .35s ease;}
+  .verdict{font-size:0.78rem;line-height:1.6;margin-top:0.9rem;color:var(--ink-soft);}
+
+  .checks{border:1px solid var(--line);border-radius:14px;padding:0.5rem 0.4rem;background:var(--card);}
+  .chk{display:grid;grid-template-columns:auto 1fr;gap:0.6rem;padding:0.6rem 0.7rem;border-radius:9px;
+    align-items:start;cursor:pointer;}
+  .chk:hover{background:var(--paper);}
+  .chk-dot{width:16px;height:16px;border-radius:50%;margin-top:0.15rem;flex-shrink:0;
+    display:flex;align-items:center;justify-content:center;font-size:0.62rem;font-weight:800;color:#000;}
+  .chk-dot.pass{background:var(--ok);}
+  .chk-dot.part{background:var(--warn);}
+  .chk-dot.fail{background:var(--bad);}
+  .chk-t{display:block;font-size:0.78rem;font-weight:600;line-height:1.35;}
+  .chk-w{display:block;font-size:0.72rem;color:var(--ink-faint);line-height:1.5;margin-top:0.2rem;}
+  .chk-w b{color:var(--accent);font-weight:600;}
+
+  /* ── keyword chips ── */
+  .chips{display:flex;flex-wrap:wrap;gap:0.4rem;margin-top:0.7rem;}
+  .chip{display:inline-flex;align-items:center;gap:0.35rem;padding:0.3rem 0.6rem;border-radius:100px;
+    border:1px solid var(--line);font-size:0.72rem;cursor:pointer;background:transparent;color:var(--ink-soft);
+    font-family:inherit;}
+  .chip:hover{border-color:var(--accent);}
+  .chip.on{background:rgba(255,87,34,0.12);border-color:var(--accent);color:var(--accent);font-weight:600;}
+  .chip.have{background:rgba(74,222,128,0.1);border-color:rgba(74,222,128,0.4);color:var(--ok);}
+
+  /* ── humanizer flags ── */
+  .flag{border-left:3px solid var(--warn);background:var(--paper);border-radius:0 9px 9px 0;
+    padding:0.7rem 0.85rem;margin-top:0.6rem;font-size:0.79rem;line-height:1.6;}
+  .flag b{color:var(--warn);}
+  .flag .was{color:var(--ink-faint);text-decoration:line-through;}
+  .flag .now{color:var(--ok);}
+  .flag button{margin-top:0.5rem;padding:0.35rem 0.7rem;border-radius:7px;border:1px solid var(--line);
+    background:transparent;color:var(--accent);font-size:0.72rem;font-weight:600;cursor:pointer;font-family:inherit;}
+  .flag button:hover{border-color:var(--accent);}
+  .clean{font-size:0.8rem;color:var(--ok);line-height:1.6;}
+
+  /* ── preview (the actual CV, ATS-safe) ── */
+  #preview{background:#fff;color:#111;padding:34px 40px;border-radius:10px;
+    font-family:Calibri,Arial,Helvetica,sans-serif;font-size:11pt;line-height:1.42;max-width:820px;}
+  #preview h1{font-size:19pt;margin:0 0 3px;font-weight:700;letter-spacing:0;color:#111;}
+  #preview .cv-title{font-size:11.5pt;font-weight:700;color:#333;margin:0 0 5px;}
+  #preview .cv-contact{font-size:9.8pt;color:#333;margin:0 0 14px;}
+  #preview h2{font-size:11.5pt;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;
+    border-bottom:1px solid #999;padding-bottom:3px;margin:15px 0 8px;color:#111;}
+  #preview .cv-job{margin-bottom:11px;}
+  #preview .cv-jt{font-weight:700;font-size:11pt;}
+  #preview .cv-jm{font-size:9.8pt;color:#444;margin-bottom:3px;}
+  #preview ul{margin:4px 0 0;padding-left:17px;}
+  /* CORE COMPETENCIES sits directly under its heading, so it needs the same
+     top margin the job bullets get from their .cv-job wrapper. */
+  #preview ul.cv-comp{margin-top:2px;}
+  #preview li{margin-bottom:3px;}
+  #preview p{margin:0 0 6px;}
+  .pv-wrap{overflow-x:auto;}
+
+  .note{font-size:0.76rem;color:var(--ink-faint);line-height:1.65;
+    border-left:2px solid var(--line);padding-left:0.85rem;margin-top:1rem;}
+  .note b{color:var(--ink-soft);}
+  /* The target-role field reports what it just did to your CV, and offers the
+     way back. Accent border so it reads as a live consequence, not a caption. */
+  .note.live{border-left-color:var(--accent);}
+  .linkbtn{display:inline;padding:0;margin:0;border:0;background:none;font:inherit;
+    color:var(--accent);font-weight:600;cursor:pointer;text-decoration:underline;
+    text-underline-offset:2px;}
+  .linkbtn:hover{opacity:0.82;}
+  .tabs{display:flex;gap:0.4rem;flex-wrap:wrap;margin-bottom:1rem;}
+  .tab{padding:0.5rem 0.9rem;border-radius:9px;border:1px solid var(--line);background:transparent;
+    color:var(--ink-soft);font-size:0.8rem;font-weight:600;cursor:pointer;font-family:inherit;}
+  .tab.on{background:var(--accent);border-color:var(--accent);color:#fff;}
+  .step{display:none;} .step.on{display:block;}
+
+  @media print{
+    body>*{display:none !important;}
+    #printroot{display:block !important;}
+    #printroot #preview{border-radius:0;padding:0;max-width:none;box-shadow:none;}
+  }
+  #printroot{display:none;}
+</style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NMFHS59B"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<!-- ══════════════════ GATE ══════════════════ -->
+<div id="gate">
+  <div class="gate-card">
+    <div class="gate-k">Access code required</div>
+    <h1 class="gate-h">The ERJ CV Engine</h1>
+    <p class="gate-p">This tool is not public. Enter your access code — either the one issued with your enrolment, or a 30-day CV Engine pass.</p>
+    <!-- Placeholder stays generic. Never put a specimen code here, in a comment,
+         or in any inline script: comments ship to the browser and are readable in
+         view-source, so a "removed" code written into a comment is still published. -->
+    <input id="gateIn" class="gate-in" type="text" placeholder="Enter your access code" autocomplete="off" spellcheck="false" aria-label="Access code">
+    <button class="gate-btn" id="gateGo">Unlock the engine</button>
+    <div class="gate-msg" id="gateMsg"></div>
+    <div class="gate-note">
+      <b>No code?</b> One is issued with any stage enrolment — or buy a
+      <a href="https://paystack.shop/pay/erj-cvpass" target="_blank" rel="noopener">30-day CV Engine pass for ₦5,000</a>.
+      The thirty days start the first time you use the code, not the day you pay.
+      <br><br>
+      <a href="../register.html">See the enrolment options</a> · WhatsApp +234 803 292 5957
+      <br><br>
+      This gate runs in your browser, so treat it as a door rather than a vault.
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════ APP ══════════════════ -->
+<div class="cvwrap" id="app" style="display:none">
+
+  <!-- Shown only for a 30-day CV Engine pass; a cohort code hides it. -->
+  <div class="passbar" id="passBar" style="display:none"></div>
+
+  <div class="cvhead">
+    <div class="cvbrand">ERJ <span>CV Engine</span>
+      <small>ATS-safe · built against the 10-point scan</small></div>
+    <div class="cvtools">
+      <button class="tbtn" id="btnSample">Load example</button>
+      <button class="tbtn" id="btnClear">Clear all</button>
+      <button class="tbtn" id="btnTxt">Copy plain text</button>
+      <button class="tbtn" id="btnDocx">Download .docx</button>
+      <button class="tbtn pri" id="btnPdf">Print / Save PDF</button>
+    </div>
+  </div>
+
+  <div class="tabs">
+    <button class="tab on" data-step="s1">1 · Start</button>
+    <button class="tab" data-step="s2">2 · Your details</button>
+    <button class="tab" data-step="s3">3 · Target role</button>
+    <button class="tab" data-step="s4">4 · Humanise</button>
+    <button class="tab" data-step="s5">5 · Preview &amp; export</button>
+  </div>
+
+  <div class="cvgrid">
+    <div>
+      <!-- STEP 1 -->
+      <div class="step on" id="s1">
+        <div class="panel">
+          <h2>Start from what you already have</h2>
+          <p class="hint">Upload your current CV — or paste it as text — and the engine will pull it apart into fields you can edit. Nothing leaves your device — this page has no server and sends nothing anywhere; Word and PDF files are read entirely inside your browser. <b>Or skip this and fill the form by hand in step 2.</b></p>
+
+          <label>Upload your CV file</label>
+          <div id="impDrop" class="impdrop" role="button" tabindex="0" aria-label="Upload your CV as a Word or PDF file">
+            <div class="impdrop-big">Drop your <b>.docx</b> or <b>.pdf</b> here</div>
+            <div class="impdrop-small">or tap to choose a file · read on this device only, never uploaded</div>
+          </div>
+          <input type="file" id="impFile" accept=".docx,.pdf,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document" style="display:none;">
+          <div class="note" id="impStatus" style="display:none;margin-top:0.6rem;"></div>
+          <p class="hint" style="margin-top:0.6rem;"><b>One honest limit:</b> a scanned PDF — a photograph of a printed CV — has no text layer, so nothing can be read from it. If that is what you have, use the paste box instead.</p>
+
+          <label for="pasteCv" style="margin-top:1rem;">Or paste your existing CV</label>
+          <textarea id="pasteCv" rows="12" placeholder="Copy everything out of your Word or PDF file and paste it here…"></textarea>
+          <button class="addbtn" id="btnParse" style="border-style:solid;color:#fff;background:var(--accent);border-color:var(--accent);">Pull it apart into fields →</button>
+          <div class="note" id="parseOut"><b>What the parser can and cannot do.</b> It reliably finds your contact details, section headings and bullet points. It cannot reliably split job titles from dates in every layout, so check step 2 before you trust it. Anything it gets wrong, you fix by hand — that is faster than starting from nothing.</div>
+        </div>
+        <div class="panel">
+          <h2>Or start clean</h2>
+          <p class="hint">If your current CV is the problem, do not import it. Go to step 2 and build from the structure that scores.</p>
+          <button class="addbtn" onclick="go('s2')">Start from a blank form →</button>
+        </div>
+      </div>
+
+      <!-- STEP 2 -->
+      <div class="step" id="s2">
+        <div class="panel">
+          <h2>Contact &amp; headline</h2>
+          <p class="hint">Contact details go in the body of the document, never in a header or footer — many parsers ignore those entirely, which is how people apply anonymously without knowing.</p>
+          <div class="row2">
+            <div><label for="fName">Full name</label><input type="text" id="fName" placeholder="Chidi Okafor"></div>
+            <div><label for="fTitle">Target job title</label><input type="text" id="fTitle" placeholder="Customer Support Specialist"></div>
+          </div>
+          <div class="row2">
+            <div><label for="fEmail">Email</label><input type="email" id="fEmail" placeholder="firstname.lastname@gmail.com"></div>
+            <div><label for="fPhone">Phone (with country code)</label><input type="text" id="fPhone" placeholder="+234 803 000 0000"></div>
+          </div>
+          <div class="row2">
+            <div><label for="fCity">City &amp; country</label><input type="text" id="fCity" placeholder="Abuja, Nigeria"></div>
+            <div><label for="fTz">Timezone</label><input type="text" id="fTz" placeholder="UTC+1"></div>
+          </div>
+          <div class="row2">
+            <div><label for="fLinkedin">LinkedIn URL</label><input type="url" id="fLinkedin" placeholder="linkedin.com/in/yourname"></div>
+            <div><label for="fPortfolio">Portfolio / GitHub URL</label><input type="url" id="fPortfolio" placeholder="yourname.notion.site/portfolio"></div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h2>Professional summary</h2>
+          <p class="hint">Three or four lines. Say what you do, name one measurable result, and make your remote capability explicit — autonomy, distributed teams, or cross-border delivery. <b>Do not write "seeking an opportunity".</b> That describes your need, not your value.</p>
+          <textarea id="fSummary" rows="5" placeholder="Customer support specialist with four years handling high-volume queues for a Nigerian fintech…"></textarea>
+        </div>
+
+        <div class="panel">
+          <h2>Experience</h2>
+          <p class="hint">Every bullet should answer <b>how many, and what changed</b>. If you do not know the exact figure, estimate honestly and write "about" — an honest estimate beats no number, and no interviewer has ever challenged "about 60 tickets a day".</p>
+          <div id="jobs"></div>
+          <button class="addbtn" id="btnAddJob">+ Add a role</button>
+        </div>
+
+        <div class="panel">
+          <h2>Skills, tools &amp; education</h2>
+          <p class="hint">Keep remote collaboration tools in their own line — Slack, Zoom, Notion, Asana, Jira, Google Workspace. It is one of the ten scan points and it takes ten seconds.</p>
+          <label for="fSkills">Core skills (comma separated)</label>
+          <input type="text" id="fSkills" placeholder="Customer support, escalation management, technical troubleshooting">
+          <label for="fTools">Remote tools (comma separated)</label>
+          <input type="text" id="fTools" placeholder="Zendesk, Slack, Notion, Zoom, Google Workspace">
+          <label for="fEdu">Education &amp; certifications (one per line)</label>
+          <textarea id="fEdu" rows="4" placeholder="BSc Economics · University of Lagos · 2019&#10;Google Data Analytics Certificate · 2025"></textarea>
+        </div>
+      </div>
+
+      <!-- STEP 3 -->
+      <div class="step" id="s3">
+        <div class="panel">
+          <h2>Tailor to the vacancy</h2>
+          <p class="hint">Paste the job description — the engine reads it as you type. It pulls out the tools, skills and phrases the employer actually used, then shows you which ones are missing from your CV. The <b>role title as advertised</b> goes straight onto your CV under your name, and can be undone in one click. <b>Tick only what you genuinely have.</b> Adding a tool you have never used surfaces in the interview and ends the process.</p>
+          <label for="fJd">Job description</label>
+          <textarea id="fJd" rows="10" placeholder="Paste the full vacancy text — responsibilities, requirements, everything…"></textarea>
+          <div class="row2">
+            <div><label for="fJdCo">Company (optional)</label><input type="text" id="fJdCo" placeholder="Acme Ltd"></div>
+            <div><label for="fJdRole">Role title as advertised</label><input type="text" id="fJdRole" placeholder="Customer Support Specialist"></div>
+          </div>
+          <div class="note live" id="jdRoleNote" style="display:none"></div>
+          <button class="addbtn" id="btnJd" style="border-style:solid;color:#fff;background:var(--accent);border-color:var(--accent);">Extract what they asked for →</button>
+        </div>
+        <!-- TAILOR PANEL. The chips above tell you what is MISSING; this
+             reorders what you already have so the matching parts are read
+             first. Order is the only honest lever: nothing is invented. -->
+        <div class="panel" id="tailorPanel" style="display:none">
+          <h3>Arrange this CV for this role</h3>
+          <p class="hint">A recruiter reads the top third. This puts the parts of your CV that answer <b>this specific vacancy</b> at the top of each section — your competencies, and the bullets inside each role. <b>Your roles stay in date order, nothing is invented, nothing is deleted and nothing is reworded.</b> Only the order changes.</p>
+          <div class="note" id="tailorNote"></div>
+          <div style="display:flex;flex-wrap:wrap;gap:0.7rem;margin-top:1rem;">
+            <button class="btn-yes" id="tailorBtn" type="button">Reorder my CV for this role</button>
+            <button class="btn-more" id="untailorBtn" type="button" style="display:none">Undo — restore my order</button>
+          </div>
+        </div>
+
+        <div class="panel" id="jdPanel" style="display:none">
+          <h2>What they asked for</h2>
+          <p class="hint">Green means it already appears in your CV. Tap a grey chip to confirm you genuinely have it — confirmed items are added to your skills line in the employer's own words.</p>
+          <div id="jdChips" class="chips"></div>
+          <div class="note" id="jdNote"></div>
+        </div>
+      </div>
+
+      <!-- STEP 4 -->
+      <div class="step" id="s4">
+        <div class="panel">
+          <h2>Make it sound like a person wrote it</h2>
+          <p class="hint">Recruiters have become fast at spotting generated CVs. This pass flags corporate filler, passive constructions and phrases that appear on tens of thousands of other documents — then offers a plainer version. <b>It never invents an achievement.</b> Every suggestion only changes how your own facts are worded.</p>
+          <div id="humanOut"></div>
+        </div>
+      </div>
+
+      <!-- STEP 5 -->
+      <div class="step" id="s5">
+        <div class="panel">
+          <h2>Choose your ATS template</h2>
+          <p class="hint">All three are ATS-safe in exactly the same way — single column, standard headings, no tables, no graphics, no text boxes, no columns, nothing in a header or footer. What differs is the <b>section naming each market expects</b>. Pick the one that matches where the employer is.</p>
+          <div id="tplPick" class="chips" style="gap:0.5rem"></div>
+          <div class="note" id="tplNote"></div>
+        </div>
+        <div class="panel">
+          <h2>Your CV</h2>
+          <p class="hint">Single column, standard headings, plain-text contact details, no tables, no graphics, no text boxes. This is what a parser can read cleanly.<br><br><b>Download .docx</b> for anything that asks for Word — it is a genuine Office file, not HTML with a Word extension. <b>Print / Save PDF</b> for everything else. <b>Copy plain text</b> when a portal gives you a paste box instead of an upload.</p>
+          <div class="pv-wrap"><div id="preview"></div></div>
+          <div class="note"><b>Filename matters.</b> Save it as <em>Firstname_Lastname_Role_CV.pdf</em> — never CV_final_v7.pdf. It sits in a folder with two hundred others and a human has to find yours again.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── SCORE RAIL ── -->
+    <div class="rail">
+      <div class="scorebox">
+        <div class="scoren" id="scoreN">0<small>/10</small></div>
+        <div class="scorel">ERJ scan score</div>
+        <div class="bar"><i id="scoreBar"></i></div>
+        <div class="verdict" id="verdict">Fill in step 2 and this updates as you type.</div>
+      </div>
+      <div class="checks" id="checks"></div>
+      <div class="note">
+        <b>What this score is.</b> It is the same ten-point rubric as the free CV Self-Scan, run live as you type. Hitting 10/10 means your CV clears every structural trap that silently bins applications.
+        <br><br>
+        <b>What it is not.</b> No tool can promise a number inside a specific employer's system — Workday, Greenhouse and Taleo all score differently and none of them publish their rules. What this does guarantee is that nothing in your document is unreadable to a parser, which is the failure that actually costs people interviews.
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="printroot"><div id="preview2"></div></div>
+
+<script src="../erj-passcode.js"></script>
+<script src="docx.js"></script>
+<script src="engine.js"></script>
+<script src="import.js"></script>
+<script src="../erj-private-protection.js?v=1"></script>
+</body>
+</html>

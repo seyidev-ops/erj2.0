@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="night">
+<head>
+<link rel="manifest" href="manifest.json">
+<meta charset="UTF-8">
+
+<link rel="icon" type="image/png" sizes="64x64" href="favicon32.png" media="(prefers-color-scheme: light)">
+<link rel="icon" type="image/png" sizes="64x64" href="favicon32-dark.png" media="(prefers-color-scheme: dark)">
+<link rel="icon" type="image/png" sizes="64x64" href="favicon32.png">
+
+
+<link rel="apple-touch-icon" href="appletouchicon.png">
+<meta name="theme-color" content="#000000" id="metaThemeColor">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Instructor Login | Everything Remote Job</title>
+
+
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  /* RocketAir · NIGHT (default) — pure black */
+  --bg:#000000; --bg2:#0d0d0d; --bg3:#111111; --bg4:#0a0a0a;
+  --paper:#000000; --card:#0d0d0d; --sidebar:#000000; --input-bg:#111111;
+  --ink:#FFFFFF; --text:#FFFFFF; --txt:#FFFFFF; --t:#FFFFFF;
+  --ink-soft:#A1A1A1; --muted:#A1A1A1; --ink-faint:#858585; --muted2:#858585;
+  --accent:#FF5722; --accent-h:#ff6f43; --accent2:#FF5722; --electric:#FF5722;
+  --border:rgba(255,255,255,0.10); --border2:rgba(255,255,255,0.055);
+  --nav-bg:rgba(0,0,0,0.85); --nav:rgba(0,0,0,0.85);
+  --green:#3FB950; --amber:#FF5722; --red:#F85149; --teal:#39C5BB; --purple:#A371F7;
+  --glow:transparent; --fb:#FFFFFF; --fd:#FFFFFF;
+  --shadow:0 1px 0 rgba(0,0,0,0.5); --shadow-lg:0 8px 60px rgba(0,0,0,0.8);
+  --sh:0 1px 0 rgba(0,0,0,0.5); --sh2:0 8px 60px rgba(0,0,0,0.8); --sab:#000000;
+  --font-display:'Space Grotesk',system-ui,sans-serif; --font-body:'Inter',system-ui,sans-serif;
+  --font-d:'Space Grotesk',system-ui,sans-serif; --font-b:'Inter',system-ui,sans-serif;
+  --radius:16px; --r:16px; --transition:all 0.3s ease; --tr:all 0.3s ease;
+}
+html[data-theme="day"]{
+  /* RocketAir · DAY — clean light counterpart */
+  --bg:#FAFAF8; --bg2:#FFFFFF; --bg3:#F2F1ED; --bg4:#F2F1ED;
+  --paper:#FAFAF8; --card:#FFFFFF; --sidebar:#FFFFFF; --input-bg:#FFFFFF;
+  --ink:#0A0A0A; --text:#0A0A0A; --txt:#0A0A0A; --t:#0A0A0A;
+  --ink-soft:#52514C; --muted:#52514C; --ink-faint:#6E6C65; --muted2:#6E6C65;
+  --accent:#AD350A;--accent-btn:#FF5722;--accent-text:#AD350A; --accent-h:#C53A0B; --accent2:#FF5722; --electric:#E8470F;
+  --border:rgba(10,10,10,0.12); --border2:rgba(10,10,10,0.06);
+  --nav-bg:rgba(250,250,248,0.9); --nav:rgba(250,250,248,0.9);
+  --glow:transparent; --fb:#0A0A0A; --fd:#0A0A0A;
+  --shadow:0 1px 0 rgba(10,10,10,0.06); --shadow-lg:0 12px 50px rgba(10,10,10,0.10);
+  --sh:0 1px 0 rgba(10,10,10,0.06); --sh2:0 12px 50px rgba(10,10,10,0.10); --sab:#FFFFFF;
+}
+html[data-theme="night"]{
+  --bg:#000000; --bg2:#0d0d0d; --bg3:#111111; --bg4:#0a0a0a;
+  --paper:#000000; --card:#0d0d0d; --sidebar:#000000; --input-bg:#111111;
+  --ink:#FFFFFF; --text:#FFFFFF; --txt:#FFFFFF; --t:#FFFFFF;
+  --ink-soft:#A1A1A1; --muted:#A1A1A1; --ink-faint:#858585; --muted2:#858585;
+  --accent:#FF5722; --accent-h:#ff6f43; --accent2:#FF5722; --electric:#FF5722;
+  --border:rgba(255,255,255,0.10); --border2:rgba(255,255,255,0.055);
+  --nav-bg:rgba(0,0,0,0.85); --nav:rgba(0,0,0,0.85);
+  --green:#3FB950; --amber:#FF5722; --red:#F85149; --teal:#39C5BB; --purple:#A371F7;
+  --glow:transparent; --fb:#FFFFFF; --fd:#FFFFFF;
+  --shadow:0 1px 0 rgba(0,0,0,0.5); --shadow-lg:0 8px 60px rgba(0,0,0,0.8);
+  --sh:0 1px 0 rgba(0,0,0,0.5); --sh2:0 8px 60px rgba(0,0,0,0.8); --sab:#000000;
+}
+
+
+
+
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:var(--font-body);min-height:100vh;
+  display:flex;align-items:center;justify-content:center;overflow-x:hidden;transition:var(--transition);position:relative;}
+
+#particles{position:fixed;inset:0;z-index:0;pointer-events:none;}
+.radial-glow{position:fixed;top:-200px;left:50%;transform:translateX(-50%);width:900px;height:700px;
+  background:radial-gradient(ellipse at center,var(--glow) 0%,transparent 70%);pointer-events:none;z-index:0;
+  animation:glowPulse 4s ease-in-out infinite;}
+@keyframes glowPulse{0%,100%{opacity:.7;transform:translateX(-50%) scale(1)}50%{opacity:1;transform:translateX(-50%) scale(1.08)}}
+.grid-overlay{position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:linear-gradient(rgba(20,184,166,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(20,184,166,0.04) 1px,transparent 1px);
+  background-size:60px 60px;}
+
+.nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(5,9,26,0.92);backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);padding:0 4%;height:60px;display:flex;align-items:center;justify-content:space-between;gap:.5rem;}
+html[data-theme="day"] .nav{background:rgba(240,253,250,0.92);}
+.nav-brand{font-family:var(--font-display);font-weight:800;font-size:1rem;color:var(--text);text-decoration:none;letter-spacing:-.5px;
+  display:inline-flex;align-items:center;gap:8px;flex-shrink:1;min-width:0;overflow:hidden;}
+.nav-brand span{color:var(--electric);font-style:italic;font-weight:800;margin-left:-0.08em;}
+.nav-brand-text{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.nav-brand-short{display:none;font-size:.95rem;}
+.nav-right-group{display:flex;align-items:center;gap:.5rem;flex-shrink:0;}
+.nav-theme-btn{width:34px;height:34px;border-radius:8px;border:1px solid var(--border);background:rgba(13,21,53,.6);
+  cursor:pointer;color:var(--muted);display:flex;align-items:center;justify-content:center;font-size:.95rem;transition:var(--transition);flex-shrink:0;}
+.nav-theme-btn:hover{color:var(--electric);}
+.nav-back{font-size:.78rem;color:var(--muted);text-decoration:none;display:flex;align-items:center;gap:5px;transition:color .2s;white-space:nowrap;}
+.nav-back:hover{color:var(--electric);}
+.nav-back-label{display:inline;}
+@media(max-width:480px){
+  .nav{padding:0 3.5%;}
+  .nav-brand-text{display:none;}
+  .nav-brand-short{display:inline;}
+  .nav-back-label{display:none;}
+}
+@media(max-width:360px){
+  .nav-right-group{gap:.3rem;}
+  .nav-theme-btn{width:30px;height:30px;font-size:.8rem;}
+}
+
+.page-wrap{position:relative;z-index:10;width:100%;max-width:480px;margin:0 auto;padding:1.5rem 1.5rem 2rem;
+  display:flex;flex-direction:column;align-items:center;}
+
+.instructor-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(20,184,166,.12);border:1px solid rgba(20,184,166,.3);
+  color:var(--electric);padding:6px 16px;border-radius:100px;font-size:.75rem;font-weight:700;letter-spacing:1.5px;
+  text-transform:uppercase;margin-bottom:1.5rem;animation:fadeDown .6s ease both;}
+.brand-tagline{font-size:.82rem;color:var(--muted);margin-bottom:2.5rem;text-align:center;animation:fadeDown .7s ease .1s both;}
+
+.auth-card{width:100%;background:var(--card);border:1px solid var(--border);border-radius:6px;padding:2.8rem 2.5rem;
+  box-shadow:var(--shadow);backdrop-filter:blur(24px);animation:fadeUp .8s ease .2s both;position:relative;overflow:hidden;}
+.auth-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(94,234,212,0.5),rgba(20,184,166,0.8),rgba(94,234,212,0.5),transparent);}
+
+.form-title{font-family:var(--font-display);font-size:1.45rem;font-weight:800;letter-spacing:-.5px;margin-bottom:.4rem;color:var(--text);text-align:center;}
+.form-sub{font-size:.85rem;color:var(--muted);margin-bottom:2rem;text-align:center;}
+
+.field{margin-bottom:1.2rem;}
+.field label{display:block;font-size:.8rem;font-weight:600;color:var(--muted);margin-bottom:.5rem;letter-spacing:.3px;}
+.field input{width:100%;padding:.85rem 1rem;background:var(--input-bg);border:1.5px solid var(--border);
+  border-radius:10px;color:var(--text);font-family:var(--font-body);font-size:.95rem;outline:none;transition:var(--transition);}
+.field input:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(20,184,166,.15);background:var(--bg3);}
+.field input::placeholder{color:var(--muted);opacity:.6;}
+
+.pw-wrap{position:relative;}
+.pw-wrap input{padding-right:3rem;}
+.pw-toggle{position:absolute;right:.9rem;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:var(--muted);font-size:1.1rem;transition:color .2s;padding:4px;}
+.pw-toggle:hover{color:var(--electric);}
+
+.forgot-row{display:flex;justify-content:flex-end;margin-top:-.8rem;margin-bottom:1.2rem;}
+.forgot-link{font-size:.8rem;color:var(--electric);text-decoration:none;transition:opacity .2s;}
+.forgot-link:hover{opacity:.8;text-decoration:underline;}
+
+.btn-primary{width:100%;padding:.95rem;background:var(--accent);color:#fff;border:none;border-radius:10px;cursor:pointer;
+  font-family:var(--font-display);font-size:1rem;font-weight:700;letter-spacing:-.3px;transition:var(--transition);
+  box-shadow:0 4px 20px rgba(20,184,166,.4);display:flex;align-items:center;justify-content:center;gap:8px;position:relative;overflow:hidden;}
+.btn-primary::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.15) 0%,transparent 60%);opacity:0;transition:opacity .25s;}
+.btn-primary:hover{background:var(--accent-h);transform:translateY(-2px);box-shadow:0 8px 32px rgba(20,184,166,.55);}
+.btn-primary:hover::before{opacity:1;}
+.btn-primary.loading{pointer-events:none;opacity:.7;}
+.spinner{width:18px;height:18px;border-radius:50%;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;animation:spin .7s linear infinite;display:none;}
+.btn-primary.loading .spinner{display:block;}
+.btn-primary.loading .btn-text{display:none;}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+.alert{padding:.85rem 1.1rem;border-radius:10px;margin-bottom:1.2rem;font-size:.85rem;font-weight:500;display:none;align-items:center;gap:8px;border:1px solid;}
+.alert.show{display:flex;animation:fadeUp .3s ease;}
+.alert-error{background:rgba(220,38,38,.1);border-color:rgba(220,38,38,.3);color:#f87171;}
+.alert-success{background:rgba(16,185,129,.1);border-color:rgba(16,185,129,.3);color:#34d399;}
+
+.or-divider{display:flex;align-items:center;gap:1rem;margin:1.5rem 0;color:var(--muted);font-size:.8rem;}
+.or-divider::before,.or-divider::after{content:'';flex:1;height:1px;background:var(--border);}
+
+.auth-footer{text-align:center;margin-top:1.8rem;font-size:.84rem;color:var(--muted);}
+.auth-footer a{color:var(--electric);text-decoration:none;font-weight:600;}
+.auth-footer a:hover{text-decoration:underline;}
+
+.info-box{background:rgba(20,184,166,.07);border:1px solid rgba(20,184,166,.2);border-radius:4px;padding:1rem 1.2rem;
+  font-size:.82rem;color:var(--muted);line-height:1.7;margin-top:1.5rem;}
+.info-box strong{color:var(--electric);}
+.info-box code{background:var(--bg3);padding:2px 6px;border-radius:5px;color:var(--text);font-size:.8rem;}
+
+.wa-float{position:fixed;bottom:28px;right:28px;z-index:999;width:52px;height:52px;border-radius:50%;
+  background:#25D366;display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 20px rgba(26,24,20,.4);transition:var(--transition);text-decoration:none;}
+.wa-float:hover{transform:scale(1.1);}
+.wa-float svg{width:26px;height:26px;fill:#fff;}
+
+@keyframes fadeDown{from{opacity:0;transform:translateY(-16px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:500px){.auth-card{padding:2rem 1.5rem;}}
+
+/* ── Cohort 9 minimalist overrides ── */
+#particles,.radial-glow,.grid-overlay{display:none!important}
+*{text-shadow:none!important}
+h1 strong,h1 em{ -webkit-text-fill-color:currentColor!important;background:none!important;color:var(--accent)!important;}
+.btn-register::before,.btn-primary::before,.timer-wrap::before,.auth-card::before{display:none!important}
+.btn-register,.btn-primary{box-shadow:none!important;border-radius:2px!important;font-family:'DM Sans',system-ui,sans-serif!important;font-weight:500!important;letter-spacing:0.3px!important;}
+.btn-register:hover,.btn-primary:hover{box-shadow:none!important;}
+.auth-card,.timer-wrap,.card,.stage-card,.lesson-card{backdrop-filter:none!important;}
+.wa-float{background:var(--text)!important;box-shadow:none!important;border-radius:50%!important;}
+.wa-float svg{fill:var(--bg)!important;}
+.wa-float:hover{box-shadow:none!important;}
+
+/* ── Cohort 9 cleanup ── */
+h1 span,h2 span,.hero h1 span,[class*="grad"]{ -webkit-text-fill-color:var(--accent)!important;background:none!important;background-image:none!important;color:var(--accent)!important;-webkit-background-clip:initial!important;background-clip:initial!important;}
+.nav,nav{background:var(--bg)!important;}
+html[data-theme="day"] .nav,html[data-theme="day"] nav{background:var(--bg)!important;}
+.featured-badge,.badge,.tag,.pill{box-shadow:none!important;}
+.cover,.post-cover,.art-cover,.card-cover,.featured-img{filter:saturate(0.6);}
+</style>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;800&family=Inter:wght@300;400;500&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"></noscript>
+<meta property="og:image" content="https://everythingremotejob.com/preview-portal.jpg" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Everything Remote Job" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://everythingremotejob.com/preview-portal.jpg" />
+<style id="erjHideLegacy">#themeDropdown,.theme-drop,.theme-drop-menu,#themeMenu,#erjTheme{display:none !important;}</style>
+  <meta name="robots" content="noindex,nofollow,noarchive,nosnippet,noimageindex">
+<meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+</head>
+<body>
+<canvas id="particles"></canvas>
+<div class="radial-glow"></div>
+<div class="grid-overlay"></div>
+
+<div id="erjNavMount"></div>
+<script>window.ERJ_NAV={active:'login',onPage:[{label:'Participant Login',href:'login.html'},{label:'Admin Login',href:'admin-login.html'}]};</script>
+
+<div class="page-wrap">
+  <div class="instructor-badge">🎓 Instructor Portal</div>
+  <p class="brand-tagline">Instructor access — Everything Remote Job</p>
+
+  <div class="auth-card">
+    <div class="alert alert-error" id="alertBox"><span>⚠</span><span id="alertMsg"></span></div>
+    <div class="alert alert-success" id="successBox"><span>✓</span><span id="successMsg"></span></div>
+
+    <h2 class="form-title">Instructor Sign In</h2>
+    <p class="form-sub">Access your teaching materials, session manuals, and live class tools.</p>
+
+    <div class="field">
+      <label for="loginEmail">Email / Username</label>
+      <input type="text" id="loginEmail" placeholder="instructor@erjm.com" autocomplete="username">
+    </div>
+    <div class="field">
+      <label for="loginPw">Password</label>
+      <div class="pw-wrap">
+        <input type="password" id="loginPw" placeholder="••••••••" autocomplete="current-password">
+        <button class="pw-toggle" type="button" onclick="togglePw('loginPw',this)" title="Show/hide">👁</button>
+      </div>
+    </div>
+    <div class="forgot-row">
+      <a href="#" class="forgot-link" onclick="showForgot(event)">Forgot password?</a>
+    </div>
+
+    <button class="btn-primary" id="loginBtn" onclick="handleLogin()">
+      <span class="btn-text">🎓 Access Instructor Portal</span>
+      <span class="spinner"></span>
+    </button>
+
+    <div class="auth-footer" style="margin-top:1.2rem">
+      Not an instructor? <a href="login.html">← Participant Login</a> · <a href="admin-login.html">Admin Portal</a>
+    </div>
+
+    <div class="info-box">
+      <strong>🎓 Want to become an instructor?</strong><br><br>
+      We're always looking for passionate professionals to join the Everything Remote Job teaching team.<br><br>
+      📲 Reach us on WhatsApp: <a href="https://wa.me/2348032925957" target="_blank" style="color:#25D366;font-weight:700">+234 803 292 5957</a><br>
+      Send the message: <em style="color:var(--electric)">"I want to become an instructor"</em>
+      <br><br>
+      <span style="font-size:.75rem;opacity:.7">Already have credentials? Contact admin if you've lost access to your account.</span>
+    </div>
+  </div>
+
+  <p style="margin-top:2rem;text-align:center;font-size:.75rem;color:var(--muted)">
+    © 2026 Everything Remote Job. Built for <span style="color:var(--accent)">global career scale.</span>
+  </p>
+</div>
+
+<a href="https://wa.me/2348032925957" class="wa-float" title="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script>
+/* ── SEED INSTRUCTOR ACCOUNT ── */
+(function seedInstructor() {
+  try {
+    const users = JSON.parse(localStorage.getItem('rjm_users') || '[]');
+    const INSTRUCTOR = {
+      username: 'instructor',
+      email:    'instructor@erjm.com',
+      password: 'Instr@2026',
+      role:     'instructor',
+      name:     'Course Instructor',
+      avatar:   'CI',
+      joinDate: '2026-01-01T00:00:00.000Z'
+    };
+    // Only add if no instructor account with this email exists
+    if (!users.find(u => u.email === INSTRUCTOR.email)) {
+      users.push(INSTRUCTOR);
+      localStorage.setItem('rjm_users', JSON.stringify(users));
+    }
+  } catch {}
+})();
+
+/* ── CHECK SESSION ── */
+(function() {
+  const sess = localStorage.getItem('rjm_session');
+  if (sess) {
+    try {
+      const s = JSON.parse(sess);
+      if (s.role === 'instructor') { window.location.href = 'instructor.html'; return; }
+      if (s.role === 'admin')      { window.location.href = 'admin.html'; return; }
+      if (s.role === 'student')    { window.location.href = 'dashboard.html'; return; }
+      if (s.role === 'participant'){ window.location.href = 'participant.html'; return; }
+    } catch {}
+  }
+})();
+
+function getUsers() { try { return JSON.parse(localStorage.getItem('rjm_users')||'[]'); } catch { return []; } }
+
+function handleLogin() {
+  hideAlerts();
+  const identifier = document.getElementById('loginEmail').value.trim();
+  const pw         = document.getElementById('loginPw').value;
+  if (!identifier || !pw) { showError('Please enter your email/username and password.'); return; }
+  const btn = document.getElementById('loginBtn');
+  btn.classList.add('loading');
+  setTimeout(() => {
+    btn.classList.remove('loading');
+    const id = identifier.toLowerCase().trim();
+    const users = getUsers();
+    const user  = users.find(u =>
+      (u.email    && u.email.toLowerCase()    === id) ||
+      (u.username && u.username.toLowerCase() === id)
+    );
+    if (!user || user.password !== pw) {
+      showError('Incorrect credentials. Check your email and password, or contact admin.'); return;
+    }
+    if (user.role !== 'instructor' && user.role !== 'admin') {
+      showError('This portal is for instructors only. Use the Participant Login instead.'); return;
+    }
+    localStorage.setItem('rjm_session', JSON.stringify({
+      email: user.email, name: user.name, role: user.role, avatar: user.avatar,
+      loginAt: new Date().toISOString()
+    }));
+    showSuccess(`Welcome, ${user.name}! Loading your portal…`);
+    setTimeout(() => {
+      window.location.href = user.role === 'admin' ? 'admin.html' : 'instructor.html';
+    }, 1100);
+  }, 1200);
+}
+
+function showError(msg) { hideAlerts(); const b=document.getElementById('alertBox'); document.getElementById('alertMsg').textContent=msg; b.classList.add('show'); }
+function showSuccess(msg) { hideAlerts(); const b=document.getElementById('successBox'); document.getElementById('successMsg').textContent=msg; b.classList.add('show'); }
+function hideAlerts() { document.getElementById('alertBox').classList.remove('show'); document.getElementById('successBox').classList.remove('show'); }
+function togglePw(id,btn) { const i=document.getElementById(id); if(i.type==='password'){i.type='text';btn.textContent='🙈';}else{i.type='password';btn.textContent='👁';} }
+function showForgot(e) { e.preventDefault(); const email=document.getElementById('loginEmail').value.trim(); if(!email){showError('Enter your email first, then click Forgot password.');return;} showSuccess(`Reset instructions sent to ${email}. Contact admin if you need immediate help.`); }
+
+/* ── THEME (legacy; guarded — unified erjThemeJS governs theming) ── */
+(function() {
+  const html=document.documentElement, btn=document.getElementById('themeToggle');
+  function applyTheme(t) { html.setAttribute('data-theme',t); if(btn) btn.textContent=t==='day'?'☀️':'🌙'; localStorage.setItem('rjt-theme',t); }
+  const saved=localStorage.getItem('rjt-theme'); const sys=window.matchMedia('(prefers-color-scheme: light)').matches?'day':'night';
+  if(saved!=='system') applyTheme(saved||sys);
+  if(btn) btn.addEventListener('click',()=>applyTheme(html.getAttribute('data-theme')==='day'?'night':'day'));
+})();
+
+/* ── PARTICLES ── */
+(function() {
+  const c=document.getElementById('particles'), ctx=c.getContext('2d'); let W,H,pts=[];
+  function resize(){W=c.width=window.innerWidth;H=c.height=window.innerHeight;} resize(); window.addEventListener('resize',resize);
+  for(let i=0;i<40;i++) pts.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.5+.3,dx:(Math.random()-.5)*.25,dy:(Math.random()-.5)*.25,o:Math.random()*.4+.1});
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    const rgb=document.documentElement.getAttribute('data-theme')==='day'?'20,184,166':'94,234,212';
+    pts.forEach(p=>{p.x+=p.dx;p.y+=p.dy;if(p.x<0)p.x=W;if(p.x>W)p.x=0;if(p.y<0)p.y=H;if(p.y>H)p.y=0;ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle=`rgba(${rgb},${p.o})`;ctx.fill();});
+    for(let i=0;i<pts.length;i++)for(let j=i+1;j<pts.length;j++){const dx=pts[i].x-pts[j].x,dy=pts[i].y-pts[j].y,d=Math.sqrt(dx*dx+dy*dy);if(d<120){ctx.beginPath();ctx.moveTo(pts[i].x,pts[i].y);ctx.lineTo(pts[j].x,pts[j].y);ctx.strokeStyle=`rgba(${rgb},${.08*(1-d/120)})`;ctx.lineWidth=.5;ctx.stroke();}}
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+</script>
+<script id="erjPWA">
+(function(){
+  // Register service worker (enables offline + install criteria)
+  if('serviceWorker' in navigator){
+    window.addEventListener('load',function(){
+      navigator.serviceWorker.register('sw.js').then(function(reg){reg.update();}).catch(function(){});
+    });
+  }
+  // Capture install prompt
+  var deferred=null, btn=null;
+  function makeBtn(){
+    if(btn) return btn;
+    btn=document.createElement('button');
+    btn.id='erjInstallBtn';
+    btn.textContent='⤓ Install App';
+    btn.style.cssText='position:fixed;left:16px;bottom:16px;z-index:980;display:none;align-items:center;gap:7px;background:var(--accent-btn,#FF5722);color:#14110E;border:none;border-radius:10px;padding:9px 14px;font-weight:700;font-family:Inter,system-ui,sans-serif;font-size:.8rem;font-weight:600;cursor:pointer;box-shadow:0 4px 18px rgba(0,0,0,.18);';
+    btn.addEventListener('click',async function(){
+      if(!deferred) return;
+      deferred.prompt();
+      try{ await deferred.userChoice; }catch(e){}
+      deferred=null; btn.style.display='none';
+    });
+    document.body.appendChild(btn);
+    return btn;
+  }
+  window.addEventListener('beforeinstallprompt',function(e){
+    e.preventDefault(); deferred=e; makeBtn().style.display='inline-flex';
+  });
+  window.addEventListener('appinstalled',function(){ if(btn) btn.style.display='none'; deferred=null; });
+  // iOS Safari: no beforeinstallprompt — show a hint button that explains Add to Home Screen
+  var isIOS=/iphone|ipad|ipod/i.test(navigator.userAgent);
+  var standalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
+  if(isIOS && !standalone){
+    window.addEventListener('load',function(){
+      var b=makeBtn(); b.textContent='⤓ Add to Home Screen'; b.style.display='inline-flex';
+      b.addEventListener('click',function(){ alert('To install: tap the Share icon, then “Add to Home Screen”.'); });
+    });
+  }
+})();
+</script>
+<!-- ===== Unified Theme Control (Day / System / Night) — header based ===== -->
+<script id="erjThemeJS">
+(function(){
+  var KEY='rjt-theme', html=document.documentElement;
+  var ICON={day:'☀️',night:'🌙',system:'💻'};
+  var NEXT={day:'system',system:'night',night:'day'};   // cycle order
+  var TITLE={day:'Theme: Day (tap for System)',system:'Theme: System (tap for Night)',night:'Theme: Night (tap for Day)'};
+  function sys(){return window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'night':'day';}
+  function bar(resolved){
+    var m=document.getElementById('metaThemeColor')||document.querySelector('meta[name="theme-color"]:not([media])');
+    if(!m){m=document.createElement('meta');m.name='theme-color';m.id='metaThemeColor';document.head.appendChild(m);}
+    m.setAttribute('content', resolved==='night'?'#000000':'#FAFAF8');
+  }
+  function curPref(){ var p=localStorage.getItem(KEY); return ICON[p]?p:'system'; }
+  function apply(pref){
+    if(!ICON[pref]) pref='system';
+    var resolved = pref==='system'? sys() : pref;
+    html.setAttribute('data-theme', resolved);
+    localStorage.setItem(KEY, pref);
+    bar(resolved);
+    // update every in-header theme button on the page
+    document.querySelectorAll('[data-erj-theme-btn], #themeToggle, #themeBtn').forEach(function(btn){
+      btn.textContent = ICON[pref];
+      btn.setAttribute('title', TITLE[pref]);
+      btn.setAttribute('aria-label', TITLE[pref]);
+    });
+  }
+  window.erjApplyTheme=apply;
+  function wire(btn){
+    if(!btn || btn.__erjWired) return; btn.__erjWired=true;
+    // strip any legacy onclick and clone to drop old listeners
+    btn.removeAttribute('onclick');
+    var fresh=btn.cloneNode(true); btn.parentNode.replaceChild(fresh,btn);
+    fresh.addEventListener('click',function(e){ e.preventDefault(); e.stopPropagation(); apply(NEXT[curPref()]); });
+    fresh.style.cursor='pointer';
+  }
+  function wireAll(){ document.querySelectorAll('[data-erj-theme-btn], #themeToggle, #themeBtn').forEach(wire); }
+  if(window.matchMedia){window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change',function(){if(curPref()==='system')apply('system');});}
+  if(document.readyState!=='loading'){ wireAll(); apply(curPref()); }
+  else document.addEventListener('DOMContentLoaded',function(){ wireAll(); apply(curPref()); });
+  // re-apply after a tick in case header is injected late
+  setTimeout(function(){ wireAll(); apply(curPref()); }, 300);
+})();
+</script>
+<!-- ===== /Unified Theme Control ===== -->
+
+<script src="erj-nav.js" defer></script>
+</body>
+</html>

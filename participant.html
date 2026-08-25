@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+
+<link rel="icon" type="image/png" sizes="64x64" href="favicon32.png" media="(prefers-color-scheme: light)">
+<link rel="icon" type="image/png" sizes="64x64" href="favicon32-dark.png" media="(prefers-color-scheme: dark)">
+<link rel="icon" type="image/png" sizes="64x64" href="favicon32.png">
+
+
+<link rel="apple-touch-icon" href="appletouchicon.png">
+<meta name="theme-color" content="#FAFAF8" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#000000" id="metaThemeColor">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Redirecting… | Everything Remote Job</title>
+<script>
+// Participant and Student portals are now merged into dashboard.html
+// Update role in session so dashboard accepts it
+try {
+  var sess = JSON.parse(localStorage.getItem('rjm_session') || 'null');
+  if (sess) { window.location.replace('dashboard.html'); }
+  else      { window.location.replace('login.html'); }
+} catch(e) { window.location.replace('login.html'); }
+</script>
+<meta property="og:image" content="https://everythingremotejob.com/preview-portal.jpg" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Everything Remote Job" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://everythingremotejob.com/preview-portal.jpg" />
+  <meta name="robots" content="noindex,nofollow,noarchive,nosnippet,noimageindex">
+<meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+</head>
+<body style="background:#000000;display:flex;align-items:center;justify-content:center;height:100vh;margin:0;font-family:Inter,system-ui,sans-serif;color:#A1A1A1;font-size:.9rem">
+  Redirecting to your portal…
+<script src="erj-private-protection.js?v=1"></script>
+</body>
+</html>

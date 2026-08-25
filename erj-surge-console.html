@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="night">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cohort 10 Surge Console · Everything Remote Job</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#000; --card:#0d0d0d; --bg2:#111; --ink:#fff; --ink-soft:#A1A1A1; --ink-faint:#858585;
+  --accent:#FF5722; --line:rgba(255,255,255,.10); --line-soft:rgba(255,255,255,.055);
+  --fd:'Space Grotesk',system-ui,sans-serif; --fb:'Inter',system-ui,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--paper);color:var(--ink);font-family:var(--fb);font-weight:300;line-height:1.65;
+  -webkit-font-smoothing:antialiased;padding-bottom:5rem}
+.wrap{max-width:820px;margin:0 auto;padding:0 clamp(1.1rem,4vw,2rem)}
+a{color:inherit}
+
+/* header */
+header{border-bottom:1px solid var(--line);padding:1.6rem 0 1.4rem;position:sticky;top:0;
+  background:rgba(0,0,0,.9);backdrop-filter:blur(14px);z-index:50}
+.brand{font-family:var(--fd);font-weight:700;font-size:.82rem;letter-spacing:.18em;text-transform:uppercase}
+.brand span{color:var(--accent)}
+.cd{display:flex;gap:.5rem;margin-top:.9rem;align-items:flex-end;flex-wrap:wrap}
+.cd .u{background:var(--bg2);border:1px solid var(--line);border-radius:8px;padding:.5rem .7rem;min-width:64px;text-align:center}
+.cd .n{font-family:var(--fd);font-weight:700;font-size:1.45rem;line-height:1}
+.cd .l{font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-faint);margin-top:.25rem}
+.cd .to{font-size:.78rem;color:var(--ink-soft);padding-bottom:.3rem}
+.closed{color:var(--accent);font-family:var(--fd);font-weight:700}
+
+/* nav */
+nav.tabs{display:flex;gap:.4rem;overflow-x:auto;padding:.9rem 0 0;scrollbar-width:none}
+nav.tabs::-webkit-scrollbar{display:none}
+nav.tabs button{flex:0 0 auto;background:none;border:1px solid var(--line);color:var(--ink-soft);
+  font-family:var(--fb);font-size:.74rem;letter-spacing:.06em;text-transform:uppercase;
+  padding:.5rem .85rem;border-radius:100px;cursor:pointer;transition:.25s}
+nav.tabs button.on{background:var(--accent);border-color:var(--accent);color:#fff}
+
+section{padding:2.6rem 0;border-top:1px solid var(--line-soft)}
+section:first-of-type{border-top:none}
+.lab{font-size:.63rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);
+  display:flex;align-items:center;gap:.6rem;margin-bottom:1rem}
+.lab::before{content:'';width:22px;height:1px;background:var(--accent)}
+h2{font-family:var(--fd);font-weight:700;font-size:clamp(1.5rem,4.6vw,2.1rem);line-height:1.12;
+  letter-spacing:-.02em;margin-bottom:.6rem}
+h2 em{font-style:normal;color:var(--accent)}
+.sub{color:var(--ink-soft);font-size:.95rem;margin-bottom:1.6rem;max-width:56ch}
+
+/* reply blocks */
+.rep{border:1px solid var(--line);border-radius:12px;background:var(--card);margin-bottom:.75rem;overflow:hidden}
+.rep summary{cursor:pointer;padding:1rem 1.1rem;display:flex;gap:.7rem;align-items:flex-start;list-style:none}
+.rep summary::-webkit-details-marker{display:none}
+.rep summary::after{content:'+';margin-left:auto;color:var(--accent);font-family:var(--fd);font-weight:700;font-size:1.2rem;line-height:1}
+.rep[open] summary::after{content:'–'}
+.rep .q{font-family:var(--fd);font-weight:500;font-size:.98rem;line-height:1.4}
+.rep .tag{font-size:.56rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);
+  border:1px solid var(--line);border-radius:100px;padding:.2rem .5rem;white-space:nowrap;margin-top:.15rem}
+.rep .body{padding:0 1.1rem 1.1rem}
+.rep pre{white-space:pre-wrap;font-family:var(--fb);font-weight:300;font-size:.92rem;line-height:1.7;
+  color:var(--ink-soft);background:var(--bg2);border:1px solid var(--line-soft);border-radius:9px;
+  padding:.95rem 1rem;margin:.3rem 0 .7rem}
+.note{font-size:.79rem;color:var(--ink-faint);margin-bottom:.7rem}
+.note b{color:var(--ink-soft);font-weight:500}
+.copy{background:none;border:1px solid var(--accent);color:var(--accent);font-family:var(--fb);
+  font-size:.76rem;letter-spacing:.1em;text-transform:uppercase;padding:.5rem .95rem;border-radius:100px;
+  cursor:pointer;transition:.22s}
+.copy:hover,.copy:focus{background:var(--accent);color:#fff}
+.copy.done{background:var(--accent);color:#fff;border-color:var(--accent)}
+.sig{font-size:.72rem;color:var(--ink-faint);letter-spacing:.05em;margin-left:.7rem}
+
+/* link board */
+table{width:100%;border-collapse:collapse;font-size:.86rem}
+th{text-align:left;font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-faint);
+  font-weight:500;padding:.6rem .4rem;border-bottom:1px solid var(--line)}
+td{padding:.85rem .4rem;border-bottom:1px solid var(--line-soft);vertical-align:top}
+td.amt{font-family:var(--fd);font-weight:700;white-space:nowrap}
+td a{color:var(--accent);text-decoration:none;font-size:.8rem;word-break:break-all}
+.chk{appearance:none;width:20px;height:20px;border:1px solid var(--line);border-radius:5px;cursor:pointer;
+  background:var(--bg2);position:relative;flex:0 0 auto}
+.chk:checked{background:var(--accent);border-color:var(--accent)}
+.chk:checked::after{content:'✓';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  color:#fff;font-size:.8rem}
+.flag{border-left:3px solid var(--accent);background:rgba(255,87,34,.06);padding:.9rem 1rem;border-radius:0 10px 10px 0;
+  margin-bottom:.8rem;font-size:.88rem;color:var(--ink-soft)}
+.flag b{color:var(--ink);font-family:var(--fd);font-weight:500;display:block;margin-bottom:.25rem;font-size:.92rem}
+.chklist{list-style:none}
+.chklist li{display:flex;gap:.75rem;align-items:flex-start;padding:.75rem 0;border-bottom:1px solid var(--line-soft);
+  font-size:.9rem;color:var(--ink-soft)}
+.chklist li b{color:var(--ink);font-weight:500}
+.qr{display:grid;grid-template-columns:auto 1fr;gap:.6rem 1rem;font-size:.86rem;align-items:baseline}
+.qr code{font-family:'Space Grotesk',monospace;color:var(--accent);font-weight:500;font-size:.84rem}
+.sched li{padding:.85rem 0;border-bottom:1px solid var(--line-soft);font-size:.9rem;color:var(--ink-soft);list-style:none}
+.sched b{color:var(--ink);font-family:var(--fd);font-weight:500;display:block;font-size:.86rem;letter-spacing:.02em}
+footer{border-top:1px solid var(--line);padding:2rem 0;color:var(--ink-faint);font-size:.78rem}
+.hide{display:none}
+#toast{position:fixed;left:50%;bottom:1.4rem;transform:translateX(-50%) translateY(140%);
+  background:var(--accent);color:#fff;font-size:.82rem;padding:.65rem 1.2rem;border-radius:100px;
+  transition:transform .3s cubic-bezier(.22,1,.36,1);z-index:99}
+#toast.up{transform:translateX(-50%) translateY(0)}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="brand">Cohort 10 <span>Surge Console</span></div>
+    <div class="cd" id="cd">
+      <div class="u"><div class="n" id="d">–</div><div class="l">days</div></div>
+      <div class="u"><div class="n" id="h">–</div><div class="l">hrs</div></div>
+      <div class="u"><div class="n" id="m">–</div><div class="l">min</div></div>
+      <div class="u"><div class="n" id="s">–</div><div class="l">sec</div></div>
+      <div class="to">until enrolment closes<br>Sun 30 Aug · 8:00 PM WAT<br><span style="opacity:.65">cohort begins Mon 31 Aug · 8PM</span></div>
+    </div>
+    <nav class="tabs" id="tabs"></nav>
+  </div>
+</header>
+
+<div class="wrap">
+
+<!-- ══ PRE-FLIGHT ══ -->
+<section data-tab="Pre-flight">
+  <div class="lab">Before the weekend</div>
+  <h2>Payment links — <em>test every one</em></h2>
+  <p class="sub">Open each link on your phone, on data, not Wi-Fi. Confirm the product name and the amount on the Paystack page match the column below. Do not take a link on trust because it worked in June.</p>
+
+  <div class="flag" style="border-color:rgba(16,185,129,.35);background:rgba(16,185,129,.06)">
+    <b>&#10003; Fixed since the last build — re-verify, then stop worrying about it</b>
+    Each stage now has its own Paystack page, so nobody underpays and nobody needs manual reconciliation.
+    The <code>&#8358;70,000&nbsp;×&nbsp;3 weekly</code> instalment is gone from the site entirely — it totalled
+    less than the bundle it was meant to fund. The Inner Circle page carries its own Paystack link now.
+    One WhatsApp number, <code>+234 803 292 5957</code>, is live everywhere. And the register countdown
+    no longer says <em>begins</em> and <em>closes</em> on the same timestamp.
+  </div>
+  <div class="flag">
+    <b>The one line everyone will ask you this weekend</b>
+    <b>Enrolment closes Sunday 30 August, 8:00 PM WAT. Cohort 10 begins Monday 31 August, 8:00 PM WAT.</b>
+    Two different days, on purpose. Say it in exactly those words every time — if you improvise it once,
+    you will spend Sunday night explaining it. It is also your best close: paying on Sunday buys you
+    a full day before anything starts.
+  </div>
+  <div class="flag">
+    <b>The new price story — say it the same way every time</b>
+    Stage by stage the four stages come to <b>&#8358;370,000</b> (&#8358;70,000 + &#8358;130,000 + &#8358;70,000 + &#8358;100,000).
+    All four together is <b>&#8358;250,000</b>. For Cohort 10 only, a qualified Foundation Training lead may reserve with <b>&#8358;50,000</b> after a Registrar fit check; the <b>&#8358;200,000 balance is due by 6:00 PM WAT on 30 August</b>. Do not send the reservation bank-transfer instructions before fit is confirmed.<br><br>That bundle price is <b>&#8358;120,000 lower than buying the four stages separately</b>, and it is the entire argument for
+    the bundle — it is also arithmetic a buyer can check, so quote it confidently. <b>Check the four Paystack
+    pages read &#8358;70,000 / &#8358;130,000 / &#8358;70,000 / &#8358;100,000 before you send a single link.</b> Do not offer a weekly plan — it no longer exists. The flexible route is now
+    <em>Stage 1 today, the next stage when you are ready</em>.
+  </div>
+  <div class="flag" style="border-color:rgba(255,87,34,.45)">
+    <b>The application clinic sits inside this window — plan around it</b>
+    The free Remote Job Application Clinic runs <b>Saturday 29 August, 7:00 PM WAT</b> — the evening before the gate.
+    It is the highest-intent hour of the cycle because attendees bring a real CV and a real job advert.
+    Diagnose first; do not turn the clinic into a long sales presentation. After the useful work is done, invite qualified people into a private WhatsApp conversation and prescribe the right door.
+  </div>
+  <div class="flag">
+    <b>AI Fluency is now on every offer list</b>
+    It sits as the second-to-last feature on every card, on every page. Expect the question
+    “what exactly is that?” — answer: prompt craft, AI-assisted output, and the AI tools global teams
+    now assume you already use. It is built into the stages, not sold as an extra.
+  </div>
+
+  <table>
+    <thead><tr><th>✓</th><th>Product</th><th>Expected</th><th>Link</th></tr></thead>
+    <tbody>
+      <tr><td><input type="checkbox" class="chk"></td><td>Stages 1–4 · Complete programme <small>(anchored ₦370,000)</small></td><td class="amt">₦250,000</td><td><a href="https://paystack.shop/pay/rjmtstages1-4" target="_blank" rel="noopener">/rjmtstages1-4</a></td></tr>
+      <tr><td><input type="checkbox" class="chk"></td><td>Stage 1 · Remote Mindset Blueprint</td><td class="amt">₦70,000</td><td><a href="https://paystack.shop/pay/Stage1" target="_blank" rel="noopener">/Stage1</a></td></tr>
+      <tr><td><input type="checkbox" class="chk"></td><td>Stage 2 · The Digital Toolkit</td><td class="amt">₦130,000</td><td><a href="https://paystack.shop/pay/stage2ai" target="_blank" rel="noopener">/stage2ai</a></td></tr>
+      <tr><td><input type="checkbox" class="chk"></td><td>Stage 3 · Async Communication Mastery</td><td class="amt">₦70,000</td><td><a href="https://paystack.shop/pay/stage3alony" target="_blank" rel="noopener">/stage3alony</a></td></tr>
+      <tr><td><input type="checkbox" class="chk"></td><td>Stage 4 · Start Your Remote Career</td><td class="amt">₦100,000</td><td><a href="https://paystack.shop/pay/stage4only" target="_blank" rel="noopener">/stage4only</a></td></tr>
+      <tr><td><input type="checkbox" class="chk"></td><td>Job hunt &amp; application · Done-for-you (7 days)</td><td class="amt">₦50,000</td><td><a href="https://paystack.shop/pay/dfy7days" target="_blank" rel="noopener">/dfy7days</a></td></tr>
+      <tr><td><input type="checkbox" class="chk"></td><td>Stage 5 only · Done-for-you (a month)</td><td class="amt">₦300,000</td><td><a href="https://paystack.shop/pay/gtdj-stage5" target="_blank" rel="noopener">/gtdj-stage5</a></td></tr>
+      <tr><td><input type="checkbox" class="chk"></td><td>Stages 1–5 · Dream Job Offer</td><td class="amt">₦500,000</td><td><a href="https://paystack.shop/pay/gydjo-stages1-5" target="_blank" rel="noopener">/gydjo-stages1-5</a></td></tr>
+      <tr><td><input type="checkbox" class="chk"></td><td>Inner Circle · 31 Aug residency</td><td class="amt">₦250,000</td><td><a href="https://paystack.shop/pay/erj-inner-circle" target="_blank" rel="noopener">/erj-inner-circle</a></td></tr>
+    </tbody>
+  </table>
+
+  <div class="lab" style="margin-top:2.4rem">The rest of the pre-flight</div>
+  <ul class="chklist">
+    <li><input type="checkbox" class="chk"><span><b>Run one live ₦100 test transaction</b> on the smallest link and confirm it lands in the Business Play account and triggers your notification. A link that loads is not a link that pays.</span></li>
+    <li><input type="checkbox" class="chk"><span><b>Confirm the GTBank details</b> read exactly <b>0761646755 · Business Play Ltd</b> everywhere they appear, including in your WhatsApp quick replies.</span></li>
+    <li><input type="checkbox" class="chk"><span><b>Load the quick replies</b> into WhatsApp Business (Settings → Business tools → Quick replies) using the shortcuts in the Quick Replies tab.</span></li>
+    <li><input type="checkbox" class="chk"><span><b>Redeploy the site</b> with the new blog post and the <code>erj-v126-conversion-fix</code> service-worker bump, then hard-refresh on one phone and one laptop — confirm the story is featured, the four stage links open the right amounts, and the register countdown reads <em>closes Sun 30 Aug</em>.</span></li>
+    <li><input type="checkbox" class="chk"><span><b>Pin the story link</b> — <code>everythingremotejob.com/blog.html?p=ceiling-to-dollars</code> — into your WhatsApp status, bio and channel.</span></li>
+    <li><input type="checkbox" class="chk"><span><b>Agree the split with Shirley</b>: she answers money, receipts and access; you answer verdicts, teaching and welcomes. Two people, two lanes, no crossed wires.</span></li>
+    <li><input type="checkbox" class="chk"><span><b>Decide the after-deadline policy now</b>, in writing, before anyone asks at 8:04 PM. Whatever you decide, apply it to everyone identically.</span></li>
+  </ul>
+</section>
+
+<!-- ══ WEEKEND ══ -->
+<section data-tab="Weekend">
+  <div class="lab">Saturday 29 August · masterclass day</div>
+  <h2>Weekend replies</h2>
+  <p class="sub">The masterclass runs tonight at 7:00 PM WAT and the gate is tomorrow evening, so today carries the most warm attention you will get all cycle. It is still not for pressure — it is for removing reasons. Every reply below answers the question, then hands back one clear next step. Tap to copy, then change the name.</p>
+
+  <details class="rep" open><summary><span class="q">Masterclass attendee · send within 2 hours of the call ending</span><span class="tag">Oluwaseyi</span></summary>
+  <div class="body">
+  <p class="note"><b>This is the highest-converting message of the whole cycle.</b> Send it Saturday night, not Sunday morning — the room goes cold overnight. Do not paste the price list into it; the job of this message is to get one honest reply about where they actually are.</p>
+  <pre id="t-mc">Hi [Name] — thanks for staying to the end tonight. That was ninety minutes you did not have to give, and I noticed.
+
+Your Student Guide is attached. One thing worth doing while it is still fresh: run the free CV self-scan at everythingremotejob.com/cvscan/ and reply here with your score.
+
+I will tell you honestly which of three things you need:
+· Under 60 — your CV is not reaching humans. That is the fixable one.
+· 60 to 80 — you are close. Usually a portfolio and targeting problem.
+· Above 80 — you may need nothing from us at all, just better targets and interview practice. I will say so if that is what I see.
+
+No pressure attached to any of it. Cohort 10 closes tomorrow at 8:00 PM WAT if it turns out to be your season.
+
+— Oluwaseyi</pre>
+  <button class="copy" data-t="t-mc">Copy</button>
+  </div></details>
+
+  <details class="rep"><summary><span class="q">Reserved a masterclass seat but did not show</span><span class="tag">Shirley</span></summary>
+  <div class="body">
+  <p class="note">Send Sunday, once. A no-show is usually a life thing, not a rejection — treat it that way and a good number come back.</p>
+  <pre id="t-mc-noshow">[Name], we missed you last night — no problem at all, and no lecture attached to this.
+
+The Student Guide is attached anyway, because you reserved a seat and it is yours.
+
+If you want the short version of what you missed: the whole path is on one page at everythingremotejob.com/register.html, and the free CV self-scan at everythingremotejob.com/cvscan/ tells you in under a minute whether your CV is even reaching a human.
+
+If this is not your season, say so and I will stop — genuinely no hard feelings.
+
+— Shirley, Registrar</pre>
+  <button class="copy" data-t="t-mc-noshow">Copy</button>
+  </div></details>
+
+  <details class="rep"><summary><span class="q">How much is it?</span><span class="tag">Shirley</span></summary>
+  <div class="body">
+  <p class="note"><b>Never send the full price list to a cold question.</b> Ask one question first, or you will price them out of the wrong product.</p>
+  <pre id="t-price">Hi [Name] — happy to give you the exact figure, but there are a few doors and I do not want to quote you the wrong one.
+
+Quick question: do you already have a skill a global company would pay for (dev, design, support, ops, marketing, VA, data), or would you be starting from scratch?
+
+If you already have the skill, the fastest door is different — and cheaper — than if you are building one.
+
+— Shirley, Registrar
+Everything Remote Job</pre>
+  <button class="copy" data-t="t-price">Copy</button>
+  </div></details>
+
+  <details class="rep"><summary><span class="q">Full price list — when they have answered</span><span class="tag">Shirley</span></summary>
+  <div class="body">
+  <pre id="t-list">Here is the whole board, [Name], so you can see it plainly:
+
+TRAINING
+• Stage 1, Remote Mindset Blueprint — ₦70,000
+• Stage 2, The Digital Toolkit — ₦130,000
+• Stage 3, Async Communication Mastery — ₦70,000
+• Stage 4, Start Your Remote Career — ₦100,000
+• All four stages, complete programme — ₦250,000 instead of ₦370,000. You save ₦120,000.
+  AI Fluency is built into every stage, not sold separately.
+
+DONE FOR YOU
+• Job hunt & application, done for you in 7 days — ₦50,000
+• Stage 5 only, placement engine for a month — ₦300,000
+• Stages 1–5, Get Your Dream Job Offer — ₦500,000 (₦740,000+ value)
+
+MENTORSHIP
+• Inner Circle — ₦250,000 once · private 1:1 · application-first
+
+Every stage includes the training resources and support stated on the enrolment page. Done-For-You Application is a separate service for people who want ERJ to run the sourcing and applications.
+
+Cohort 10 closes Sunday 30 August at 8:00 PM WAT.
+
+— Shirley, Registrar</pre>
+  <button class="copy" data-t="t-list">Copy</button>
+  </div></details>
+
+  <details class="rep"><summary><span class="q">Which one should I buy? / I do not know where I fit</span><span class="tag">Shirley</span></summary>
+  <div class="body">
+  <pre id="t-chooser">Good question, and the honest answer is that buying the wrong rung is the most expensive mistake in this market — people pay for placement when they needed training, or train again when they only needed representing.
+
+We built a three-question chooser for exactly this. Skill, then timeline, then budget, in that order, and it tells you which door is yours and why:
+
+everythingremotejob.com/register.html#sec-chooser
+
+It takes about ninety seconds and it will sometimes tell you not to buy yet. That is deliberate.
+
+— Shirley, Registrar</pre>
+  <button class="copy" data-t="t-chooser">Copy</button>
+  </div></details>
+
+  <details class="rep"><summary><span class="q">Does it actually work? / Show me proof</span><span class="tag">Oluwaseyi</span></summary>
+  <div class="body">
+  <pre id="t-proof">Fair thing to ask, [Name]. I would rather show you numbers than adjectives.
+
+We published one this week with the whole ledger attached — Amara, Operations Manager in Abuja, 35, two young children and a full-time job. Ninety minutes a day, four days a week. Fifty-four hours of work across nine weeks.
+
+Before: ₦2.1M a year, about $1,380 in dollar terms.
+After: $38,400 a year, paid via Deel. 27.8× in dollar terms.
+Same skills in week 9 as in week 1.
+
+The whole thing, including the outreach numbers — 14 messages, 6 replies, 3 processes, 1 offer:
+everythingremotejob.com/blog.html?p=ceiling-to-dollars
+
+Six more documented journeys, with the numbers, are here:
+everythingremotejob.com/testimonials.html
+
+— Oluwaseyi Ashiru, Lead Facilitator</pre>
+  <button class="copy" data-t="t-proof">Copy</button>
+  </div></details>
+
+  <details class="rep"><summary><span class="q">I do not have the money right now</span><span class="tag">Shirley</span></summary>
+  <div class="body">
+  <p class="note"><b>Do not push here.</b> The honest answer keeps the relationship and often converts next cohort.</p>
+  <pre id="t-money">I hear you, and I am not going to push you on this one.
+
+Two honest options:
+
+1. If the money is a timing problem rather than an absence problem, take it one stage at a time. Stage 1 is ₦70,000 and it starts with the cohort on Monday. Add the next stage when you are ready — same teaching, same room, smaller first step.
+
+2. If it is genuinely not there this month, do not borrow for it. Our own instruction on the register page is that if the amount competes with rent or school fees, the correct answer is the next cohort, not a loan. That stands.
+
+In the meantime, everything free is genuinely free and worth using: the CV self-scan at everythingremotejob.com/cvscan/, the blog, and the free global job board on WhatsApp. Start there, and come to the next cohort with momentum.
+
+— Shirley, Registrar</pre>
+  <button class="copy" data-t="t-money">Copy</button>
+  </div></details>
+
+  <details class="rep"><summary><span class="q">Can I pay in instalments?</span><span class="tag">Shirley</span></summary>
+  <div class="body">
+  <pre id="t-instal">Partly — here is exactly how it works now:
+
+• Inner Circle: ₦250,000 once, after admission. It runs one-to-one rather than on a cohort payment schedule.
+
+For the training there is no weekly plan — we removed it, because it cost people more than the complete programme it was meant to fund. What we do instead is stage by stage: pay ₦70,000 for Stage 1 now and add the next stage when you are ready.
+
+Be clear-eyed about it though: taken separately the four stages cost more than ₦250,000. If you can reach the complete programme, that is the cheaper decision by ₦120,000.
+
+Send me the receipt here and I will open your portal within 24 hours.
+
+Paystack (Stage 1): paystack.shop/pay/Stage1
+Or transfer: GTBank 0761646755 — Business Play Ltd
+
+— Shirley, Registrar</pre>
+  <button class="copy" data-t="t-instal">Copy</button>
+  </div></details>
+
+  <details class="rep"><summary><span class="q">I have no skill yet — is this for me?</span><span class="tag">Oluwaseyi</span></summary>
+  <div class="body">
+  <pre id="t-noskill">Straight answer: yes, but you want the training door, not the placement door.
+
+No filter, feed or placement engine can sell a skill that is not there yet. Anyone who tells you otherwise is taking your money. Stages 1–4 exist for exactly your position — mindset and working systems, the digital toolkit, async communication, then the Global Ready Package where your CV, portfolio and interview video get built.
+
+That is ₦250,000 for all four, against ₦370,000 if you buy them separately. If ₦250,000 is not reachable this week, start at Stage 1 for ₦70,000 and add the rest as you go.
+
+What I would not sell you today is Stage 5. It is a done-for-you placement engine and it only works on top of something sellable.
+
+— Oluwaseyi Ashiru, Lead Facilitator</pre>
+  <button class="copy" data-t="t-noskill">Copy</button>
+  </div></details>
+
+  <details class="rep"><summary><span class="q">I already have a full-time job / no time</span><span class="tag">Oluwaseyi</span></summary>
+  <div class="body">
+  <pre id="t-notime">That is the most common message I get, and this week's story is the answer to it.
+
+Amara had two young children, a demanding day job, and a hard ceiling of ninety minutes a day, four days a week. No weekends, no late nights. That is six hours a week — fifty-four hours across nine weeks.
+
+She signed at $38,400 a year.
+
+Everything we run is async-first for exactly this reason: sessions are recorded, the workbooks are self-paced, and the portal does not care what time you open it. Being employed is an advantage here, not an obstacle — you are building from stability rather than panic.
+
+Her story, with the full ledger: everythingremotejob.com/blog.html?p=ceiling-to-dollars
+
+— Oluwaseyi Ashiru, Lead Facilitator</pre>
+  <button class="copy" data-t="t-notime">Copy</button>
+  </div></details>
+
+  <details class="rep"><summary><span class="q">How do I know this is not a scam?</span><span class="tag">Shirley</span></summary>
+  <div class="body">
+  <pre id="t-scam">You should ask. Please do check us before you pay anyone anything.
+
+• Payments run through Paystack, not to a personal account. Cards, transfer and USSD, PCI-DSS encrypted.
+• Bank transfers go to a registered corporate account: GTBank 0761646755, Business Play Ltd.
+• 446+ professionals trained, 382+ placed. The system is refined after every cohort. Detailed journeys with numbers, timelines and outcomes are at everythingremotejob.com/testimonials.html
+• There is a free live masterclass and a free CV self-scan tool on the site. Use them first. Pay nothing until you have seen how we teach.
+• Certificates carry named signatures and a traceable student number.
+
+Take your time. Anyone rushing you past these checks is the actual risk.
+
+— Shirley, Registrar</pre>
+  <button class="copy" data-t="t-scam">Copy</button>
+  </div></details>
+
+  <details class="rep"><summary><span class="q">Do you guarantee I will get a job?</span><span class="tag">Oluwaseyi</span></summary>
+  <div class="body">
+  <p class="note"><b>Never overstate the pledge.</b> It is a commitment to keep working, not a guaranteed outcome or salary. Say so plainly — it converts better than a promise anyway.</p>
+  <pre id="t-pledge">No, and I will not pretend otherwise — anyone guaranteeing you a specific job or salary is guaranteeing something they do not control.
+
+What we do commit to is our promise: we do not let go until you are hired. If the cohort ends and you are not placed, you stay in the community, you keep the sourcing engine, and we keep working your case. There is no point at which you become someone else's problem.
+
+What determines your actual outcome is your skill, your market and your consistency. What we control is representation, evidence, direction and negotiation — and those are the four things that move most people who are already good and still invisible.
+
+— Oluwaseyi Ashiru, Lead Facilitator</pre>
+  <button class="copy" data-t="t-pledge">Copy</button>
+  </div></details>
+
+  <details class="rep"><summary><span class="q">What is the difference between Stage 5 and Stages 1–5?</span><span class="tag">Shirley</span></summary>
+  <div class="body">
+  <pre id="t-diff">Short version:
+
+JOB HUNT & APPLICATION — ₦50,000
+For people who just need the hunt and the application run for them, for one field. We build a tailored CV for that field and company, and source & apply to 3+ verified roles (local and foreign) in 7 days. No training, no ongoing service.
+
+STAGE 5 ONLY — ₦300,000
+For people who are already employable today. We build your four career assets for you in 7 days (CV, LinkedIn, outreach engine, negotiation), then source and apply to 30+ verified roles weekly for a full month, and hold the until-hired pledge. No training.
+
+STAGES 1–5 — ₦500,000 (₦740,000+ value)
+Everything above, plus all four training stages, certification, the 30-Day Remote Job Secrets playbook, weekly accountability and lifetime mentor access. Trained, certified and placed.
+
+The test: if a company hired you tomorrow, could you start? Yes → Stage 5 is enough. Not yet → you want 1–5.
+
+— Shirley, Registrar</pre>
+  <button class="copy" data-t="t-diff">Copy</button>
+  </div></details>
+
+  <details class="rep"><summary><span class="q">I am not in Nigeria — can I still join?</span><span class="tag">Shirley</span></summary>
+  <div class="body">
+  <pre id="t-diaspora">Yes. Live sessions run 7:00 PM WAT and are recorded, so most timezones work — and the whole programme is async-first by design.
+
+The one thing to check is payment. Paystack handles Nigerian cards, transfers and USSD comfortably; if your card is outside Nigeria, Ghana or South Africa and it declines, message me here and I will send you the transfer route instead.
+
+The free global job board on WhatsApp is open to all Africans at no cost either way.
+
+— Shirley, Registrar</pre>
+  <button class="copy" data-t="t-diaspora">Copy</button>
+  </div></details>
+
+  <details class="rep"><summary><span class="q">Send me your account details</span><span class="tag">Shirley</span></summary>
+  <div class="body">
+  <pre id="t-acct">Here you go, [Name].
+
+CARD / TRANSFER / USSD via Paystack — pick your product:
+• Stages 1–4 (₦250,000, saves ₦120,000): paystack.shop/pay/rjmtstages1-4
+• Stage 1 (₦70,000): paystack.shop/pay/Stage1
+• Stage 2 (₦130,000): paystack.shop/pay/stage2ai
+• Stage 3 (₦70,000): paystack.shop/pay/stage3alony
+• Stage 4 (₦100,000): paystack.shop/pay/stage4only
+• Job hunt & application (₦50,000): paystack.shop/pay/dfy7days
+• Stage 5 only (₦300,000): paystack.shop/pay/gtdj-stage5
+• Stages 1–5 (₦500,000): paystack.shop/pay/gydjo-stages1-5
+• Inner Circle (₦250,000): paystack.shop/pay/erj-inner-circle
+
+DIRECT TRANSFER
+GTBank — 0761646755
+Business Play Ltd
+
+Then send the receipt straight back to me here and I will confirm and open your portal within 24 hours.
+
+— Shirley, Registrar</pre>
+  <button class="copy" data-t="t-acct">Copy</button>
+  </div></details>
+
+  <details class="rep"><summary><span class="q">I have paid — receipt attached</span><span class="tag">Shirley</span></summary>
+  <div class="body">
+  <pre id="t-paid">Received, [Name] — thank you, and welcome to Cohort 10.
+
+What happens now:
+
+1. Your Remote Job Seekers Kit and the SMART APPLY SYSTEM prompt are on their way to you now — start with the Kit, it is the sourcing spreadsheet.
+2. Your portal login is issued within 24 hours to this number and your email.
+3. Your class group link comes with the login.
+4. If you also purchased Done-For-You Application, we confirm the application start window separately on WhatsApp.
+
+Cohort 10 begins Monday 31 August, 8:00 PM WAT — enrolment closed the evening before. Oluwaseyi will send your welcome and the first instruction separately.
+
+Keep this chat — it is your line to me for anything on access or admin.
+
+— Shirley, Registrar</pre>
+  <button class="copy" data-t="t-paid">Copy</button>
+  </div></details>
+
+  <details class="rep"><summary><span class="q">Welcome note — send after Shirley confirms</span><span class="tag">Oluwaseyi</span></summary>
+  <div class="body">
+  <pre id="t-welcome">[Name] — you are in. I am glad.
+
+One instruction before we start on Monday, and only one: run the free CV self-scan at everythingremotejob.com/cvscan/ and screenshot your score. Do not fix anything yet. I want your honest starting number, because in about nine weeks I am going to show it to you again.
+
+That is all. Rest tomorrow morning. We start Monday 31 August, 8:00 PM WAT.
+
+— Oluwaseyi Ashiru
+Lead Facilitator, Everything Remote Job</pre>
+  <button class="copy" data-t="t-welcome">Copy</button>
+  </div></details>
+</section>
+
+<!-- ══ CLOSE DAY ══ -->
+<section data-tab="Close day">
+  <div class="lab">Sunday 30 August · the close</div>
+  <h2>Close day replies</h2>
+  <p class="sub">Sunday is deadline day, and the deadline is real — which is the only reason you are allowed to mention it. Send the timed messages to people who have already engaged, not to a cold list.</p>
+
+  <details class="rep"><summary><span class="q">Close-day morning · to everyone who engaged and did not buy</span><span class="tag">Broadcast</span></summary>
+  <div class="body">
+  <p class="note"><b>Send around 9:00 AM.</b> One message, no follow-up until the afternoon.</p>
+  <pre id="s-morning">Morning, [Name].
+
+Cohort 10 closes today at 8:00 PM WAT. I am not going to sell you anything in this message — you already know what it is.
+
+I only want to make sure the deadline is not the reason you decide badly. If you want in, the doors are all on one page: everythingremotejob.com/register.html
+
+If today is not your day, tell me and I will stop messaging you about it. That is a completely acceptable answer and it costs you nothing with me.
+
+— Shirley, Registrar</pre>
+  <button class="copy" data-t="s-morning">Copy</button>
+  </div></details>
+
+  <details class="rep"><summary><span class="q">I am still thinking about it</span><span class="tag">Oluwaseyi</span></summary>
+  <div class="body">
+  <pre id="s-thinking">Then let me help you think, rather than push.
+
+There are only three real questions:
+
+1. Is the naira ceiling actually holding? If your income is still moving where you are, this is not urgent and you should wait.
+2. Do you have ninety minutes a day, four days a week? That was Amara's entire budget. If you have that, time is not your obstacle.
+3. Can you pay this without touching rent or school fees? If not, the right answer is the next cohort. I mean that.
+
+Three yeses and you should be in tonight. One no and I would rather you waited and came properly.
+
+Doors close 8:00 PM WAT: everythingremotejob.com/register.html
+
+— Oluwaseyi Ashiru, Lead Facilitator</pre>
+  <button class="copy" data-t="s-thinking">Copy</button>
+  </div></details>
+
+  <details class="rep"><summary><span class="q">Can I pay tomorrow / after the deadline?</span><span class="tag">Shirley</span></summary>
+  <div class="body">
+  <p class="note"><b>Decide your policy before close day and hold it identically for everyone.</b> This draft holds the line without slamming a door.</p>
+  <pre id="s-late">Honestly, [Name]: the cohort starts tonight, so tomorrow means starting a week behind a group that has already begun. I would rather not set you up that way.
+
+Two clean options:
+
+1. Start at Stage 1 tonight — ₦70,000 gets you into the room on time, and you add the next stage when you are ready. That is the route most people in your position take.
+2. Come to the next cohort properly. I will put you on the list, you keep the free stack in the meantime, and you start on day one with everyone else instead of chasing.
+
+Both are fine answers. What I would not recommend is joining four days late.
+
+— Shirley, Registrar</pre>
+  <button class="copy" data-t="s-late">Copy</button>
+  </div></details>
+
+  <details class="rep"><summary><span class="q">My payment failed / card declined</span><span class="tag">Shirley</span></summary>
+  <div class="body">
+  <p class="note"><b>Answer this one within minutes.</b> A declined card on deadline day is the most losable sale you have.</p>
+  <pre id="s-failed">Let us get that sorted right now — do not try the same card again.
+
+Three routes, in the order that works fastest:
+
+1. TRANSFER — GTBank 0761646755, Business Play Ltd. Send the receipt straight here.
+2. USSD or bank transfer inside the Paystack page — on the checkout screen choose "Bank Transfer" or "USSD" instead of Card.
+3. A different bank's card, or a family member's, with your name in the reference.
+
+Send me the receipt however you pay and I will confirm you in immediately. If you are mid-attempt at 7:45 PM tonight, message me — I will not close you out for a bank's failure.
+
+— Shirley, Registrar</pre>
+  <button class="copy" data-t="s-failed">Copy</button>
+  </div></details>
+
+  <details class="rep"><summary><span class="q">Three hours left · 5:00 PM</span><span class="tag">Broadcast</span></summary>
+  <div class="body">
+  <pre id="s-3hr">Three hours, [Name].
+
+Cohort 10 closes at 8:00 PM WAT tonight and the next one is not next week.
+
+If it is the money, Stage 1 alone is ₦70,000 and gets you in tonight.
+If it is which door, the three-question chooser answers it in ninety seconds: everythingremotejob.com/register.html#sec-chooser
+If it is doubt, read the ledger one more time: everythingremotejob.com/blog.html?p=ceiling-to-dollars
+
+If it is none of those and the answer is simply no — say no. I will respect it and stop.
+
+— Shirley, Registrar</pre>
+  <button class="copy" data-t="s-3hr">Copy</button>
+  </div></details>
+
+  <details class="rep"><summary><span class="q">Thirty minutes left · 7:30 PM</span><span class="tag">Broadcast</span></summary>
+  <div class="body">
+  <p class="note"><b>Only to people who explicitly said they intended to join.</b> Sending this to the undecided reads as harassment.</p>
+  <pre id="s-30">Thirty minutes, [Name] — and you told me you wanted this one, so I am keeping my word and telling you.
+
+Fastest route right now: everythingremotejob.com/register.html
+Or transfer GTBank 0761646755, Business Play Ltd, and send me the receipt.
+
+If you are mid-payment when it hits 8:00, message me. I will hold your place for a payment in progress. I will not hold it for an intention.
+
+— Shirley, Registrar</pre>
+  <button class="copy" data-t="s-30">Copy</button>
+  </div></details>
+
+  <details class="rep"><summary><span class="q">After the close · waitlist reply</span><span class="tag">Shirley</span></summary>
+  <div class="body">
+  <pre id="s-closed">Cohort 10 closed last night, [Name]. I am not going to quietly let you in — the people who are in started on time, and that is what makes the cohort worth being in.
+
+Here is what I will do:
+
+1. You are on the list for the next cohort. You will hear the date from me before it is public.
+2. The free stack is yours now, not later: the CV self-scan at everythingremotejob.com/cvscan/, the blog, and the free global remote job board on WhatsApp.
+3. If the Inner Circle is closer to what you actually need, its residency begins Monday 31 August — the same evening Cohort 10 starts — and admission is application-first — say the word and I will send you the details.
+
+Use the gap. People who arrive at a cohort already warm move considerably faster than people who arrive cold.
+
+— Shirley, Registrar</pre>
+  <button class="copy" data-t="s-closed">Copy</button>
+  </div></details>
+</section>
+
+<!-- ══ QUICK REPLIES ══ -->
+<section data-tab="Quick replies">
+  <div class="lab">WhatsApp Business · Quick replies</div>
+  <h2>Load these <em>before the weekend</em></h2>
+  <p class="sub">Settings → Business tools → Quick replies → Add. Type the shortcut in any chat and WhatsApp expands it. These are the short forms — the long replies live in the Saturday and Sunday tabs.</p>
+
+  <details class="rep" open><summary><span class="q">The shortcut map</span><span class="tag">Reference</span></summary>
+  <div class="body">
+  <div class="qr">
+    <code>/price</code><span>Asks the skill question before quoting anything</span>
+    <code>/list</code><span>The full price board</span>
+    <code>/pay</code><span>All Paystack links by product</span>
+    <code>/transfer</code><span>GTBank 0761646755 · Business Play Ltd</span>
+    <code>/paid</code><span>Receipt received → what happens next</span>
+    <code>/door</code><span>The three-question chooser link</span>
+    <code>/story</code><span>Amara: ₦2.1M → $38,400, with the link</span>
+    <code>/pledge</code><span>The honest Promise answer</span>
+    <code>/noskill</code><span>No skill yet → training door, not placement</span>
+    <code>/notime</code><span>90 minutes a day is enough</span>
+    <code>/plan</code><span>Instalment options</span>
+    <code>/legit</code><span>How to verify us before paying</span>
+    <code>/dfy7</code><span>Done-For-You Application · 7 days · ₦50,000</span>
+    <code>/free</code><span>The free stack: CV scan, blog, free job board</span>
+    <code>/audit</code><span>Move a job-channel reader into a private diagnosis</span>
+    <code>/deadline</code><span>Closes Sun 30 Aug · begins Mon 31 Aug</span>
+    <code>/masterclass</code><span>Free Application Clinic · Sat 29 Aug, 7PM</span>
+    <code>/failed</code><span>Card declined → three alternate routes</span>
+    <code>/next</code><span>Next cohort waitlist</span>
+  </div>
+  </div></details>
+
+
+  <details class="rep"><summary><span class="q">/audit</span><span class="tag">Copy</span></summary><div class="body">
+  <pre id="q-audit">Getting remote jobs every day but still not getting interviews?
+
+Before you send another 20 applications, let us find where your search is leaking.
+
+Message AUDIT privately with:
+1. The remote role you are targeting
+2. Applications in the last 30 days
+3. Interviews in the last 30 days
+4. Your CV or LinkedIn profile
+
+Start here: everythingremotejob.com/diagnose/
+WhatsApp: https://wa.me/2348032925957?text=AUDIT
+
+No payment is required for the diagnosis. If you do not need a paid ERJ service, we will tell you that too.</pre>
+  <button class="copy" data-t="q-audit">Copy</button></div></details>
+
+  <details class="rep"><summary><span class="q">/reserve</span><span class="tag">Copy</span></summary><div class="body">
+  <pre id="q-reserve">COHORT 10 RESERVATION
+
+If Foundation Training is the right door for you and payment timing is the only issue, Cohort 10 can be reserved with ₦50,000 after a Registrar fit check.
+
+The ₦50,000 is credited fully toward the ₦250,000 tuition. The ₦200,000 balance is due by 6:00 PM WAT on Sunday 30 August.
+
+This is not a discount or a long-term instalment plan. The bank-transfer details are sent only after fit is confirmed. If your plans change, the reservation can move to the next cohort or be refunded on request, less applicable bank/payment service charges.
+
+Reply with: target role, applications in the last 30 days, interviews in the last 30 days, and whether you can give the programme about 90 focused minutes a day.</pre>
+  <button class="copy" data-t="q-reserve">Copy</button></div></details>
+
+  <details class="rep"><summary><span class="q">/reserve-approved</span><span class="tag">Copy</span></summary><div class="body">
+  <pre id="q-reserve-approved">COHORT 10 RESERVATION — FIT CONFIRMED
+
+Based on your audit, Foundation Training fits because [ONE-SENTENCE REASON].
+
+To reserve your Cohort 10 place, transfer ₦50,000 to:
+
+Guaranty Trust Bank
+Account number: 0761646755
+Account name: Business Play Ltd
+
+The ₦50,000 is credited fully toward the ₦250,000 tuition. Balance: ₦200,000, due by 6:00 PM WAT on Sunday 30 August.
+
+If your plans change, you may move the reservation to the next cohort or request a refund; any refund is less applicable bank/payment service charges.
+
+After transfer, send the receipt here. I will confirm the reservation in this WhatsApp thread.</pre>
+  <button class="copy" data-t="q-reserve-approved">Copy</button></div></details>
+
+  <details class="rep"><summary><span class="q">/deadline</span><span class="tag">Copy</span></summary><div class="body">
+  <pre id="q-deadline">Cohort 10 enrolment closes Sunday 30 August at 8:00 PM WAT. The cohort itself begins Monday 31 August at 8:00 PM WAT. Everything, on one page: everythingremotejob.com/register.html</pre>
+  <button class="copy" data-t="q-deadline">Copy</button></div></details>
+
+  <details class="rep"><summary><span class="q">/masterclass</span><span class="tag">Copy</span></summary><div class="body">
+  <pre id="q-masterclass">Remote Job Application Clinic — free live session on Zoom, Saturday 29 August 2026 at 7:00 PM WAT.
+
+Bring your CV + one remote job advert. We will diagnose where your search is leaking, review ATS/role fit and show you what to fix first.
+
+Register directly on Zoom: https://us06web.zoom.us/meeting/register/Ca4SH87JS3OZtL2hZrwj1g
+
+After Zoom confirms your registration, message CLINIC on WhatsApp so we can add you to the preparation and reminder list. Full details: everythingremotejob.com/masterclass/</pre>
+  <button class="copy" data-t="q-masterclass">Copy</button></div></details>
+
+  <details class="rep"><summary><span class="q">/transfer</span><span class="tag">Copy</span></summary><div class="body">
+  <pre id="q-transfer">Direct transfer:
+GTBank — 0761646755
+Business Play Ltd
+
+Send the receipt back here and I will confirm you within 24 hours.</pre>
+  <button class="copy" data-t="q-transfer">Copy</button></div></details>
+
+  <details class="rep"><summary><span class="q">/story</span><span class="tag">Copy</span></summary><div class="body">
+  <pre id="q-story">Amara, 35, Operations Manager in Abuja. Two young children, a full-time job, ninety minutes a day.
+
+Before: ₦2.1M/year (~$1,380 in dollar terms)
+After, 9 weeks: $38,400/year via Deel — 27.8×
+
+Fifty-four hours of work. Same skills in week 9 as week 1.
+
+Full ledger: everythingremotejob.com/blog.html?p=ceiling-to-dollars</pre>
+  <button class="copy" data-t="q-story">Copy</button></div></details>
+
+  <details class="rep"><summary><span class="q">/door</span><span class="tag">Copy</span></summary><div class="body">
+  <pre id="q-door">Three questions — skill, timeline, budget — and it tells you which door is yours and why. About ninety seconds:
+
+everythingremotejob.com/register.html#sec-chooser
+
+It will sometimes tell you not to buy yet. That is deliberate.</pre>
+  <button class="copy" data-t="q-door">Copy</button></div></details>
+
+  <details class="rep"><summary><span class="q">/free</span><span class="tag">Copy</span></summary><div class="body">
+  <pre id="q-free">Everything free, no payment, no catch:
+
+• CV self-scan, 10-point remote readiness score — everythingremotejob.com/cvscan/
+• The blog, updated daily — everythingremotejob.com/blog.html
+• Free global remote job board for Africans, on WhatsApp
+
+Start there. Come back when you are ready.</pre>
+  <button class="copy" data-t="q-free">Copy</button></div></details>
+
+  <details class="rep"><summary><span class="q">/dfy7</span><span class="tag">Copy</span></summary><div class="body">
+  <pre id="q-dfy7">Done-For-You Remote Job Application — ₦50,000 for the 7-day starter.
+
+You choose the field. ERJ sources verified roles, tailors the CV/application and submits on your behalf. The 7-day starter covers 3+ verified applications.
+
+See the service: everythingremotejob.com/jobapplication/
+Paystack: https://paystack.shop/pay/dfy7days
+
+After payment, send your receipt with “DFY 7 DAYS” and the field you want us to target.</pre>
+  <button class="copy" data-t="q-dfy7">Copy</button></div></details>
+</section>
+
+<!-- ══ POSTING ══ -->
+<section data-tab="Posting">
+  <div class="lab">Wednesday → Sunday</div>
+  <h2>Where the frames go</h2>
+  <p class="sub">Ten story frames and one feed card. The story runs as a sequence — do not scatter it across four days, or the arc collapses into ten unrelated brags.</p>
+  <ul class="sched">
+    <li><b>Wed 26 August · evening</b>Publish the blog post. Post the feed card with the long caption. Do not post the story frames yet — let the post exist for a night so early replies give you material.</li>
+    <li><b>Thu 27 August · from 10:00</b>Story frames 01–05 in one sitting, in order. Add the link sticker to the blog post on frame 05. Mention Saturday’s masterclass on frame 05.</li>
+    <li><b>Fri 28 August</b>Repost frames 01, 07 and 10 only — hook, result, deadline. Add one screenshot of a real reply from Thursday, name blurred, as its own frame. Last call for masterclass seats.</li>
+    <li><b>Sat 29 August · morning</b>Frames 03 and 09 — the constraint and the point. These reach people who think they have no time, which is exactly who should be on tonight’s call.</li>
+    <li><b>Sat 29 August · after the masterclass</b>Frames 06–10. Frame 10 carries the register link. This is the highest-intent audience you will have all cycle — they just gave you 90 minutes.</li>
+    <li><b>Sun 30 August · close day</b>Frame 10 at 9:00 AM, 5:00 PM and 7:30 PM with the hours changed by hand. Nothing else — on close day the deadline is the only message, and the room is still warm from last night.</li>
+  </ul>
+
+  <div class="lab" style="margin-top:2.4rem">Captions</div>
+
+  <details class="rep"><summary><span class="q">LinkedIn · long form</span><span class="tag">Copy</span></summary><div class="body">
+  <pre id="c-li">She had ninety minutes a day.
+
+Four days a week. Two young children. A full-time job in Abuja. No weekends available, no late nights, everything async.
+
+Six hours a week. Fifty-four hours across nine weeks — less than a week and a half of full-time work.
+
+Her income before: ₦2.1M a year. About $1,380 in dollar terms, and falling every time the naira moved.
+
+Her offer nine weeks later: $38,400 a year, paid through Deel by a US supply-chain SaaS company. 27.8× in dollar terms.
+
+Here is the part I want you to sit with. She had the same skills in week 9 that she had in week 1. Nothing was added to her ability.
+
+What changed was three things:
+
+Representation — the same experience rewritten in the language global employers actually read. Two wins she had never written down anywhere became the spine of her CV: a 34% reduction in order errors, an 11% saving in delivery costs. Both already achieved. Both invisible until they were written.
+
+Evidence — those wins turned into a three-screen portfolio. A one-day build. Claims became exhibits.
+
+Direction — fourteen personalised messages to named humans at companies with verified global hiring infrastructure. Six replied. Three became interview processes. One became an offer.
+
+For contrast, another documented journey on our site: 312 tracked applications over eleven months, 308 silences, zero offers. Same country, same market, same year.
+
+Fourteen beat three hundred and twelve because the fourteen were aimed.
+
+The annual difference between her before and after is roughly $37,000, produced by 54 hours of correctly aimed work. That is about $685 an hour, counted against year one alone.
+
+Her constraints were real. They did not disqualify her. They only decided the pace.
+
+The full ledger, with every number: everythingremotejob.com/blog.html?p=ceiling-to-dollars
+
+Cohort 10 closes Sunday 30 August, 8:00 PM WAT.
+
+#RemoteWork #CareerGrowth #Nigeria #RemoteJobs</pre>
+  <button class="copy" data-t="c-li">Copy</button></div></details>
+
+  <details class="rep"><summary><span class="q">Facebook · pidgin</span><span class="tag">Copy</span></summary><div class="body">
+  <pre id="c-fb">₦175,000 a month. That was her ceiling.
+
+Amara, 35, Operations Manager for Abuja. Two small pikin, full-time job, and only 90 minutes a day, four days a week. No weekend, no midnight.
+
+Add am up: 54 hours for nine weeks. Na less than two weeks of proper work.
+
+Nine weeks later she sign $38,400 for one year. Na $3,200 every month, dollar, straight. 27.8 times wetin she dey collect before.
+
+And this one na the part wey shock people — she no learn any new skill. Same skill she carry enter week one, same skill she carry sign the offer.
+
+Wetin change na three things: how she write herself, the proof she show, and where she aim.
+
+14 messages. 6 replies. 3 interviews. 1 offer.
+
+Another person on our site send 312 applications for 11 months. Zero reply. Same country, same year.
+
+The difference no be effort. Na aim.
+
+Full story with all the numbers: everythingremotejob.com/blog.html?p=ceiling-to-dollars
+
+Cohort 10 dey close Sunday 30 August, 8PM. If you get 90 minutes a day, you get enough.</pre>
+  <button class="copy" data-t="c-fb">Copy</button></div></details>
+
+  <details class="rep"><summary><span class="q">WhatsApp status / channel</span><span class="tag">Copy</span></summary><div class="body">
+  <pre id="c-wa">₦2.1M a year was her ceiling.
+
+90 minutes a day. 4 days a week. Two kids. A full job.
+54 hours across nine weeks.
+
+Now: $38,400/year. 27.8× in dollar terms. Same skills.
+
+The whole ledger — 14 messages, 6 replies, 1 offer:
+everythingremotejob.com/blog.html?p=ceiling-to-dollars
+
+Cohort 10 closes Sun 30 Aug, 8PM WAT.</pre>
+  <button class="copy" data-t="c-wa">Copy</button></div></details>
+
+  <details class="rep"><summary><span class="q">Instagram feed card caption</span><span class="tag">Copy</span></summary><div class="body">
+  <pre id="c-ig">The ceiling was never her talent.
+
+₦2.1M a year → $38,400 a year. Nine weeks. 27.8× in dollar terms.
+
+90 minutes a day, four days a week, two young children, a full-time job in Abuja. 54 hours of work in total. Same skills at the end as at the start.
+
+What changed: how she was represented, what evidence she could show, and where she aimed. 14 messages → 6 replies → 3 processes → 1 signed offer.
+
+Full ledger in bio. Cohort 10 closes Sunday 30 August, 8PM WAT.
+
+Documented journey, published with permission. Individual results vary with skill, market and effort.</pre>
+  <button class="copy" data-t="c-ig">Copy</button></div></details>
+</section>
+
+<footer>
+  <div>Cohort 10 Surge Console · built from the live site catalogue, August 2026.</div>
+  <div style="margin-top:.5rem">Prices, links and dates verified against register.html, foundationtraining, jobapplication, innercircle and testimonials. Re-verify before reuse in a later cohort.</div>
+</footer>
+</div>
+
+<div id="toast">Copied</div>
+
+<script>
+/* tabs */
+const secs=[...document.querySelectorAll('section[data-tab]')];
+const tabs=document.getElementById('tabs');
+secs.forEach((s,i)=>{
+  const b=document.createElement('button');
+  b.textContent=s.dataset.tab;
+  b.onclick=()=>{secs.forEach(x=>x.classList.add('hide'));s.classList.remove('hide');
+    [...tabs.children].forEach(x=>x.classList.remove('on'));b.classList.add('on');
+    window.scrollTo({top:0,behavior:'smooth'});};
+  tabs.appendChild(b);
+  if(i>0)s.classList.add('hide'); else b.classList.add('on');
+});
+
+/* copy */
+const toast=document.getElementById('toast');
+let tt;
+function flash(msg){toast.textContent=msg;toast.classList.add('up');clearTimeout(tt);
+  tt=setTimeout(()=>toast.classList.remove('up'),1500);}
+document.querySelectorAll('.copy').forEach(b=>{
+  b.onclick=async()=>{
+    const txt=document.getElementById(b.dataset.t).innerText;
+    try{await navigator.clipboard.writeText(txt);}
+    catch(e){const ta=document.createElement('textarea');ta.value=txt;document.body.appendChild(ta);
+      ta.select();document.execCommand('copy');ta.remove();}
+    b.classList.add('done');b.textContent='Copied';
+    flash('Copied — change the name before sending');
+    setTimeout(()=>{b.classList.remove('done');b.textContent='Copy';},2200);
+  };
+});
+
+/* countdown to Sun 30 Aug 2026, 20:00 WAT (UTC+1) */
+const DEAD=new Date('2026-08-30T20:00:00+01:00').getTime();
+function tick(){
+  const gap=DEAD-Date.now();
+  const cd=document.getElementById('cd');
+  if(gap<=0){cd.innerHTML='<div class="closed">Cohort 10 enrolment is closed.</div>'+
+    '<div class="to" style="margin-left:1rem">Switch to the waitlist reply in the Close day tab. Cohort 10 begins Mon 31 Aug, 8:00 PM WAT.</div>';return;}
+  const d=Math.floor(gap/864e5),h=Math.floor(gap%864e5/36e5),
+        m=Math.floor(gap%36e5/6e4),s=Math.floor(gap%6e4/1e3);
+  document.getElementById('d').textContent=String(d).padStart(2,'0');
+  document.getElementById('h').textContent=String(h).padStart(2,'0');
+  document.getElementById('m').textContent=String(m).padStart(2,'0');
+  document.getElementById('s').textContent=String(s).padStart(2,'0');
+  requestAnimationFrame(()=>{});
+}
+tick();setInterval(tick,1000);
+</script>
+</body>
+</html>
