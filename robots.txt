@@ -1,0 +1,18 @@
+# Everything Remote Job
+# NOTE ON POLICY (changed 2026-08-08):
+# Pages that must leave Google's index carry <meta name="robots" content="noindex">
+# and are deliberately NOT Disallowed here. A Disallowed URL is never crawled, so
+# its noindex is never read — which is why blocked pages can stay indexed for
+# months. Crawl-allowed + noindex is what actually removes them.
+# Disallow below is reserved for URL patterns that have no HTML to carry a meta tag.
+
+User-agent: *
+Allow: /
+
+# Query-string permutations of the blog reader (same content, infinite URLs).
+# Every post now ALSO has a real, static, crawlable URL at /blog/<slug>/ — those
+# are the canonical ones and they are all listed in the sitemap. This rule only
+# blocks the duplicate query form, not the content.
+Disallow: /*?p=
+
+Sitemap: https://everythingremotejob.com/sitemap.xml
